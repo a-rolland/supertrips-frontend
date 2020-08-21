@@ -1,15 +1,52 @@
-import React from 'react'
-import { Nav, Ul, Li, A } from "./styles";
+import React, { useState, useRef, useEffect } from 'react';
+import service from '../Services/auth-service';
+import { Nav, Li } from "./styles";
+import { Link } from 'react-router-dom'
 
-function Navbar() {
+const Navbar = props => {
+
+    const initialState = { loggedInUser: null }
+    const [state, setState] = useState(initialState)
+
+    // CHECK --> ComponentWillReceiveProps
+    const isFirstRun = useRef(true);
+    
+    useEffect (() => {
+        if (isFirstRun.current) {
+            isFirstRun.current = false;
+            return;
+        }
+        console.log('User In Session :', props.userInSession);
+        setState({loggedInUser: props.userInSession})
+    }, [props.userInSession]);
+
+    const logoutUser = () => {
+        service.logout()
+        .then(() => {
+          setState({ loggedInUser: null });
+          props.getUser(null);  
+        })
+    }
+
     return (
         <Nav>
-            <Ul>
-                <Li><a href="#">Supertrips</a></Li>
-                <Li expandRight><a href="#">Trips</a></Li>
-                <Li><a href="#">Signup</a></Li>
-                <Li><a href="#">Logout</a></Li>
-            </Ul>
+            <ul>
+                <Li><Link to="/">Supertrips</Link></Li>
+                <Li expandRight><Link to="/trips">Trips</Link></Li>
+                {
+                    state.loggedInUser ?
+                        <Li>
+                            <Link to='/'>
+                                <button onClick={() => logoutUser()}>Logout</button>
+                            </Link>
+                        </Li>
+                    :
+                    <>
+                        <Li><Link to="/signup">Signup</Link></Li>
+                        <Li><Link to="/login">Login</Link></Li>
+                    </>
+                }
+            </ul>
         </Nav>
     )
 }
