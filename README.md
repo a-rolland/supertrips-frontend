@@ -40,17 +40,20 @@ User model
 - username: String - unique
 - email: String
 - password: String - encrypted
+- profile_picture: String
 - favorites: [ObjectId] - (ref Trips model)
 - trips: [ObjectId] - (ref Trips model)
 - timestamps
 
 Trips model
 - title: String
+! description: String
 - start: Date
 - end: Date
 - duration: Number (end - start, min: 1)
 - is_public: Boolean
 - pictures: [String]
+- thumbnail_picture : String
 - type: [String] - ['Solo', 'With Friends', 'Couple', 'Honey Moon', 'Family']
 - timestamps
 
