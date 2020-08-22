@@ -15,10 +15,10 @@ export const Nav = styled.div`
 
       a {
         text-decoration: none;
-      }
 
-      a:hover {
-        color: lightgrey;
+        &:hover {
+          color: lightgrey;
+        }
       }
     }
   }

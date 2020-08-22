@@ -30,11 +30,16 @@ const Navbar = (props) => {
           <Link to="/trips">Trips</Link>
         </li>
         {state.loggedInUser ? (
-          <li>
-            <Link to="/">
-              <button onClick={() => logoutUser()}>Logout</button>
-            </Link>
-          </li>
+          <>
+            <li>
+              <Link to="/profile">Profile</Link>
+            </li>
+            <li>
+              <Link to="/">
+                <button onClick={() => logoutUser()}>Logout</button>
+              </Link>
+            </li>
+          </>
         ) : (
           <>
             <li>

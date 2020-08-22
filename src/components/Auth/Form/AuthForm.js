@@ -67,7 +67,7 @@ const AuthForm = (props) => {
           onChange={handleChange}
         />
 
-        <Input type="submit" value={props.formButton} />
+        <Input className="btn" type="submit" value={props.formButton} />
       </Form>
 
       <p>

@@ -6,7 +6,9 @@ import Signup from "./components/Auth/Signup";
 import Login from "./components/Auth/Login";
 import Trips from "./components/Trips/Trips";
 import service from "./components/Services/auth-service";
+import ProtectedRoute from "./components/Auth/protected-route";
 import "./App.css";
+import Profile from "./components/Profile/Profile";
 
 const App = () => {
   const initialState = { loggedInUser: null };
@@ -56,6 +58,12 @@ const App = () => {
           exact
           path="/login"
           render={(props) => <Login {...props} getUser={getTheUser} />}
+        />
+        <ProtectedRoute
+          exact
+          path="/profile"
+          userInSession={state.loggedInUser}
+          component={Profile}
         />
       </Switch>
     </div>
