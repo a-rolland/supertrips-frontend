@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import service from "../../Services/auth-service";
+import authService from "../../Services/auth-service";
 import { Link } from "react-router-dom";
 import { Form, Input } from "./styles";
 
@@ -17,8 +17,8 @@ const AuthForm = (props) => {
     const password = state.password;
 
     const dynamicService = props.login
-      ? service.login(username, password)
-      : service.signup(username, password);
+      ? authService.login(username, password)
+      : authService.signup(username, password);
 
     dynamicService
       .then((response) => {
@@ -42,14 +42,9 @@ const AuthForm = (props) => {
 
   return (
     <div>
-      <Form
-        className="form-group m-2"
-        onSubmit={handleFormSubmit}
-        style={{ maxWidth: "350px" }}
-      >
+      <Form onSubmit={handleFormSubmit}>
         <label>Username:</label>
         <Input
-          className="form-control"
           type="text"
           name="username"
           value={state.username}
@@ -60,7 +55,6 @@ const AuthForm = (props) => {
         <label>Password:</label>
         <Input
           type="password"
-          className="form-control"
           name="password"
           placeholder="********"
           value={state.password}

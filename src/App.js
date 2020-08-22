@@ -5,7 +5,7 @@ import Homepage from "./components/Homepage/Homepage";
 import Signup from "./components/Auth/Signup";
 import Login from "./components/Auth/Login";
 import Trips from "./components/Trips/Trips";
-import service from "./components/Services/auth-service";
+import authService from "./components/Services/auth-service";
 import ProtectedRoute from "./components/Auth/protected-route";
 import CreateTripForm from "./components/CreateTripForm/CreateTripForm"
 import "./App.css";
@@ -23,7 +23,7 @@ const App = () => {
 
   const fetchUser = () => {
     if (state.loggedInUser === null) {
-      service
+      authService
         .loggedin()
         .then((response) => {
           setState({

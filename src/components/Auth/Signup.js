@@ -8,7 +8,7 @@ const Signup = (props) => {
         {...props}
         signup
         getUser={props.getUser}
-        formButton="Sign-up"
+        formButton="SIGN-UP"
         authMessage="Already have an account ?"
         formRedirectLink="/login"
         formRedirectText=" Login"

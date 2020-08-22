@@ -5,6 +5,7 @@ export const Form = styled.form`
   background-color: #f2f2f2;
   padding: 20px;
   margin: 20px auto;
+  max-width: 350px;
 `;
 
 export const Input = styled.input`

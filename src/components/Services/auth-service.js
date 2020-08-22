@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const service = axios.create({
+const authService = axios.create({
   baseURL: "http://localhost:5000/api",
   withCredentials: true,
 });
@@ -10,27 +10,27 @@ const errorHandler = (err) => {
 };
 
 export default {
-  service,
+  authService,
 
   signup: (username, password) => {
-    return service
+    return authService
       .post("/signup", { username, password })
       .then((response) => response.data)
       .catch(errorHandler);
   },
 
   loggedin: () => {
-    return service.get("/loggedin").then((response) => response.data);
+    return authService.get("/loggedin").then((response) => response.data);
   },
 
   login: (username, password) => {
-    return service
+    return authService
       .post("/login", { username, password })
       .then((response) => response.data);
   },
 
   logout: () => {
-    return service.post("/logout", {}).then((response) => response.data);
+    return authService.post("/logout", {}).then((response) => response.data);
   },
 
   // upload: data => {

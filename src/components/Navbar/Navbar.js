@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import service from "../Services/auth-service";
+import authService from "../Services/auth-service";
 import { Nav } from "./styles";
 import { Link } from "react-router-dom";
 
@@ -7,14 +7,14 @@ const Navbar = (props) => {
   const initialState = { loggedInUser: null };
   const [state, setState] = useState(initialState);
 
-  // eq. componentWillReceiveProps
+  // equiv. componentWillReceiveProps
   useEffect(() => {
     console.log("User In Session :", props.userInSession);
     setState({ loggedInUser: props.userInSession });
   }, [props.userInSession]);
 
   const logoutUser = () => {
-    service.logout().then(() => {
+    authService.logout().then(() => {
       setState({ loggedInUser: null });
       props.getUser(null);
     });
