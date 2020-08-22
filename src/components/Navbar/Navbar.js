@@ -1,6 +1,6 @@
 import React, { useState, useRef, useEffect } from 'react';
 import service from '../Services/auth-service';
-import { Nav, Li } from "./styles";
+import { Nav } from "./styles";
 import { Link } from 'react-router-dom'
 
 const Navbar = props => {
@@ -31,19 +31,19 @@ const Navbar = props => {
     return (
         <Nav>
             <ul>
-                <Li><Link to="/">Supertrips</Link></Li>
-                <Li expandRight><Link to="/trips">Trips</Link></Li>
+                <li><Link to="/">Supertrips</Link></li>
+                <li style={{marginRight:"auto"}}><Link to="/trips">Trips</Link></li>
                 {
                     state.loggedInUser ?
-                        <Li>
+                        <li>
                             <Link to='/'>
                                 <button onClick={() => logoutUser()}>Logout</button>
                             </Link>
-                        </Li>
+                        </li>
                     :
                     <>
-                        <Li><Link to="/signup">Signup</Link></Li>
-                        <Li><Link to="/login">Login</Link></Li>
+                        <li><Link to="/signup">Signup</Link></li>
+                        <li><Link to="/login">Login</Link></li>
                     </>
                 }
             </ul>

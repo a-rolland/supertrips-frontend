@@ -1,4 +1,4 @@
-import styled, { css } from "styled-components";
+import styled from "styled-components";
 
 export const Nav = styled.div`
     margin: 0;
@@ -9,29 +9,17 @@ export const Nav = styled.div`
         flex-direction: row;
         list-style-type: none;
         padding: 0 20px;
+
+        li {
+            margin: 10px;
+
+            a {
+                text-decoration: none;
+            }
+
+            a:hover {
+                color: lightgrey;
+            }
+        }
     }
 `;
-
-export const Li = styled.li`
-    margin: 10px;
-
-    ${props =>
-    props.expandRight &&
-    css`
-    margin-right: auto;
-    `};
-
-    a {
-        text-decoration: none;
-    }
-`;
-
-// export const Li = styled.li`
-//     margin: 10px;
-
-//     ${props =>
-//     props.expandRight &&
-//     css`
-//       margin-right: auto;
-//     `};
-// `;
