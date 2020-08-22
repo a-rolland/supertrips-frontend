@@ -7,6 +7,7 @@ import Login from "./components/Auth/Login";
 import Trips from "./components/Trips/Trips";
 import service from "./components/Services/auth-service";
 import ProtectedRoute from "./components/Auth/protected-route";
+import CreateTripForm from "./components/CreateTripForm/CreateTripForm"
 import "./App.css";
 import Profile from "./components/Profile/Profile";
 
@@ -64,6 +65,11 @@ const App = () => {
           path="/profile"
           userInSession={state.loggedInUser}
           component={Profile}
+        />
+        <Route
+          exact
+          path="/create-trip"
+          render={(props) => <CreateTripForm {...props} getUser={getTheUser} />}
         />
       </Switch>
     </div>
