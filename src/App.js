@@ -7,7 +7,7 @@ import Login from "./components/Auth/Login";
 import Trips from "./components/Trips/Trips";
 import authService from "./components/Services/auth-service";
 import ProtectedRoute from "./components/Auth/protected-route";
-import CreateTripForm from "./components/CreateTripForm/CreateTripForm"
+import CreateTripForm from "./components/CreateTripForm/CreateTripForm";
 import "./App.css";
 import Profile from "./components/Profile/Profile";
 
@@ -47,9 +47,17 @@ const App = () => {
         <Route
           exact
           path="/"
-          render={() => <Homepage userInSession={state.loggedInUser} />}
+          render={(props) => (
+            <Homepage {...props} userInSession={state.loggedInUser} />
+          )}
         />
-        <Route exact path="/trips" render={() => <Trips />} />
+        <Route
+          exact
+          path="/trips"
+          render={(props) => (
+            <Trips {...props} userInSession={state.loggedInUser} />
+          )}
+        />
         <Route
           exact
           path="/signup"

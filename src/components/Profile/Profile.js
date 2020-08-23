@@ -20,7 +20,8 @@ const Profile = props => {
         { 
           state.showTripForm ?
             <>
-              <CreateTripForm key="tripForm" formButton="SAVE" toggleForm={toggleForm} />
+              {/* <CreateTripForm key="tripForm" formButton="SAVE" toggleForm={toggleForm} /> */}
+              <CreateTripForm {...props} formButton="SAVE" toggleForm={toggleForm} />
               <button onClick={toggleForm}>CLOSE</button>
             </>
           :

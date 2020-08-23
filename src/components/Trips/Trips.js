@@ -12,12 +12,18 @@ const Trips = props => {
   // equiv. componentWillReceiveProps
   // Correct ?
   useEffect(() => {
+    setState(state => ({
+      ...state,
+      loggedInUser: props.userInSession,
+    }))
     tripService.trips()
       .then(response => {
         console.log("Trips :", response)
+        // Filter : show public trips or user's trips
+        const filteredResponse = response.filter(trip => trip.author === props.userInSession._id || trip.isPublic)
+        console.log("Filtered trips :", filteredResponse)
         setState({ 
-          loggedInUser: props.userInSession,
-          trips: response
+          trips: filteredResponse
         });
       })
       .catch((error) => console.log(error));

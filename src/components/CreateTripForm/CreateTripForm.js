@@ -5,7 +5,8 @@ import { Form, Input } from "./styles";
 
 const CreateTripForm = (props) => {
   const initialState = {
-    title: ""
+    title: "",
+    isPublic: false
   };
 
   const [state, setState] = useState(initialState);
@@ -13,7 +14,8 @@ const CreateTripForm = (props) => {
   const handleFormSubmit = (event) => {
     event.preventDefault();
     const title = state.title;
-    tripService.newtrip(title)
+    const isPublic = state.isPublic;
+    tripService.newtrip(title, isPublic)
       .then(response => 
         console.log("New trip created !", response)
       )
@@ -22,10 +24,10 @@ const CreateTripForm = (props) => {
   };
 
   const handleChange = (event) => {
-    const { name, value } = event.target;
+    const { name, value, type, checked } = event.target;
     setState((state) => ({
       ...state,
-      [name]: value,
+      [name]: type === "checkbox" ? checked : value
     }));
   };
 
@@ -40,6 +42,14 @@ const CreateTripForm = (props) => {
           name="title"
           value={state.title}
           placeholder="Ex.: My magical trip to Paris"
+          onChange={handleChange}
+        />
+
+        <label>Do you want to make it public ?</label>
+        <Input
+          type="checkbox"
+          name="isPublic"
+          value={state.isPublic}
           onChange={handleChange}
         />
 

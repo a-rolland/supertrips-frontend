@@ -12,9 +12,9 @@ const errorHandler = (err) => {
 export default {
   tripService,
 
-  newtrip: title => {
+  newtrip: (title, isPublic) => {
     return tripService
-      .post("/newtrip", { title })
+      .post("/newtrip", { title: title, isPublic: isPublic  })
       .then((response) => response.data)
       .catch(errorHandler);
   },
