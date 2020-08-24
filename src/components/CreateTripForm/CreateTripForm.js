@@ -1,21 +1,11 @@
-import React, { useState } from "react";
+import React from "react";
 import tripService from "../Services/trip-service";
-import { Link } from "react-router-dom";
-import { Form, Input } from "./styles";
+import FormGeneral from "../FormGeneral/FormGeneral";
 
 const CreateTripForm = (props) => {
-  const initialState = {
-    title: "",
-    isPublic: false
-  };
-
-  const [state, setState] = useState(initialState);
-
-  const handleFormSubmit = (event) => {
-    event.preventDefault();
-    const title = state.title;
-    const isPublic = state.isPublic;
-    tripService.newtrip(title, isPublic)
+  const handleFormSubmit = (formObject) => {
+    console.log("LIFTED STATE :", formObject)
+    tripService.newtrip(formObject)
       .then(response => 
         console.log("New trip created !", response)
       )
@@ -23,43 +13,26 @@ const CreateTripForm = (props) => {
     props.toggleForm()
   };
 
-  const handleChange = (event) => {
-    const { name, value, type, checked } = event.target;
-    setState((state) => ({
-      ...state,
-      [name]: type === "checkbox" ? checked : value
-    }));
-  };
+  const formInputs = [{
+    label: "Title",
+    type: "text",
+    name: "title",
+    placeholder: "Ex.: My magical trip to Paris"
+  },
+  {
+    label: "Do you want to make it public ?",
+    type: "checkbox",
+    name: "isPublic",
+  }]
+
+  const initialState = {
+    title: "",
+    isPublic: false
+  }
 
   return (
     <div>
-      <Form
-        onSubmit={handleFormSubmit}
-      >
-        <label>Title:</label>
-        <Input
-          type="text"
-          name="title"
-          value={state.title}
-          placeholder="Ex.: My magical trip to Paris"
-          onChange={handleChange}
-        />
-
-        <label>Do you want to make it public ?</label>
-        <Input
-          type="checkbox"
-          name="isPublic"
-          value={state.isPublic}
-          onChange={handleChange}
-        />
-
-        <Input className="btn" type="submit" value={props.formButton} />
-      </Form>
-
-      <p>
-        {props.authMessage}
-        <Link to={`${props.formRedirectLink}`}>{props.formRedirectText}</Link>
-      </p>
+      <FormGeneral formSubmit={handleFormSubmit} formState={initialState} formInputs={formInputs} />
     </div>
   );
 };

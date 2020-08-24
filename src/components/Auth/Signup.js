@@ -1,5 +1,5 @@
 import React from "react";
-import AuthForm from "./Form/AuthForm";
+import AuthForm from "./AuthForm";
 
 const Signup = (props) => {
   return (

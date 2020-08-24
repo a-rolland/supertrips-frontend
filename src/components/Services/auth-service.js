@@ -12,9 +12,9 @@ const errorHandler = (err) => {
 export default {
   authService,
 
-  signup: (username, password) => {
+  signup: (credentials) => {
     return authService
-      .post("/signup", { username, password })
+      .post("/signup", credentials)
       .then((response) => response.data)
       .catch(errorHandler);
   },
@@ -23,14 +23,16 @@ export default {
     return authService.get("/loggedin").then((response) => response.data);
   },
 
-  login: (username, password) => {
+  login: (credentials) => {
     return authService
-      .post("/login", { username, password })
+      .post("/login", credentials)
       .then((response) => response.data);
   },
 
   logout: () => {
-    return authService.post("/logout", {}).then((response) => response.data);
+    return authService
+      .post("/logout", {})
+      .then((response) => response.data);
   },
 
   // upload: data => {

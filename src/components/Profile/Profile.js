@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import CreateTripForm from '../CreateTripForm/CreateTripForm';
+import CreateTripForm from '../CreateTripForm/CreateTripForm.js';
 
 const Profile = props => {
 
@@ -20,7 +20,6 @@ const Profile = props => {
         { 
           state.showTripForm ?
             <>
-              {/* <CreateTripForm key="tripForm" formButton="SAVE" toggleForm={toggleForm} /> */}
               <CreateTripForm {...props} formButton="SAVE" toggleForm={toggleForm} />
               <button onClick={toggleForm}>CLOSE</button>
             </>

@@ -12,9 +12,9 @@ const errorHandler = (err) => {
 export default {
   tripService,
 
-  newtrip: (title, isPublic) => {
+  newtrip: (formFields) => {
     return tripService
-      .post("/newtrip", { title: title, isPublic: isPublic  })
+      .post("/newtrip", formFields)
       .then((response) => response.data)
       .catch(errorHandler);
   },
@@ -22,6 +22,27 @@ export default {
   trips: () => {
     return tripService
       .get("/trips")
+      .then(response => response.data)
+      .catch(errorHandler);
+  },
+
+  tripDetails: (id) => {
+    return tripService
+      .get(`/trips/${id}`)
+      .then(response => response.data)
+      .catch(errorHandler);
+  },
+
+  editTrip: (id, formFields) => {
+    return tripService
+      .put(`/trips/${id}`, formFields)
+      .then(response => response.data)
+      .catch(errorHandler);
+  },
+
+  deleteTrip: (id) => {
+    return tripService
+      .delete(`/trips/${id}`)
       .then(response => response.data)
       .catch(errorHandler);
   }
