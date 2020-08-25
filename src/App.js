@@ -5,6 +5,7 @@ import Homepage from "./components/Homepage/Homepage";
 import Signup from "./components/Auth/Signup";
 import Login from "./components/Auth/Login";
 import Trips from "./components/Trips/Trips";
+import SearchTripsResults from "./components/SearchTripsResults/SearchTripsResults";
 import authService from "./components/Services/auth-service";
 import ProtectedRoute from "./components/Auth/protected-route";
 import "./App.css";
@@ -57,6 +58,13 @@ const App = () => {
           path="/trips"
           render={(props) => (
             <Trips {...props} userInSession={state.loggedInUser} />
+          )}
+        />
+        <Route
+          exact
+          path="/search"
+          render={(props) => (
+            <SearchTripsResults {...props} userInSession={state.loggedInUser} />
           )}
         />
         <Route

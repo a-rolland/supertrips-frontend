@@ -12,11 +12,10 @@ const AuthForm = (props) => {
 
     dynamicService
       .then((response) => {
-        console.log("RESPONSE :",response)
         props.getUser(response);
         props.history.push("/");
       })
-      .catch((error) => console.log(error));
+      .catch((error) => console.log("Error while login/signup :", error));
   };
 
   const formInputs = [{

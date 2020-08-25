@@ -3,7 +3,7 @@ import tripService from "../Services/trip-service";
 import SearchBar from "../SearchBar/SearchBar";
 import { Link } from "react-router-dom";
 
-const Trips = props => {
+const SearchTripsResults = props => {
 
   const initialState = { 
     loggedInUser: null,
@@ -20,7 +20,7 @@ const Trips = props => {
     }))
     const fetchAuthorizedTripsList = async () => {
       const response = await tripService.trips()
-      const authorizedTripsList = response.filter(trip => (trip.author === props.userInSession._id || trip.isPublic))
+      const authorizedTripsList = response.filter(trip => (trip.author === props.userInSession._id || trip.isPublic) && trip.title.toUpperCase().includes(props.location.state.searchKeys.toUpperCase()))
       setState(state => ({ 
         ...state,
         trips: authorizedTripsList
@@ -28,17 +28,6 @@ const Trips = props => {
     }
     fetchAuthorizedTripsList()
   }, [props.userInSession]);
-
-  const handleSearch = async currentSearch => {
-    const response = await tripService.trips()
-    const filteredResponse = response.filter(trip => (trip.author === props.userInSession._id ||
-      trip.isPublic) &&
-      trip.title.toUpperCase().includes(currentSearch.toUpperCase()))
-    setState(state => ({ 
-      ...state,
-      trips: filteredResponse 
-    }));
-  }
 
   const listTrips = state.trips.map(trip => {
     return (
@@ -48,11 +37,11 @@ const Trips = props => {
 
   return (
     <div>
-      <h1>Trips</h1>
-      <SearchBar placeholder="Search for a trip.." searchUpdates={handleSearch} />
+      <h1>Search results for: "{props.location.state.searchKeys}"</h1>
+
       {listTrips}
     </div>
   );
 };
 
-export default Trips;
+export default SearchTripsResults;

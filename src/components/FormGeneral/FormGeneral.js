@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { Form, Input } from "./styles";
+import Button from "../Button/Button";
 
 const FormGeneral = (props) => {
   const initialState = props.formState;
@@ -38,7 +39,8 @@ const FormGeneral = (props) => {
     <div>
       <Form onSubmit={event => liftFormSubmit(event, state)}>
         {dynamicInputs}
-        <Input className="btn" type="submit" value={props.formButton} />
+        <Button value={props.formButton} />
+        {/* <Input className="btn" type="submit" value={props.formButton} /> */}
       </Form>
     </div>
   );

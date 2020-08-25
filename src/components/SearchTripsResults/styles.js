@@ -19,8 +19,7 @@ const Trips = props => {
       loggedInUser: props.userInSession,
     }))
     const fetchAuthorizedTripsList = async () => {
-      const response = await tripService.trips()
-      const authorizedTripsList = response.filter(trip => (trip.author === props.userInSession._id || trip.isPublic))
+      const authorizedTripsList = await tripService.trips(trip => (trip.author === props.userInSession._id || trip.isPublic))
       setState(state => ({ 
         ...state,
         trips: authorizedTripsList

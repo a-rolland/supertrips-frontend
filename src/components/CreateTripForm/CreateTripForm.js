@@ -4,12 +4,11 @@ import FormGeneral from "../FormGeneral/FormGeneral";
 
 const CreateTripForm = (props) => {
   const handleFormSubmit = (formObject) => {
-    console.log("LIFTED STATE :", formObject)
     tripService.newtrip(formObject)
       .then(response => 
         console.log("New trip created !", response)
       )
-      .catch((error) => console.log(error));
+      .catch((error) => console.log("Error while creating trip :", error));
     props.toggleForm()
   };
 

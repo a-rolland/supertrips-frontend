@@ -6,7 +6,6 @@ const EditTripForm = (props) => {
   const initialState = props.location.state.trip
 
   const handleFormSubmit = (formObject) => {
-    console.log("LIFTED STATE :", formObject)
     const { params } = props.match;
     tripService.editTrip(params.id, formObject)
       .then(response => {
@@ -14,7 +13,7 @@ const EditTripForm = (props) => {
           props.history.push({ pathname: `/trips/${params.id}`, state: {userInSession: props.userInSession, trip: props.location.state.trip} })
         }
       )
-      .catch((error) => console.log(error)); 
+      .catch((error) => console.log("Error while editing trip :", error)); 
   };
 
   const formInputs = [{

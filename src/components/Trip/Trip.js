@@ -18,7 +18,7 @@ const Trip = props => {
           trip: response
         }))
       })
-      .catch((error) => console.log(error));
+      .catch((error) => console.log("Error while getting trip details :", error));
   }, [props.location.state.userInSession]);
 
   const deleteTrip = () => {
@@ -28,7 +28,7 @@ const Trip = props => {
       props.history.push('/trips')     
     })
     .catch((err)=>{
-        console.log(err)
+        console.log("Error while deleting trip: ", err)
     })
   }
 

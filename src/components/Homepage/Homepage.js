@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import SearchBar from "../SearchBar/SearchBar"
 import { Input } from "./styles";
+import { Redirect } from "react-router-dom";
 
 const Homepage = (props) => {
 
@@ -16,9 +17,10 @@ const Homepage = (props) => {
     })
   }
 
-  const handleSubmit = (event, search) => {
-    console.log(search)
+  const handleSubmit = (event) => {
+    event.preventDefault()
     // Then redirect to SearchTrips component with searchCharacters in props
+    props.history.push({ pathname: "/search", state: {userInSession: props.userInSession, searchKeys: searchState.search} })
   }
 
   return (
