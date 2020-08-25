@@ -1,5 +1,6 @@
 import React, {useState, useEffect} from "react";
 import tripService from "../Services/trip-service";
+import SearchBar from "../SearchBar/SearchBar";
 import { Link } from "react-router-dom";
 
 const Trips = props => {
@@ -17,19 +18,26 @@ const Trips = props => {
       ...state,
       loggedInUser: props.userInSession,
     }))
-    tripService.trips()
-      .then(response => {
-        // console.log("Trips :", response)
-        // Filter : show public trips or user's trips
-        const filteredResponse = response.filter(trip => trip.author === props.userInSession._id || trip.isPublic)
-        console.log("Filtered trips :", filteredResponse)
-        setState(state => ({ 
-          ...state,
-          trips: filteredResponse
-        }));
-      })
-      .catch((error) => console.log(error));
+    const fetchAuthorizedTripsList = async () => {
+      const authorizedTripsList = await tripService.trips(trip => (trip.author === props.userInSession._id || trip.isPublic))
+      setState(state => ({ 
+        ...state,
+        trips: authorizedTripsList
+      }));
+    }
+    fetchAuthorizedTripsList()
   }, [props.userInSession]);
+
+  const handleSearch = async currentSearch => {
+    const response = await tripService.trips()
+    const filteredResponse = response.filter(trip => (trip.author === props.userInSession._id ||
+      trip.isPublic) &&
+      trip.title.toUpperCase().includes(currentSearch.toUpperCase()))
+    setState(state => ({ 
+      ...state,
+      trips: filteredResponse 
+    }));
+  }
 
   const listTrips = state.trips.map(trip => {
     return (
@@ -40,6 +48,7 @@ const Trips = props => {
   return (
     <div>
       <h1>Trips</h1>
+      <SearchBar placeholder="Search for a trip.." searchUpdates={handleSearch} />
       {listTrips}
     </div>
   );

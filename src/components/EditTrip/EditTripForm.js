@@ -1,7 +1,6 @@
 import React from "react";
 import tripService from "../Services/trip-service";
 import FormGeneral from "../FormGeneral/FormGeneral";
-import { Redirect } from "react-router-dom";
 
 const EditTripForm = (props) => {
   const initialState = props.location.state.trip

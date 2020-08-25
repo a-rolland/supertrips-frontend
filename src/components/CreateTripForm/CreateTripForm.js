@@ -32,7 +32,7 @@ const CreateTripForm = (props) => {
 
   return (
     <div>
-      <FormGeneral formSubmit={handleFormSubmit} formState={initialState} formInputs={formInputs} />
+      <FormGeneral formSubmit={handleFormSubmit} formState={initialState} formInputs={formInputs} formButton="CREATE" />
     </div>
   );
 };

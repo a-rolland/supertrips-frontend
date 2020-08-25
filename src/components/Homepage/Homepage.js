@@ -1,6 +1,26 @@
-import React from "react";
+import React, { useState } from "react";
+import SearchBar from "../SearchBar/SearchBar"
+import { Input } from "./styles";
 
 const Homepage = (props) => {
+
+  const initialSearch = {
+    search: ""
+  }
+
+  const [searchState, updateSearch] = useState(initialSearch)
+
+  const handleSearch = async currentSearch => {
+    updateSearch({
+      search: currentSearch
+    })
+  }
+
+  const handleSubmit = (event, search) => {
+    console.log(search)
+    // Then redirect to SearchTrips component with searchCharacters in props
+  }
+
   return (
     <div>
       {props.userInSession ? (
@@ -8,6 +28,11 @@ const Homepage = (props) => {
       ) : (
         <h1>Welcome to Supertrips !</h1>
       )}
+      <form onSubmit={handleSubmit}>
+        <SearchBar placeholder="Search for a trip.." searchUpdates={handleSearch} />
+        <Input className="btn" type="submit" value="GO" />
+      </form>
+      
     </div>
   );
 };
