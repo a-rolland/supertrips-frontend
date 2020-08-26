@@ -1,6 +1,6 @@
 import React,  { useState, useEffect } from 'react'
 import tripService from "../Services/trip-service";
-import { Link } from 'react-router-dom';
+import Button from '../Button/Button';
 
 const Trip = props => {
   const initialState = { 
@@ -19,7 +19,7 @@ const Trip = props => {
         }))
       })
       .catch((error) => console.log("Error while getting trip details :", error));
-  }, [props.location.state.userInSession]);
+  }, [props.location.state.userInSession, props.location.state.trip._id]);
 
   const deleteTrip = () => {
     const { params } = props.match;
@@ -32,6 +32,10 @@ const Trip = props => {
     })
   }
 
+  const editTrip = () => {
+    props.history.push({pathname: `/trips/edit/${state.trip._id}`, state: {trip: state.trip} })
+  }
+
   return (
     <div>
       <h1>Trip details</h1>
@@ -39,8 +43,8 @@ const Trip = props => {
       <p></p>
       { state.loggedInUser && state.loggedInUser._id === state.trip.author._id &&
         <>
-          <button><Link to={{pathname: `/trips/edit/${state.trip._id}`, state: {trip: state.trip} }}>EDIT</Link></button>
-          <button onClick={deleteTrip}>DELETE</button>
+          <Button editTrip={editTrip} formButton="EDIT" />
+          <Button deleteTrip={deleteTrip} formButton="DELETE" theme="lightcoral" color="white" />
         </>
       }
     </div>

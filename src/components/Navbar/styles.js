@@ -12,7 +12,12 @@ export const Nav = styled.div`
     padding: 0;
 
     li {
-      margin: 10px;
+      margin: auto 10px auto 10px;
+
+      input {
+        margin: 0;
+        padding: 10px 16px 8px;
+      }
 
       a {
         text-decoration: none;

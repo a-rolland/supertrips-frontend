@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import authService from "../Services/auth-service";
 import { Nav } from "./styles";
 import { Link } from "react-router-dom";
+import Button from "../Button/Button";
 
 const Navbar = (props) => {
   const initialState = { loggedInUser: null };
@@ -36,7 +37,7 @@ const Navbar = (props) => {
             </li>
             <li>
               <Link to="/">
-                <button onClick={() => logoutUser()}>Logout</button>
+                <Button logoutUser={logoutUser} formButton="LOGOUT" />
               </Link>
             </li>
           </>

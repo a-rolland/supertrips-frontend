@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import CreateTripForm from '../CreateTripForm/CreateTripForm.js';
+import Button from '../Button/Button.js';
 
 const Profile = props => {
 
@@ -20,11 +21,11 @@ const Profile = props => {
         { 
           state.showTripForm ?
             <>
-              <CreateTripForm {...props} formButton="SAVE" toggleForm={toggleForm} />
-              <button onClick={toggleForm}>CLOSE</button>
+              <CreateTripForm {...props} toggleForm={toggleForm} />
+              <Button toggleForm={toggleForm} formButton="CLOSE" />
             </>
           :
-            <button onClick={toggleForm}>CREATE A NEW TRIP</button>
+            <Button toggleForm={toggleForm} formButton="CREATE A NEW TRIP" />
         }
         
     </div>

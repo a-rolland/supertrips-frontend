@@ -33,7 +33,7 @@ const EditTripForm = (props) => {
 
   return (
     <div>
-      <FormGeneral formSubmit={handleFormSubmit} formState={initialState} formInputs={formInputs} />
+      <FormGeneral formSubmit={handleFormSubmit} formState={initialState} formInputs={formInputs} formButton="SAVE" />
     </div>
   );
 };

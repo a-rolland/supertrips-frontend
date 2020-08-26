@@ -1,6 +1,5 @@
 import React, {useState, useEffect} from "react";
 import tripService from "../Services/trip-service";
-import SearchBar from "../SearchBar/SearchBar";
 import { Link } from "react-router-dom";
 
 const SearchTripsResults = props => {
@@ -20,14 +19,14 @@ const SearchTripsResults = props => {
     }))
     const fetchAuthorizedTripsList = async () => {
       const response = await tripService.trips()
-      const authorizedTripsList = response.filter(trip => (trip.author === props.userInSession._id || trip.isPublic) && trip.title.toUpperCase().includes(props.location.state.searchKeys.toUpperCase()))
+      const authorizedTripsList = response.filter(trip => (trip.author._id === props.userInSession._id || trip.isPublic) && trip.title.toUpperCase().includes(props.location.state.searchKeys.toUpperCase()))
       setState(state => ({ 
         ...state,
         trips: authorizedTripsList
       }));
     }
     fetchAuthorizedTripsList()
-  }, [props.userInSession]);
+  }, [props.userInSession, props.location.state.searchKeys]);
 
   const listTrips = state.trips.map(trip => {
     return (
