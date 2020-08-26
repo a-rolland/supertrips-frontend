@@ -7,6 +7,7 @@ const Button = (props) => {
     props.toggleDeleteTripConfirmation && props.toggleDeleteTripConfirmation();
     props.deleteTrip && props.deleteTrip();
     props.editTrip && props.editTrip();
+    props.addStep && props.addStep();
     props.logoutUser && props.logoutUser();
   };
 

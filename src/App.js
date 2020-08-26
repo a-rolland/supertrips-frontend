@@ -11,7 +11,8 @@ import ProtectedRoute from "./components/Auth/protected-route";
 import "./App.css";
 import Profile from "./components/Profile/Profile";
 import Trip from "./components/Trip/Trip";
-import EditTrip from "./components/EditTrip/EditTripForm";
+import EditTripForm from "./components/EditTripForm/EditTripForm";
+import AddStepForm from "./components/AddStepForm/AddStepForm";
 
 const App = () => {
   const initialState = { loggedInUser: null };
@@ -74,12 +75,17 @@ const App = () => {
             <Trip {...props} userInSession={state.loggedInUser} />
           )}
         />
-        <Route
+        <ProtectedRoute
           exact
           path="/trips/edit/:id"
-          render={(props) => (
-            <EditTrip {...props} userInSession={state.loggedInUser} />
-          )}
+          userInSession={state.loggedInUser}
+          component={EditTripForm}
+        />
+        <ProtectedRoute
+          exact
+          path="/trips/:id/add-step"
+          userInSession={state.loggedInUser}
+          component={AddStepForm}
         />
         <Route
           exact
