@@ -4,34 +4,40 @@ import FormGeneral from "../FormGeneral/FormGeneral";
 
 const CreateTripForm = (props) => {
   const handleFormSubmit = (formObject) => {
-    tripService.newtrip(formObject)
-      .then(response => 
-        console.log("New trip created !", response)
-      )
+    tripService
+      .newtrip(formObject)
+      .then((response) => console.log("New trip created !", response))
       .catch((error) => console.log("Error while creating trip :", error));
-    props.toggleForm()
+    props.toggleForm();
   };
 
-  const formInputs = [{
-    label: "Title",
-    type: "text",
-    name: "title",
-    placeholder: "Ex.: My magical trip to Paris"
-  },
-  {
-    label: "Do you want to make it public ?",
-    type: "checkbox",
-    name: "isPublic",
-  }]
+  const formInputs = [
+    {
+      label: "Title",
+      type: "text",
+      name: "title",
+      placeholder: "Ex.: My magical trip to Paris",
+    },
+    {
+      label: "Do you want to make it public ?",
+      type: "checkbox",
+      name: "isPublic",
+    },
+  ];
 
   const initialState = {
     title: "",
-    isPublic: false
-  }
+    isPublic: false,
+  };
 
   return (
     <div>
-      <FormGeneral formSubmit={handleFormSubmit} formState={initialState} formInputs={formInputs} formButton="CREATE" />
+      <FormGeneral
+        formSubmit={handleFormSubmit}
+        formState={initialState}
+        formInputs={formInputs}
+        formButton="CREATE"
+      />
     </div>
   );
 };

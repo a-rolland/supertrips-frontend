@@ -1,54 +1,66 @@
-import React,  { useState, useEffect } from 'react'
+import React, { useState, useEffect } from "react";
 import tripService from "../Services/trip-service";
-import Button from '../Button/Button';
+import Button from "../Button/Button";
 
-const Trip = props => {
-  const initialState = { 
+const Trip = (props) => {
+  const initialState = {
     loggedInUser: null,
-    trip: []
+    trip: [],
   };
   const [state, setState] = useState(initialState);
 
   useEffect(() => {
-    tripService.tripDetails(props.location.state.trip._id)
-      .then(response => {
-        console.log("Trip details :", response)
-        setState(state => ({
+    tripService
+      .tripDetails(props.location.state.trip._id)
+      .then((response) => {
+        console.log("Trip details :", response);
+        setState((state) => ({
           loggedInUser: props.location.state.userInSession,
-          trip: response
-        }))
+          trip: response,
+        }));
       })
-      .catch((error) => console.log("Error while getting trip details :", error));
+      .catch((error) =>
+        console.log("Error while getting trip details :", error)
+      );
   }, [props.location.state.userInSession, props.location.state.trip._id]);
 
   const deleteTrip = () => {
     const { params } = props.match;
-    tripService.deleteTrip(params.id)
-    .then(() =>{
-      props.history.push('/trips')     
-    })
-    .catch((err)=>{
-        console.log("Error while deleting trip: ", err)
-    })
-  }
+    tripService
+      .deleteTrip(params.id)
+      .then(() => {
+        props.history.push("/trips");
+      })
+      .catch((err) => {
+        console.log("Error while deleting trip: ", err);
+      });
+  };
 
   const editTrip = () => {
-    props.history.push({pathname: `/trips/edit/${state.trip._id}`, state: {trip: state.trip} })
-  }
+    props.history.push({
+      pathname: `/trips/edit/${state.trip._id}`,
+      state: { trip: state.trip },
+    });
+  };
 
   return (
     <div>
       <h1>Trip details</h1>
       <h2>{state.trip.title}</h2>
       <p></p>
-      { state.loggedInUser && state.loggedInUser._id === state.trip.author._id &&
+      {state.loggedInUser && state.loggedInUser._id === state.trip.author._id && (
         <>
           <Button editTrip={editTrip} formButton="EDIT" />
-          <Button deleteTrip={deleteTrip} formButton="DELETE" theme="lightcoral" color="white" />
+          <Button
+            deleteTrip={deleteTrip}
+            formButton="DELETE"
+            theme="lightcoral"
+            color="white"
+          />
         </>
-      }
+      )}
     </div>
-  )
-}
+  );
+};
 
-export default Trip
+export default Trip;

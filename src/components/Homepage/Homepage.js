@@ -1,25 +1,30 @@
 import React, { useState } from "react";
-import SearchBar from "../SearchBar/SearchBar"
+import SearchBar from "../SearchBar/SearchBar";
 import { Input } from "./styles";
 
 const Homepage = (props) => {
-
   const initialSearch = {
-    search: ""
-  }
+    search: "",
+  };
 
-  const [searchState, updateSearch] = useState(initialSearch)
+  const [searchState, updateSearch] = useState(initialSearch);
 
-  const handleSearch = async currentSearch => {
+  const handleSearch = async (currentSearch) => {
     updateSearch({
-      search: currentSearch
-    })
-  }
+      search: currentSearch,
+    });
+  };
 
   const handleSubmit = (event) => {
-    event.preventDefault()
-    props.history.push({ pathname: "/search", state: {userInSession: props.userInSession, searchKeys: searchState.search} })
-  }
+    event.preventDefault();
+    props.history.push({
+      pathname: "/search",
+      state: {
+        userInSession: props.userInSession,
+        searchKeys: searchState.search,
+      },
+    });
+  };
 
   return (
     <div>
@@ -29,10 +34,12 @@ const Homepage = (props) => {
         <h1>Welcome to Supertrips !</h1>
       )}
       <form onSubmit={handleSubmit}>
-        <SearchBar placeholder="Search for a trip.." searchUpdates={handleSearch} />
+        <SearchBar
+          placeholder="Search for a trip.."
+          searchUpdates={handleSearch}
+        />
         <Input className="btn" type="submit" value="GO" />
       </form>
-      
     </div>
   );
 };

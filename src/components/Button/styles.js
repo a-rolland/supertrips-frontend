@@ -7,8 +7,8 @@ export const ButtonStyled = styled.input`
   border: 1px solid #ccc;
   border-radius: 4px;
   box-sizing: border-box;
-  background-color: ${props => props.theme};
-  color: ${props => props.color};
+  background-color: ${(props) => props.theme};
+  color: ${(props) => props.color};
 
   &:hover {
     cursor: pointer;
@@ -18,5 +18,5 @@ export const ButtonStyled = styled.input`
 
 ButtonStyled.defaultProps = {
   theme: "white",
-  color: "black"
-}
+  color: "black",
+};

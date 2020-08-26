@@ -30,9 +30,7 @@ export default {
   },
 
   logout: () => {
-    return authService
-      .post("/logout", {})
-      .then((response) => response.data);
+    return authService.post("/logout", {}).then((response) => response.data);
   },
 
   // upload: data => {

@@ -4,7 +4,6 @@ import { Link } from "react-router-dom";
 import FormGeneral from "../FormGeneral/FormGeneral";
 
 const AuthForm = (props) => {
-  
   const handleFormSubmit = (formObject) => {
     const dynamicService = props.login
       ? authService.login(formObject)
@@ -18,27 +17,33 @@ const AuthForm = (props) => {
       .catch((error) => console.log("Error while login/signup :", error));
   };
 
-  const formInputs = [{
+  const formInputs = [
+    {
       label: "Username",
       type: "text",
       name: "username",
-      placeholder: "Enter your username"
+      placeholder: "Enter your username",
     },
     {
       label: "Password",
       type: "password",
       name: "password",
-      placeholder: "*******"
-    }]
+      placeholder: "*******",
+    },
+  ];
 
-    const initialState = {
-      username: "",
-      password: ""
-    }
+  const initialState = {
+    username: "",
+    password: "",
+  };
 
   return (
     <div>
-      <FormGeneral formSubmit={handleFormSubmit} formState={initialState} formInputs={formInputs} />
+      <FormGeneral
+        formSubmit={handleFormSubmit}
+        formState={initialState}
+        formInputs={formInputs}
+      />
       <p>
         {props.authMessage}
         <Link to={`${props.formRedirectLink}`}>{props.formRedirectText}</Link>

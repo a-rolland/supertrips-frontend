@@ -10,17 +10,17 @@ const FormGeneral = (props) => {
     const { name, value, type, checked } = event.target;
     setState((state) => ({
       ...state,
-      [name]: type === "checkbox" ? checked : value
+      [name]: type === "checkbox" ? checked : value,
     }));
   };
 
   const liftFormSubmit = (event, stateToLift) => {
-    event.preventDefault()
-    props.formSubmit(stateToLift)
-  }
+    event.preventDefault();
+    props.formSubmit(stateToLift);
+  };
 
-  const dynamicInputs = props.formInputs.map(input => {
-    return(
+  const dynamicInputs = props.formInputs.map((input) => {
+    return (
       <React.Fragment key={input.name}>
         <label>{input.label}</label>
         <Input
@@ -32,12 +32,12 @@ const FormGeneral = (props) => {
           onChange={handleChange}
         />
       </React.Fragment>
-    )
-  })
+    );
+  });
 
   return (
     <div>
-      <Form onSubmit={event => liftFormSubmit(event, state)}>
+      <Form onSubmit={(event) => liftFormSubmit(event, state)}>
         {dynamicInputs}
         <Button value={props.formButton} />
       </Form>
