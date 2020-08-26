@@ -9,6 +9,10 @@ const Trip = (props) => {
   };
   const [state, setState] = useState(initialState);
 
+  const [showDeleteTripConfirmation, setShowDeleteTripConfirmation] = useState(false);
+
+  const toggleDeleteTripConfirmation = () => setShowDeleteTripConfirmation(!showDeleteTripConfirmation);
+
   useEffect(() => {
     tripService
       .tripDetails(props.location.state.trip._id)
@@ -52,11 +56,28 @@ const Trip = (props) => {
         <>
           <Button editTrip={editTrip} formButton="EDIT" />
           <Button
-            deleteTrip={deleteTrip}
+            toggleDeleteTripConfirmation={toggleDeleteTripConfirmation}
             formButton="DELETE"
             theme="lightcoral"
             color="white"
           />
+          { showDeleteTripConfirmation && 
+            <>
+              <h4>Are you sure you want to delete this trip ? </h4>
+              <Button
+                deleteTrip={deleteTrip}
+                formButton="YES"
+                theme="lightcoral"
+                color="white"
+              />
+              <Button
+                toggleDeleteTripConfirmation={toggleDeleteTripConfirmation}
+                formButton="CANCEL"
+                theme="lightgrey"
+                color="black"
+              />
+            </>
+          }
         </>
       )}
     </div>

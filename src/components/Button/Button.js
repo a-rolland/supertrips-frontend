@@ -4,6 +4,7 @@ import { ButtonStyled } from "./styles";
 const Button = (props) => {
   const handleClick = () => {
     props.toggleForm && props.toggleForm();
+    props.toggleDeleteTripConfirmation && props.toggleDeleteTripConfirmation();
     props.deleteTrip && props.deleteTrip();
     props.editTrip && props.editTrip();
     props.logoutUser && props.logoutUser();
