@@ -13,6 +13,7 @@ import Profile from "./components/Profile/Profile";
 import Trip from "./components/Trip/Trip";
 import EditTripForm from "./components/EditTripForm/EditTripForm";
 import AddStepForm from "./components/AddStepForm/AddStepForm";
+import Step from "./components/Step/Step";
 
 const App = () => {
   const initialState = { loggedInUser: null };
@@ -86,6 +87,13 @@ const App = () => {
           path="/trips/:id/add-step"
           userInSession={state.loggedInUser}
           component={AddStepForm}
+        />
+        <Route
+          exact
+          path="/steps/:id"
+          render={(props) => (
+            <Step {...props} userInSession={state.loggedInUser} />
+          )}
         />
         <Route
           exact

@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import tripService from "../Services/trip-service";
 import stepService from "../Services/step-service";
 import Button from "../Button/Button";
+import { Link } from "react-router-dom";
 
 const Trip = (props) => {
   const initialState = {
@@ -76,7 +77,7 @@ const Trip = (props) => {
 
   const stepsList = state.steps.map((step, index) => {
     return(
-    <li key={step._id}>Step {index+1} - {step.title}</li>
+    <li key={step._id}><Link to={`/steps/${step._id}`}>Step {index+1} - {step.title}</Link></li>
     )
   })
 
