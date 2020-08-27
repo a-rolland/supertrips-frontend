@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import tripService from "../Services/trip-service";
+// import tripService from "../Services/trip-service";
 import stepService from "../Services/step-service";
 import Button from "../Button/Button";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
@@ -13,13 +13,6 @@ const Step = (props) => {
     expanded: false
   };
   const [state, setState] = useState(initialState);
-
-  const [showDeleteStepConfirmation, setShowDeleteStepConfirmation] = useState(
-    false
-  );
-
-  const toggleDeleteStepConfirmation = () =>
-    setShowDeleteStepConfirmation(!showDeleteStepConfirmation);
   
   const toggleExpand = () => {
     setState(state => ({
@@ -44,25 +37,15 @@ const Step = (props) => {
       );
   }, [props.userInSession, props.step.trip._id]);
 
-  const deleteStep = () => {
-    const { params } = props.match;
-    const tripId = state.step.trip._id
-    stepService
-      .deleteStep(params.id)
-      .then(() => {
-        props.history.push(`/trips/${tripId}`);
-      })
-      .catch((err) => {
-        console.log("Error while deleting step: ", err);
-      });
-  };
-
   const editStep = () => {
     props.history.push({
-      pathname: `/steps/edit/${state.step._id}`,
-      state: { trip: state.trip }
+      pathname: `/trips/${state.step.trip._id}/edit-step/${state.step._id}`,
     });
   };
+
+  const addExperience = () => {
+    // ETC
+  }
 
   return (
     <div>
@@ -76,8 +59,17 @@ const Step = (props) => {
       </StyledStepHeader>
       {
         state.expanded &&
-        <p>Description: A step from this trip.</p>
-      }
+        <>
+          <p>Description: A step from this trip.</p>
+          {
+            state.loggedInUser && state.loggedInUser._id === state.step.trip.author &&
+              <>
+                <Button addExperience={addExperience} formButton="ADD A NEW EXPERIENCE" />
+                <Button editStep={editStep} formButton="EDIT" />
+              </>
+          }
+        </>
+      }  
     </div>
   );
 };

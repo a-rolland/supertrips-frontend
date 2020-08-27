@@ -78,7 +78,7 @@ const Trip = (props) => {
 
   const stepsList = state.steps.map((step, index) => {
     return(
-      <Li key={step._id}><Step step={step} stepNumber={index+1} author={state.trip.author} userInSession={state.loggedInUser} /></Li>
+      <Li key={step._id}><Step step={step} stepNumber={index+1} author={state.trip.author} userInSession={state.loggedInUser} {...props} /></Li>
     )
   })
 

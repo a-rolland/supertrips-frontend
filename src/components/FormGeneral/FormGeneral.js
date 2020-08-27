@@ -1,10 +1,15 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Form, Input } from "./styles";
 import Button from "../Button/Button";
 
 const FormGeneral = (props) => {
-  const initialState = props.formState;
-  const [state, setState] = useState(initialState);
+  const [state, setState] = useState({});
+
+  useEffect(() => {
+    setState(state => (
+      props.formState
+    ))
+  }, [props.formState]);
 
   const handleChange = (event) => {
     const { name, value, type, checked } = event.target;

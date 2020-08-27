@@ -5,8 +5,11 @@ const Button = (props) => {
   const handleClick = () => {
     props.toggleForm && props.toggleForm();
     props.toggleDeleteTripConfirmation && props.toggleDeleteTripConfirmation();
+    props.toggleDeleteStepConfirmation && props.toggleDeleteStepConfirmation();
     props.deleteTrip && props.deleteTrip();
+    props.deleteStep && props.deleteStep();
     props.editTrip && props.editTrip();
+    props.editStep && props.editStep();
     props.addStep && props.addStep();
     props.logoutUser && props.logoutUser();
   };

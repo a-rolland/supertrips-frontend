@@ -20,16 +20,14 @@ const Trips = (props) => {
     }));
     const fetchAuthorizedTripsList = async () => {
       const response = await tripService.trips();
-      const authorizedTripsList = response.filter(
-        (trip) => trip.author === props.userInSession || trip.isPublic
-      );
+      const authorizedTripsList = response.filter(trip => trip.author === props.userInSession._id || trip.isPublic);
       setState((state) => ({
         ...state,
         trips: authorizedTripsList,
       }));
     };
     fetchAuthorizedTripsList();
-  }, [props.userInSession]);
+  }, [props.userInSession._id]);
 
   const handleSearch = async (currentSearch) => {
     const response = await tripService.trips();

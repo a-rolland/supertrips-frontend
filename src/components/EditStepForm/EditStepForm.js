@@ -1,32 +1,33 @@
 import React, { useState, useEffect} from "react";
-import tripService from "../Services/trip-service";
+// import tripService from "../Services/trip-service";
+import stepService from "../Services/step-service";
 import FormGeneral from "../FormGeneral/FormGeneral";
 
-const EditTripForm = (props) => {
+const EditStepForm = (props) => {
   const [state, setState] = useState({})
 
   useEffect(() => {
-    tripService
-      .tripDetails(props.match.params.id)
+    stepService
+      .stepDetails(props.match.params.stepId)
       .then(response => {
         setState(response);
       })
       .catch((error) =>
-        console.log("Error while getting trip details :", error)
+        console.log("Error while getting step details :", error)
       );
-  }, [props.match.params.id]);
+  }, [props.match.params.stepId]);
 
   const handleFormSubmit = (formObject) => {
     const { params } = props.match;
-    tripService
-      .editTrip(params.id, formObject)
+    stepService
+      .editStep(params.stepId, formObject)
       .then((response) => {
-        console.log("Trip edited !", response);
+        console.log("Step edited !", response);
         props.history.push({
           pathname: `/trips/${params.id}`,
         });
       })
-      .catch((error) => console.log("Error while editing trip :", error));
+      .catch((error) => console.log("Error while editing step :", error));
   };
 
   const formInputs = [
@@ -36,14 +37,7 @@ const EditTripForm = (props) => {
       name: "title",
       value: state.title,
       placeholder: "Ex.: My magical trip to Paris",
-    },
-    {
-      label: "Do you want to make it public ?",
-      type: "checkbox",
-      value: state.isPublic,
-      checked: state.isPublic,
-      name: "isPublic",
-    },
+    }
   ];
 
   return (
@@ -58,4 +52,4 @@ const EditTripForm = (props) => {
   );
 };
 
-export default EditTripForm;
+export default EditStepForm;
