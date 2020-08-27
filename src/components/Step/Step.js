@@ -2,12 +2,15 @@ import React, { useState, useEffect } from "react";
 import tripService from "../Services/trip-service";
 import stepService from "../Services/step-service";
 import Button from "../Button/Button";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faChevronDown, faChevronRight } from '@fortawesome/free-solid-svg-icons'
+import { StyledStepHeader } from "./styles"
 
 const Step = (props) => {
   const initialState = {
     loggedInUser: null,
     step: [],
-    // experience: []
+    expanded: false
   };
   const [state, setState] = useState(initialState);
 
@@ -17,11 +20,17 @@ const Step = (props) => {
 
   const toggleDeleteStepConfirmation = () =>
     setShowDeleteStepConfirmation(!showDeleteStepConfirmation);
+  
+  const toggleExpand = () => {
+    setState(state => ({
+      ...state,
+      expanded: !state.expanded
+    }))
+  }
 
   useEffect(() => {
-    console.log("PROPS --->",props)
     stepService
-      .stepDetails(props.match.params.id)
+      .stepDetails(props.step._id)
       .then((response) => {
         console.log("Step details :", response);
         setState((state) => ({
@@ -29,25 +38,11 @@ const Step = (props) => {
           loggedInUser: props.userInSession,
           step: response
         }));
-        // FOR LATER
-        // experienceService
-        //   .experiences(props.match.params.id)
-        //     .then((response) => {
-        //       console.log("Experiences of this step:", response)
-        //       setState((state) => ({
-        //         ...state,
-        //         loggedInUser: props.userInSession,
-        //         experiences: response
-        //       }));
-        //     })
-        //     .catch((error) => 
-        //       console.log("Error while getting experiences :", error
-        //     ))
       })
       .catch((error) =>
         console.log("Error while getting step details :", error)
       );
-  }, [props.userInSession, props.match.params.id]);
+  }, [props.userInSession, props.step.trip._id]);
 
   const deleteStep = () => {
     const { params } = props.match;
@@ -69,57 +64,20 @@ const Step = (props) => {
     });
   };
 
-  // FOR LATER : Transform in addExperience
-  // const addStep = () => {
-  //   props.history.push({
-  //     pathname: `/trips/${state.trip._id}/add-step`,
-  //     state: { trip: state.trip }
-  //   });
-  // };
-
-  // FOR LATER : Transform in experiencesList
-  // const stepsList = state.steps.map((step, index) => {
-  //   return(
-  //   <li key={step._id}>Step {index+1} - {step.title}</li>
-  //   )
-  // })
-
   return (
     <div>
-      <h1>Step details</h1>
-      <h2>{state.step.title}</h2>
-      {/* { state.experiences && experiencesList } */}
-      <p></p>
-      {state.loggedInUser && state.loggedInUser._id === state.step.trip.author && (
-        <>
-          {/* <Button addStep={addStep} formButton="ADD A NEW STEP" /><br /> */}
-          <Button editStep={editStep} formButton="EDIT" />
-          <Button
-            toggleDeleteStepConfirmation={toggleDeleteStepConfirmation}
-            formButton="DELETE"
-            theme="lightcoral"
-            color="white"
-          />
-
-          {showDeleteStepConfirmation && (
-            <>
-              <h4>Are you sure you want to delete this step ? </h4>
-              <Button
-                deleteStep={deleteStep}
-                formButton="YES"
-                theme="lightcoral"
-                color="white"
-              />
-              <Button
-                toggleDeleteStepConfirmation={toggleDeleteStepConfirmation}
-                formButton="CANCEL"
-                theme="lightgrey"
-                color="black"
-              />
-            </>
-          )}
-        </>
-      )}
+      <StyledStepHeader onClick={toggleExpand}>
+        {
+          state.expanded
+          ? <FontAwesomeIcon icon={faChevronDown} />
+          : <FontAwesomeIcon icon={faChevronRight} />
+        }
+        {state.step.title}  
+      </StyledStepHeader>
+      {
+        state.expanded &&
+        <p>Description: A step from this trip.</p>
+      }
     </div>
   );
 };

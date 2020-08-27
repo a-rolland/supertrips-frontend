@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import tripService from "../Services/trip-service";
 import SearchBar from "../SearchBar/SearchBar";
 import { Link } from "react-router-dom";
+import { Ul, Box, Li } from "./styles"
 
 const Trips = (props) => {
   const initialState = {
@@ -20,7 +21,7 @@ const Trips = (props) => {
     const fetchAuthorizedTripsList = async () => {
       const response = await tripService.trips();
       const authorizedTripsList = response.filter(
-        (trip) => trip.author === props.userInSession._id || trip.isPublic
+        (trip) => trip.author === props.userInSession || trip.isPublic
       );
       setState((state) => ({
         ...state,
@@ -45,7 +46,7 @@ const Trips = (props) => {
 
   const listTrips = state.trips.map((trip) => {
     return (
-      <li key={trip._id}>
+      <Li key={trip._id}>
         <Link
           to={{
             pathname: `/trips/${trip._id}`,
@@ -54,7 +55,7 @@ const Trips = (props) => {
         >
           {trip.title}
         </Link>
-      </li>
+      </Li>
     );
   });
 
@@ -65,7 +66,11 @@ const Trips = (props) => {
         placeholder="Search for a trip.."
         searchUpdates={handleSearch}
       />
-      {listTrips}
+      <Ul>
+        <Box>
+          {listTrips}
+        </Box>
+      </Ul>
     </div>
   );
 };

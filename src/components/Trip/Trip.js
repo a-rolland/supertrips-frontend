@@ -2,7 +2,8 @@ import React, { useState, useEffect } from "react";
 import tripService from "../Services/trip-service";
 import stepService from "../Services/step-service";
 import Button from "../Button/Button";
-import { Link } from "react-router-dom";
+import { Ul, Box, Li } from "./styles"
+import Step from "../Step/Step";
 
 const Trip = (props) => {
   const initialState = {
@@ -77,7 +78,7 @@ const Trip = (props) => {
 
   const stepsList = state.steps.map((step, index) => {
     return(
-    <li key={step._id}><Link to={`/steps/${step._id}`}>Step {index+1} - {step.title}</Link></li>
+      <Li key={step._id}><Step step={step} stepNumber={index+1} author={state.trip.author} userInSession={state.loggedInUser} /></Li>
     )
   })
 
@@ -85,7 +86,13 @@ const Trip = (props) => {
     <div>
       <h1>Trip details</h1>
       <h2>{state.trip.title}</h2>
-      { state.steps && stepsList }
+      { state.steps && 
+        <Ul>
+          <Box>
+            {stepsList}
+          </Box>
+        </Ul>
+      }
       <p></p>
       {state.loggedInUser && state.loggedInUser._id === state.trip.author._id && (
         <>
