@@ -3,7 +3,7 @@ import { Form, Input } from "./styles";
 import Button from "../Button/Button";
 
 const FormGeneral = (props) => {
-  const [state, setState] = useState({});
+  const [state, setState] = useState(props.formState);
 
   useEffect(() => {
     setState(state => (

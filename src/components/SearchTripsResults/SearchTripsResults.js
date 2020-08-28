@@ -1,6 +1,6 @@
 import React, {useState, useEffect} from "react";
 import tripService from "../Services/trip-service";
-import { Link } from "react-router-dom";
+import TripsList from "../TripsList/TripsList";
 
 const SearchTripsResults = props => {
 
@@ -28,15 +28,15 @@ const SearchTripsResults = props => {
     fetchAuthorizedTripsList()
   }, [props.userInSession, props.location.state.searchKeys]);
 
-  const listTrips = state.trips.map(trip => {
-    return (
-      <li key={trip._id}><Link to={{pathname: `/trips/${trip._id}`, state: {userInSession: state.loggedInUser, trip: trip} }}>{trip.title}</Link></li>   
-    )
-  })
+  const listTrips = <TripsList
+                      trips={state.trips}
+                      userInSession={state.loggedInUser}
+                    />
 
   return (
     <div>
       <h1>Search results for: "{props.location.state.searchKeys}"</h1>
+      { }
       {listTrips}
     </div>
   );

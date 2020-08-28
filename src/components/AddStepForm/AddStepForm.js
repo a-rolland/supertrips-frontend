@@ -6,7 +6,6 @@ import FormGeneral from "../FormGeneral/FormGeneral";
 const AddStepForm = (props) => {
   const handleFormSubmit = (formObject) => {
     // CREATE STEP SERVICE WITH CREATE STEP
-    console.log("PROPS: ",props.location)
     stepService
       .newstep(formObject)
       .then((response) => console.log("New step created !", response))

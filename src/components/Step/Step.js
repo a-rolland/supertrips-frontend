@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from "react";
-// import tripService from "../Services/trip-service";
 import stepService from "../Services/step-service";
 import Button from "../Button/Button";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
@@ -65,7 +64,7 @@ const Step = (props) => {
             state.loggedInUser && state.loggedInUser._id === state.step.trip.author &&
               <>
                 <Button addExperience={addExperience} formButton="ADD A NEW EXPERIENCE" />
-                <Button editStep={editStep} formButton="EDIT" />
+                <Button editStep={editStep} formButton="EDIT STEP" />
               </>
           }
         </>

@@ -13,15 +13,7 @@ const Trip = (props) => {
   };
   const [state, setState] = useState(initialState);
 
-  const [showDeleteTripConfirmation, setShowDeleteTripConfirmation] = useState(
-    false
-  );
-
-  const toggleDeleteTripConfirmation = () =>
-    setShowDeleteTripConfirmation(!showDeleteTripConfirmation);
-
   useEffect(() => {
-    console.log("PROPS --->",props)
     tripService
       .tripDetails(props.match.params.id)
       .then((response) => {
@@ -50,18 +42,6 @@ const Trip = (props) => {
       );
   }, [props.userInSession, props.match.params.id]);
 
-  const deleteTrip = () => {
-    const { params } = props.match;
-    tripService
-      .deleteTrip(params.id)
-      .then(() => {
-        props.history.push("/trips");
-      })
-      .catch((err) => {
-        console.log("Error while deleting trip: ", err);
-      });
-  };
-
   const editTrip = () => {
     props.history.push({
       pathname: `/trips/edit/${state.trip._id}`,
@@ -78,7 +58,15 @@ const Trip = (props) => {
 
   const stepsList = state.steps.map((step, index) => {
     return(
-      <Li key={step._id}><Step step={step} stepNumber={index+1} author={state.trip.author} userInSession={state.loggedInUser} {...props} /></Li>
+      <Li key={step._id}>
+        <Step
+          step={step}
+          stepNumber={index+1}
+          author={state.trip.author}
+          userInSession={state.loggedInUser}
+          {...props}
+        />
+      </Li>
     )
   })
 
@@ -93,35 +81,10 @@ const Trip = (props) => {
           </Box>
         </Ul>
       }
-      <p></p>
       {state.loggedInUser && state.loggedInUser._id === state.trip.author._id && (
         <>
-          <Button addStep={addStep} formButton="ADD A NEW STEP" /><br />
-          <Button editTrip={editTrip} formButton="EDIT" />
-          <Button
-            toggleDeleteTripConfirmation={toggleDeleteTripConfirmation}
-            formButton="DELETE"
-            theme="lightcoral"
-            color="white"
-          />
-
-          {showDeleteTripConfirmation && (
-            <>
-              <h4>Are you sure you want to delete this trip ? </h4>
-              <Button
-                deleteTrip={deleteTrip}
-                formButton="YES"
-                theme="lightcoral"
-                color="white"
-              />
-              <Button
-                toggleDeleteTripConfirmation={toggleDeleteTripConfirmation}
-                formButton="CANCEL"
-                theme="lightgrey"
-                color="black"
-              />
-            </>
-          )}
+          <Button addStep={addStep} formButton="ADD A NEW STEP" />
+          <Button editTrip={editTrip} formButton="EDIT TRIP" />
         </>
       )}
     </div>

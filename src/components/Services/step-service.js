@@ -40,7 +40,7 @@ export default {
       .catch(errorHandler);
   },
 
-  deleteTrip: (id) => {
+  deleteStep: (id) => {
     return stepService
       .delete(`/steps/${id}`)
       .then((response) => response.data)

@@ -1,12 +1,11 @@
 import React, { useState, useEffect } from "react";
 import tripService from "../Services/trip-service";
 import SearchBar from "../SearchBar/SearchBar";
-import { Link } from "react-router-dom";
-import { Ul, Box, Li } from "./styles"
+import TripsList from "../TripsList/TripsList";
 
 const Trips = (props) => {
   const initialState = {
-    loggedInUser: null,
+    loggedInUser: props.userInSession,
     trips: [],
   };
   const [state, setState] = useState(initialState);
@@ -20,14 +19,14 @@ const Trips = (props) => {
     }));
     const fetchAuthorizedTripsList = async () => {
       const response = await tripService.trips();
-      const authorizedTripsList = response.filter(trip => trip.author === props.userInSession._id || trip.isPublic);
+      const authorizedTripsList = response.filter(trip =>  (state.loggedInUser && trip.author === props.userInSession._id) || trip.isPublic);
       setState((state) => ({
         ...state,
         trips: authorizedTripsList,
       }));
     };
     fetchAuthorizedTripsList();
-  }, [props.userInSession._id]);
+  }, [state.loggedInUser, props.userInSession]);
 
   const handleSearch = async (currentSearch) => {
     const response = await tripService.trips();
@@ -42,20 +41,10 @@ const Trips = (props) => {
     }));
   };
 
-  const listTrips = state.trips.map((trip) => {
-    return (
-      <Li key={trip._id}>
-        <Link
-          to={{
-            pathname: `/trips/${trip._id}`,
-            state: { userInSession: state.loggedInUser, trip: trip },
-          }}
-        >
-          {trip.title}
-        </Link>
-      </Li>
-    );
-  });
+  const listTrips = <TripsList
+                      trips={state.trips}
+                      userInSession={state.loggedInUser}
+                    />
 
   return (
     <div>
@@ -64,11 +53,7 @@ const Trips = (props) => {
         placeholder="Search for a trip.."
         searchUpdates={handleSearch}
       />
-      <Ul>
-        <Box>
-          {listTrips}
-        </Box>
-      </Ul>
+      { listTrips }
     </div>
   );
 };

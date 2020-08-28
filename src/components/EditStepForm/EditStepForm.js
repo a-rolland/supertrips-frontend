@@ -1,16 +1,22 @@
 import React, { useState, useEffect} from "react";
-// import tripService from "../Services/trip-service";
 import stepService from "../Services/step-service";
 import FormGeneral from "../FormGeneral/FormGeneral";
+import Button from "../Button/Button";
 
 const EditStepForm = (props) => {
-  const [state, setState] = useState({})
+  const [stepState, setStepState] = useState({})
+  const [showDeleteStepConfirmation, setShowDeleteStepConfirmation] = useState(
+    false
+  );
+
+  const toggleDeleteStepConfirmation = () =>
+    setShowDeleteStepConfirmation(!showDeleteStepConfirmation);
 
   useEffect(() => {
     stepService
       .stepDetails(props.match.params.stepId)
       .then(response => {
-        setState(response);
+        setStepState(response);
       })
       .catch((error) =>
         console.log("Error while getting step details :", error)
@@ -35,19 +41,54 @@ const EditStepForm = (props) => {
       label: "Title",
       type: "text",
       name: "title",
-      value: state.title,
+      value: stepState.title,
       placeholder: "Ex.: My magical trip to Paris",
     }
   ];
+
+  const deleteStep = () => {
+    const { params } = props.match;
+    stepService
+      .deleteStep(params.stepId)
+      .then(() => {
+        props.history.push(`/trips/${params.id}`);
+      })
+      .catch((err) => {
+        console.log("Error while deleting step: ", err);
+      });
+  };
 
   return (
     <div>
       <FormGeneral
         formSubmit={handleFormSubmit}
-        formState={state}
+        formState={stepState}
         formInputs={formInputs}
         formButton="SAVE"
       />
+      <Button
+        toggleDeleteStepConfirmation={toggleDeleteStepConfirmation}
+        formButton="DELETE"
+        theme="lightcoral"
+        color="white"
+      />
+      {showDeleteStepConfirmation && (
+        <>
+          <h4>Are you sure you want to delete this step ? </h4>
+          <Button
+            deleteStep={deleteStep}
+            formButton="YES"
+            theme="lightcoral"
+            color="white"
+          />
+          <Button
+            toggleDeleteStepConfirmation={toggleDeleteStepConfirmation}
+            formButton="CANCEL"
+            theme="lightgrey"
+            color="black"
+          />
+        </>
+      )}
     </div>
   );
 };
