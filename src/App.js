@@ -14,6 +14,7 @@ import Trip from "./components/Trip/Trip";
 import EditTripForm from "./components/EditTripForm/EditTripForm";
 import AddStepForm from "./components/AddStepForm/AddStepForm";
 import EditStepForm from "./components/EditStepForm/EditStepForm";
+import AddExperienceForm from "./components/AddExperienceForm/AddExperienceForm";
 // import Step from "./components/Step/Step";
 
 const App = () => {
@@ -95,13 +96,12 @@ const App = () => {
           userInSession={state.loggedInUser}
           component={EditStepForm}
         />
-        {/* <Route
+        <ProtectedRoute
           exact
-          path="/steps/:id"
-          render={(props) => (
-            <Step {...props} userInSession={state.loggedInUser} />
-          )}
-        /> */}
+          path="/trips/:id/steps/:stepId/add-experience"
+          userInSession={state.loggedInUser}
+          component={AddExperienceForm}
+        />
         <Route
           exact
           path="/signup"

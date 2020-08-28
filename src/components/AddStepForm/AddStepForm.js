@@ -1,15 +1,13 @@
 import React from "react";
-// import tripService from "../Services/trip-service";
 import stepService from "../Services/step-service";
 import FormGeneral from "../FormGeneral/FormGeneral";
 
 const AddStepForm = (props) => {
   const handleFormSubmit = (formObject) => {
-    // CREATE STEP SERVICE WITH CREATE STEP
     stepService
       .newstep(formObject)
       .then((response) => console.log("New step created !", response))
-      .catch((error) => console.log("Error while creating trip :", error));
+      .catch((error) => console.log("Error while creating step :", error));
     props.history.push({ pathname: `/trips/${props.location.state.trip._id}`, state: { from: props.location, userInSession: props.userInSession } })
   };
 
@@ -30,6 +28,7 @@ const AddStepForm = (props) => {
   return (
     <div>
       <FormGeneral
+        formTitle="Add a new step to this trip :"
         formSubmit={handleFormSubmit}
         formState={initialState}
         formInputs={formInputs}

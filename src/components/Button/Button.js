@@ -11,6 +11,7 @@ const Button = (props) => {
     props.editTrip && props.editTrip();
     props.editStep && props.editStep();
     props.addStep && props.addStep();
+    props.addExperience && props.addExperience();
     props.logoutUser && props.logoutUser();
   };
 

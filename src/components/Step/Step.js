@@ -1,15 +1,18 @@
 import React, { useState, useEffect } from "react";
 import stepService from "../Services/step-service";
+import experienceService from "../Services/experience-service";
 import Button from "../Button/Button";
+import Experience from "../Experience/Experience"
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faChevronDown, faChevronRight } from '@fortawesome/free-solid-svg-icons'
-import { StyledStepHeader } from "./styles"
+import { StyledStepHeader, Ul, Box, Li } from "./styles"
 
 const Step = (props) => {
   const initialState = {
     loggedInUser: null,
     step: [],
-    expanded: false
+    experiences: [],
+    expanded: true
   };
   const [state, setState] = useState(initialState);
   
@@ -30,6 +33,18 @@ const Step = (props) => {
           loggedInUser: props.userInSession,
           step: response
         }));
+        experienceService
+          .experiences(props.step._id)
+            .then((response) => {
+              console.log("Experiences of this step:", response)
+              setState((state) => ({
+                ...state,
+                experiences: response
+              }));
+            })
+            .catch((error) => 
+              console.log("Error while getting experiences :", error
+            ))
       })
       .catch((error) =>
         console.log("Error while getting step details :", error)
@@ -43,8 +58,25 @@ const Step = (props) => {
   };
 
   const addExperience = () => {
-    // ETC
-  }
+    props.history.push({
+      pathname: `/trips/${state.step.trip._id}/steps/${state.step._id}/add-experience`,
+      state: { trip: state.trip }
+    });
+  };
+
+  const experiencesList = state.experiences.map((experience, index) => {
+    return(
+      <Li key={experience._id}>
+        <Experience
+          experience={experience}
+          experienceNumber={index+1}
+          // author={state.trip.author}
+          userInSession={state.loggedInUser}
+          {...props}
+        />
+      </Li>
+    )
+  })
 
   return (
     <div>
@@ -59,7 +91,11 @@ const Step = (props) => {
       {
         state.expanded &&
         <>
-          <p>Description: A step from this trip.</p>
+          <Ul>
+            <Box>
+              { experiencesList }
+            </Box>
+          </Ul>
           {
             state.loggedInUser && state.loggedInUser._id === state.step.trip.author &&
               <>

@@ -33,6 +33,7 @@ const CreateTripForm = (props) => {
   return (
     <div>
       <FormGeneral
+        formTitle="Create a new trip"
         formSubmit={handleFormSubmit}
         formState={initialState}
         formInputs={formInputs}
