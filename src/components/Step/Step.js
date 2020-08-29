@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import tripService from "../Services/trip-service";
 import stepService from "../Services/step-service";
 import experienceService from "../Services/experience-service";
 import Button from "../Button/Button";
@@ -12,6 +13,7 @@ const Step = (props) => {
     loggedInUser: null,
     step: [],
     experiences: [],
+    author: [],
     expanded: true
   };
   const [state, setState] = useState(initialState);
@@ -45,6 +47,14 @@ const Step = (props) => {
             .catch((error) => 
               console.log("Error while getting experiences :", error
             ))
+        tripService
+            .tripDetails(props.step.trip)
+              .then((response) => {
+                setState(state => ({
+                  ...state,
+                  author: response.author
+                }))
+              })
       })
       .catch((error) =>
         console.log("Error while getting step details :", error)
@@ -70,7 +80,7 @@ const Step = (props) => {
         <Experience
           experience={experience}
           experienceNumber={index+1}
-          // author={state.trip.author}
+          author={state.author}
           userInSession={state.loggedInUser}
           {...props}
         />

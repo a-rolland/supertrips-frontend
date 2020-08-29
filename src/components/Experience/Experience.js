@@ -38,10 +38,9 @@ const Experience = (props) => {
   }, [props.userInSession, props.experience._id]);
 
   const editExperience = () => {
-    console.log(state)
-    // props.history.push({
-    //   pathname: `/trips/${state.step.trip._id}/edit-step/${state.step._id}`,
-    // });
+    props.history.push({
+      pathname: `/trips/${state.experience.step.trip}/steps/${state.experience.step._id}/edit-experience/${state.experience._id}`,
+    });
   };
 
   return (
@@ -59,7 +58,7 @@ const Experience = (props) => {
         <>
           <p>Description: An experience from this trip.</p>
           {
-            // state.loggedInUser && state.loggedInUser._id === state.step.trip.author &&
+            state.loggedInUser && state.loggedInUser._id === props.author._id &&
               <>
                 <Button editStep={editExperience} formButton="EDIT EXPERIENCE" />
               </>
