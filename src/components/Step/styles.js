@@ -9,7 +9,6 @@ export const StyledStepHeader = styled.div`
 export const Ul = styled.ul`
   margin: 0 auto;
   padding: 0;
-  width: 500px;
   display: flex;
   flex-direction: column;
   align-items: center;

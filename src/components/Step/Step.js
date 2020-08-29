@@ -14,7 +14,7 @@ const Step = (props) => {
     step: [],
     experiences: [],
     author: [],
-    expanded: true
+    expanded: false
   };
   const [state, setState] = useState(initialState);
   

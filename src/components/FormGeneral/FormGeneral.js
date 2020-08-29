@@ -31,8 +31,8 @@ const FormGeneral = (props) => {
         <Input
           type={input.type}
           name={input.name}
-          checked={state[input.name]}
-          value={state[input.name]}
+          checked={state[input.name] || false}
+          value={state[input.name] || ""}
           placeholder={input.placeholder}
           onChange={handleChange}
         />
