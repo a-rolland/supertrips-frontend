@@ -1,12 +1,15 @@
 import React, { useState, useEffect } from "react";
 import authService from "../Services/auth-service";
-import { Nav } from "./styles";
+import { Nav, Dropdown } from "./styles";
 import { Link } from "react-router-dom";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faChevronDown, faChevronRight } from '@fortawesome/free-solid-svg-icons'
 import Button from "../Button/Button";
 
 const Navbar = (props) => {
   const initialState = { loggedInUser: null };
   const [state, setState] = useState(initialState);
+  const [showDropdown, setShowDropdown] = useState(false)
 
   // equiv. componentWillReceiveProps
   useEffect(() => {
@@ -21,12 +24,22 @@ const Navbar = (props) => {
     });
   };
 
+  const toggleDropdown = () => {
+    setShowDropdown(!showDropdown)
+  }
+
   return (
     <Nav>
-      <ul>
-        <li>
-          <Link to="/">Supertrips</Link>
-        </li>
+      <h3>
+        <Link to="/">Supertrips</Link>
+      </h3>
+      <span>
+        { showDropdown
+            ? <FontAwesomeIcon icon={faChevronDown} onClick={toggleDropdown} />
+            : <FontAwesomeIcon icon={faChevronRight} onClick={toggleDropdown} />
+        }
+      </span>
+      <Dropdown showDropdown={showDropdown ? "flex" : "none"}>
         <li style={{ marginRight: "auto" }}>
           <Link to="/trips">Trips</Link>
         </li>
@@ -51,7 +64,7 @@ const Navbar = (props) => {
             </li>
           </>
         )}
-      </ul>
+      </Dropdown>
     </Nav>
   );
 };

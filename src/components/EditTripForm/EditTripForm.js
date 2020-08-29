@@ -21,7 +21,7 @@ const EditTripForm = (props) => {
       .catch((error) =>
         console.log("Error while getting trip details :", error)
       );
-  }, []);
+  }, [props.match.params.id]);
 
   const handleFormSubmit = (formObject) => {
     const { params } = props.match;
