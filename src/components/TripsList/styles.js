@@ -3,7 +3,6 @@ import styled from "styled-components";
 export const Ul = styled.ul`
   margin: 0 auto;
   padding: 0;
-  width: 500px;
   display: flex;
   flex-direction: column;
   align-items: center;

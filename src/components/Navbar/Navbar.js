@@ -1,15 +1,16 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect  } from "react";
 import authService from "../Services/auth-service";
 import { Nav, Dropdown } from "./styles";
 import { Link } from "react-router-dom";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faChevronDown, faChevronRight } from '@fortawesome/free-solid-svg-icons'
+import { faBars, faTimes } from '@fortawesome/free-solid-svg-icons'
 import Button from "../Button/Button";
 
 const Navbar = (props) => {
   const initialState = { loggedInUser: null };
   const [state, setState] = useState(initialState);
   const [showDropdown, setShowDropdown] = useState(false)
+  const [dropDownButtonColor, setDropdownButtonColor] = useState("grey")
 
   // equiv. componentWillReceiveProps
   useEffect(() => {
@@ -28,28 +29,38 @@ const Navbar = (props) => {
     setShowDropdown(!showDropdown)
   }
 
+  const toggleDropdownButtonColor = () => {
+    dropDownButtonColor === "grey"
+      ? setDropdownButtonColor("black")
+      : setDropdownButtonColor("grey")
+  }
+    
   return (
     <Nav>
       <h3>
-        <Link to="/">Supertrips</Link>
+        <Link to="/" onClick={showDropdown && toggleDropdown}>Supertrips</Link>
       </h3>
       <span>
-        { showDropdown
-            ? <FontAwesomeIcon icon={faChevronDown} onClick={toggleDropdown} />
-            : <FontAwesomeIcon icon={faChevronRight} onClick={toggleDropdown} />
-        }
+        <FontAwesomeIcon
+          icon={ showDropdown ? faTimes : faBars}
+          size="lg"
+          color={dropDownButtonColor}
+          onMouseEnter={toggleDropdownButtonColor}
+          onMouseLeave={toggleDropdownButtonColor}
+          onClick={toggleDropdown} 
+        />
       </span>
       <Dropdown showDropdown={showDropdown ? "flex" : "none"}>
-        <li style={{ marginRight: "auto" }}>
-          <Link to="/trips">Trips</Link>
+        <li style={showDropdown ? {margin:"20px auto"} : {margin:"auto auto auto 20px"} }>
+          <Link to="/trips" onClick={showDropdown && toggleDropdown}>Trips</Link>
         </li>
         {state.loggedInUser ? (
           <>
             <li>
-              <Link to="/profile">Profile</Link>
+              <Link to="/profile" onCLick={showDropdown && toggleDropdown}>Profile</Link>
             </li>
             <li>
-              <Link to="/">
+              <Link to="/" onClick={showDropdown && toggleDropdown}>
                 <Button logoutUser={logoutUser} formButton="LOGOUT" />
               </Link>
             </li>
@@ -57,10 +68,10 @@ const Navbar = (props) => {
         ) : (
           <>
             <li>
-              <Link to="/signup">Signup</Link>
+              <Link to="/signup" onClick={showDropdown && toggleDropdown}>Signup</Link>
             </li>
             <li>
-              <Link to="/login">Login</Link>
+              <Link to="/login" onClick={showDropdown && toggleDropdown}>Login</Link>
             </li>
           </>
         )}

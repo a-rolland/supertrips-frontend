@@ -10,6 +10,5 @@ export const Search = styled.input`
 
   @media (max-width: 768px) {
     width: 100%;
-    margin: 8px 20px 24px
   }
 `;

@@ -21,10 +21,10 @@ const TripsList = props => {
 
   return (
     <Ul>
-        <LiContainer>
-          {listTrips}
-        </LiContainer>
-      </Ul>
+      <LiContainer>
+        {listTrips}
+      </LiContainer>
+    </Ul>
   )
 }
 

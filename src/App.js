@@ -8,7 +8,6 @@ import Trips from "./components/Trips/Trips";
 import SearchTripsResults from "./components/SearchTripsResults/SearchTripsResults";
 import authService from "./components/Services/auth-service";
 import ProtectedRoute from "./components/Auth/protected-route";
-import "./App.css";
 import Profile from "./components/Profile/Profile";
 import Trip from "./components/Trip/Trip";
 import EditTripForm from "./components/EditTripForm/EditTripForm";
@@ -16,7 +15,7 @@ import AddStepForm from "./components/AddStepForm/AddStepForm";
 import EditStepForm from "./components/EditStepForm/EditStepForm";
 import AddExperienceForm from "./components/AddExperienceForm/AddExperienceForm";
 import EditExperienceForm from "./components/EditExperienceForm/EditExperienceForm";
-// import Step from "./components/Step/Step";
+import { StyledApp } from "./styles";
 
 const App = () => {
   const initialState = { loggedInUser: null };
@@ -48,7 +47,7 @@ const App = () => {
   fetchUser();
 
   return (
-    <div className="App">
+    <StyledApp>
       <NavBar userInSession={state.loggedInUser} getUser={getTheUser} />
       <Switch>
         <Route
@@ -126,7 +125,7 @@ const App = () => {
           component={Profile}
         />
       </Switch>
-    </div>
+    </StyledApp>
   );
 };
 
