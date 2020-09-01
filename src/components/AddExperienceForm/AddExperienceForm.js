@@ -5,7 +5,7 @@ import FormGeneral from "../FormGeneral/FormGeneral";
 const AddExperienceForm = (props) => {
   const handleFormSubmit = (formObject) => {
     experienceService
-      .newexperience(formObject)
+      .newExperience(formObject)
       .then((response) => console.log("New experience created !", response))
       .catch((error) => console.log("Error while creating experience :", error));
     props.history.push({ pathname: `/trips/${props.match.params.id}`, state: { from: props.location, userInSession: props.userInSession } })

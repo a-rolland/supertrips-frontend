@@ -12,9 +12,9 @@ const errorHandler = (err) => {
 export default {
   stepService,
 
-  newstep: (formFields) => {
+  newStep: (formFields) => {
     return stepService
-      .post("/newstep", formFields)
+      .post("/newStep", formFields)
       .then((response) => response.data)
       .catch(errorHandler);
   },

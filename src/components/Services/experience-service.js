@@ -12,9 +12,9 @@ const errorHandler = (err) => {
 export default {
   experienceService,
 
-  newexperience: (formFields) => {
+  newExperience: (formFields) => {
     return experienceService
-      .post("/newexperience", formFields)
+      .post("/newExperience", formFields)
       .then((response) => response.data)
       .catch(errorHandler);
   },

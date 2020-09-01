@@ -12,9 +12,9 @@ const errorHandler = (err) => {
 export default {
   tripService,
 
-  newtrip: (formFields) => {
+  newTrip: (formFields) => {
     return tripService
-      .post("/newtrip", formFields)
+      .post("/newTrip", formFields)
       .then((response) => response.data)
       .catch(errorHandler);
   },
