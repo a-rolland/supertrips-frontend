@@ -1,9 +1,11 @@
-import React from "react";
+import React, { useState } from "react";
 import authService from "../Services/auth-service";
 import { Link } from "react-router-dom";
 import FormGeneral from "../FormGeneral/FormGeneral";
+import { Error } from "./styles"
 
 const AuthForm = (props) => {
+  const [showError, setShowError] = useState("")
   const handleFormSubmit = (formObject) => {
     const dynamicService = props.login
       ? authService.login(formObject)
@@ -14,7 +16,10 @@ const AuthForm = (props) => {
         props.getUser(response);
         props.history.push("/");
       })
-      .catch((error) => console.log("Error while login/signup :", error));
+      .catch((error) => {
+        console.log("Error while login/signup :", error);
+        setShowError(error.response.data.message)
+      })
   };
 
   const formInputs = [
@@ -49,6 +54,11 @@ const AuthForm = (props) => {
         {props.authMessage}
         <Link to={`${props.formRedirectLink}`}>{props.formRedirectText}</Link>
       </p>
+      { showError &&
+          <Error>
+              {showError}
+          </Error>
+      }
     </div>
   );
 };
