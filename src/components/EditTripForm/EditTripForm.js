@@ -2,12 +2,14 @@ import React, { useState, useEffect} from "react";
 import tripService from "../Services/trip-service";
 import FormGeneral from "../FormGeneral/FormGeneral";
 import Button from "../Button/Button";
+import { Error } from "./styles"
 
 const EditTripForm = (props) => {
   const [tripState, setTripState] = useState({})
   const [showDeleteTripConfirmation, setShowDeleteTripConfirmation] = useState(
     false
   );
+  const [showError, setShowError] = useState("")
 
   const toggleDeleteTripConfirmation = () =>
     setShowDeleteTripConfirmation(!showDeleteTripConfirmation);
@@ -33,7 +35,10 @@ const EditTripForm = (props) => {
           pathname: `/trips/${params.id}`,
         });
       })
-      .catch((error) => console.log("Error while editing trip :", error));
+      .catch((error) => {
+        console.log("Error while editing trip :", error)
+        setShowError(error.response.data.message)
+      });
   };
 
   const deleteTrip = () => {
@@ -126,6 +131,11 @@ const EditTripForm = (props) => {
               />
             </>
           )}
+          { showError &&
+            <Error>
+              {showError}
+            </Error>
+          }
         </>
     </div>
   );

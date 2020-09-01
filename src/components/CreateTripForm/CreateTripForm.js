@@ -59,9 +59,9 @@ const CreateTripForm = (props) => {
         formButton="CREATE"
       />
       { showError &&
-          <Error>
-              {showError}
-          </Error>
+        <Error>
+          {showError}
+        </Error>
       }
     </div>
   );

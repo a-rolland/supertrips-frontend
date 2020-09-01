@@ -2,12 +2,14 @@ import React, { useState, useEffect} from "react";
 import stepService from "../Services/step-service";
 import FormGeneral from "../FormGeneral/FormGeneral";
 import Button from "../Button/Button";
+import { Error } from "./styles"
 
 const EditStepForm = (props) => {
   const [stepState, setStepState] = useState({})
   const [showDeleteStepConfirmation, setShowDeleteStepConfirmation] = useState(
     false
   );
+  const [showError, setShowError] = useState("")
 
   const toggleDeleteStepConfirmation = () =>
     setShowDeleteStepConfirmation(!showDeleteStepConfirmation);
@@ -33,7 +35,10 @@ const EditStepForm = (props) => {
           pathname: `/trips/${params.id}`,
         });
       })
-      .catch((error) => console.log("Error while editing step :", error));
+      .catch((error) => {
+        console.log("Error while editing step :", error.response.data.message)
+        setShowError(error.response.data.message)
+      });
   };
 
   const formInputs = [
@@ -89,6 +94,11 @@ const EditStepForm = (props) => {
           />
         </>
       )}
+      { showError &&
+        <Error>
+          {showError}
+        </Error>
+      }
     </div>
   );
 };

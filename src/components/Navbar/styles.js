@@ -49,6 +49,7 @@ export const Dropdown = styled.ul`
     list-style-type: none;
     top: 50px;
     right: 0px;
+    padding-left: 0;
     width: 200px;
     position: absolute;
     height: fit-content;
@@ -58,10 +59,9 @@ export const Dropdown = styled.ul`
     animation-duration: .3s;
 
     li {
-      margin: ${props => props.margin || "20px auto"};
+      margin: ${props => props.margin || "10px auto"};
       list-style-type: none;
       display: flex;
-      justify-content: center;
 
       a {
         text-decoration: none;

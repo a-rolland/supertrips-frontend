@@ -62,7 +62,7 @@ const FormGeneral = (props) => {
       <Form onSubmit={(event) => liftFormSubmit(event, state)}>
         <h3>{props.formTitle}</h3>
         {dynamicInputs}
-        <Button value={props.formButton} />
+        <Button formButton={props.formButton} />
       </Form>
     </div>
   );

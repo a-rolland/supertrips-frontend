@@ -1,19 +1,35 @@
 import styled from "styled-components";
 
-export const Input = styled.input`
-  width: 100px;
-  padding: 14px 20px 12px;
-  margin: 8px;
-  display: inline-block;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-  box-sizing: border-box;
-  background-color: white;
-
-  &.btn {
-    &:hover {
-      cursor: pointer;
-      background-color: lightsteelblue;
+export const AddLogo = styled.span`
+  @keyframes slide-up {
+    0% {
+      transform: translateY(calc(100% + 10px));
+      opacity: 0;
+    }
+    100% {
+      transform: translateY(0);
+      opacity: 1;
     }
   }
-`;
+
+  position: absolute;
+  bottom: 50px;
+  right: 50px;
+  animation: slide-up 0.65s ease-in-out forwards;
+
+  a{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-decoration: none;
+
+    span {
+      margin-top: 5px;
+    }
+  }
+
+  @media (max-width: 767px) {
+    bottom: 30px;
+    right: 30px;
+  }
+`

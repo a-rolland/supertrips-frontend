@@ -3,12 +3,14 @@ import React, { useState, useEffect} from "react";
 import experienceService from "../Services/experience-service";
 import FormGeneral from "../FormGeneral/FormGeneral";
 import Button from "../Button/Button";
+import { Error } from "./styles"
 
 const EditExperienceForm = (props) => {
   const [experienceState, setExperienceState] = useState({})
   const [showDeleteExperienceConfirmation, setShowDeleteExperienceConfirmation] = useState(
     false
   );
+  const [showError, setShowError] = useState("")
 
   const toggleDeleteExperienceConfirmation = () =>
     setShowDeleteExperienceConfirmation(!showDeleteExperienceConfirmation);
@@ -34,7 +36,10 @@ const EditExperienceForm = (props) => {
           pathname: `/trips/${params.id}`,
         });
       })
-      .catch((error) => console.log("Error while editing experience :", error));
+      .catch((error) => {
+        console.log("Error while editing experience :", error)
+        setShowError(error.response.data.message)
+      });
   };
 
   const formInputs = [
@@ -90,6 +95,11 @@ const EditExperienceForm = (props) => {
           />
         </>
       )}
+      { showError &&
+        <Error>
+          {showError}
+        </Error>
+      }
     </div>
   );
 };

@@ -1,14 +1,21 @@
-import React from "react";
+import React, { useState } from "react";
 import stepService from "../Services/step-service";
 import FormGeneral from "../FormGeneral/FormGeneral";
+import { Error } from "./styles"
 
 const AddStepForm = (props) => {
+  const [showError, setShowError] = useState("")
   const handleFormSubmit = (formObject) => {
     stepService
       .newStep(formObject)
-      .then((response) => console.log("New step created !", response))
-      .catch((error) => console.log("Error while creating step :", error));
-    props.history.push({ pathname: `/trips/${props.location.state.trip._id}`, state: { from: props.location, userInSession: props.userInSession } })
+      .then((response) => {
+        console.log("New step created !", response)
+        props.history.push({ pathname: `/trips/${props.location.state.trip._id}`, state: { from: props.location, userInSession: props.userInSession } })
+      })
+      .catch((error) => {
+        console.log("Error while creating step :", error)
+        setShowError(error.response.data.message)
+      });
   };
 
   const formInputs = [
@@ -34,6 +41,11 @@ const AddStepForm = (props) => {
         formInputs={formInputs}
         formButton="CREATE"
       />
+      { showError &&
+        <Error>
+          {showError}
+        </Error>
+      }
     </div>
   );
 };

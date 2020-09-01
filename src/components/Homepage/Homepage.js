@@ -1,13 +1,22 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import SearchBar from "../SearchBar/SearchBar";
 import { Input } from "./styles";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faSuitcaseRolling } from '@fortawesome/free-solid-svg-icons'
+import { AddLogo } from "./styles"
+import { Link } from "react-router-dom";
+import Button from "../Button/Button";
 
 const Homepage = (props) => {
   const initialSearch = {
     search: "",
   };
-
+  const [loggedInUser, setLoggedInUser] = useState(props.userInSession)
   const [searchState, updateSearch] = useState(initialSearch);
+
+  useEffect(() => {
+    setLoggedInUser(props.userInSession)
+  }, [props.userInSession ])
 
   const handleSearch = async (currentSearch) => {
     updateSearch({
@@ -38,8 +47,17 @@ const Homepage = (props) => {
           placeholder="Search for a trip.."
           searchUpdates={handleSearch}
         />
-        <Input className="btn" type="submit" value="GO" />
+        <Button formButton="GO" />
       </form>
+      {/* PROVISIONAL */}
+      { loggedInUser && 
+        <AddLogo>
+          <Link to="/create-trip">
+            <FontAwesomeIcon icon={faSuitcaseRolling} size="3x" />
+            <span>NEW TRIP</span>
+          </Link>
+        </AddLogo>
+      }
     </div>
   );
 };

@@ -2,6 +2,10 @@ import React, { useState, useEffect } from "react";
 import tripService from "../Services/trip-service";
 import SearchBar from "../SearchBar/SearchBar";
 import TripsList from "../TripsList/TripsList";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faSuitcaseRolling } from '@fortawesome/free-solid-svg-icons'
+import { Link } from "react-router-dom";
+import { AddLogo } from "./styles";
 
 const Trips = (props) => {
   const initialState = {
@@ -54,6 +58,14 @@ const Trips = (props) => {
         searchUpdates={handleSearch}
       />
       { listTrips }
+      { state.loggedInUser &&
+        <AddLogo>
+          <Link to="/create-trip">
+            <FontAwesomeIcon icon={faSuitcaseRolling} size="3x" />
+            <span>NEW TRIP</span>
+          </Link>
+        </AddLogo>
+      }
     </div>
   );
 };
