@@ -4,7 +4,7 @@ import experienceService from "../Services/experience-service";
 import Button from "../Button/Button";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faChevronDown, faChevronRight } from '@fortawesome/free-solid-svg-icons'
-import { StyledStepHeader } from "./styles"
+import { StyledExperience, StyledStepHeader } from "./styles"
 
 const Experience = (props) => {
   const initialState = {
@@ -44,7 +44,7 @@ const Experience = (props) => {
   };
 
   return (
-    <div>
+    <StyledExperience>
       <StyledStepHeader onClick={toggleExpand}>
         {
           state.expanded
@@ -65,7 +65,7 @@ const Experience = (props) => {
           }
         </>
       }  
-    </div>
+    </StyledExperience>
   );
 };
 

@@ -1,5 +1,18 @@
 import styled from "styled-components";
 
+export const StyledExperience = styled.div`
+  @keyframes slide-up {
+    0% {
+      opacity: 0;
+    }
+    100% {
+      opacity: 1;
+    }
+  }
+
+  animation: slide-up 0.65s ease-in-out forwards;
+`;
+
 export const StyledStepHeader = styled.div`
   &:hover {
     cursor: pointer;

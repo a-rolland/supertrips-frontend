@@ -14,7 +14,7 @@ export const AddLogo = styled.span`
 
   position: absolute;
   bottom: 50px;
-  right: 50px;
+  right: 90px;
   animation: slide-up 0.65s ease-in-out forwards;
 
   a{

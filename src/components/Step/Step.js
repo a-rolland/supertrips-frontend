@@ -6,7 +6,7 @@ import Button from "../Button/Button";
 import Experience from "../Experience/Experience"
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faChevronDown, faChevronRight } from '@fortawesome/free-solid-svg-icons'
-import { StyledStepHeader, Ul, Box, Li } from "./styles"
+import { StyledStep, StyledStepHeader, Ul, Box, Li } from "./styles"
 
 const Step = (props) => {
   const initialState = {
@@ -89,7 +89,7 @@ const Step = (props) => {
   })
 
   return (
-    <div>
+    <StyledStep>
       <StyledStepHeader onClick={toggleExpand}>
         {
           state.expanded
@@ -115,7 +115,7 @@ const Step = (props) => {
           }
         </>
       }  
-    </div>
+    </StyledStep>
   );
 };
 

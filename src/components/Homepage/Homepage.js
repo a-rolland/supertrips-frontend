@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
 import SearchBar from "../SearchBar/SearchBar";
-import { Input } from "./styles";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faSuitcaseRolling } from '@fortawesome/free-solid-svg-icons'
 import { AddLogo } from "./styles"

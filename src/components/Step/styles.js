@@ -1,5 +1,20 @@
 import styled from "styled-components";
 
+export const StyledStep = styled.div`
+  @keyframes slide-left {
+    0% {
+      transform: translateX(calc(100% - 5px));
+      opacity: 0;
+    }
+    100% {
+      transform: translateX(0);
+      opacity: 1;
+    }
+  }
+
+  animation: slide-left 0.65s ease-in-out forwards;
+`;
+
 export const StyledStepHeader = styled.div`
   &:hover {
     cursor: pointer;
