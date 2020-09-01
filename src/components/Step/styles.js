@@ -15,6 +15,12 @@ export const StyledStep = styled.div`
   animation: slide-left 0.65s ease-in-out forwards;
 `;
 
+export const OwnerControls = styled.p`
+  svg {
+    margin: 0 10px;
+  }
+`
+
 export const StyledStepHeader = styled.div`
   &:hover {
     cursor: pointer;

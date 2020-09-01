@@ -3,7 +3,7 @@ import React, { useState, useEffect} from "react";
 import experienceService from "../Services/experience-service";
 import FormGeneral from "../FormGeneral/FormGeneral";
 import Button from "../Button/Button";
-import { StyledExperienceStepForm, Error } from "./styles"
+import { StyledEditExperienceForm, Error } from "./styles"
 import { Link } from "react-router-dom";
 
 const EditExperienceForm = (props) => {
@@ -66,7 +66,7 @@ const EditExperienceForm = (props) => {
   };
 
   return (
-    <StyledExperienceStepForm>
+    <StyledEditExperienceForm>
       <FormGeneral
         formTitle={`Edit "${experienceState.title}"`}
         formSubmit={handleFormSubmit}
@@ -103,7 +103,7 @@ const EditExperienceForm = (props) => {
         </Error>
       }
       <p><Link to={`/trips/${props.match.params.id}`}>Back</Link></p>
-    </StyledExperienceStepForm>
+    </StyledEditExperienceForm>
   );
 };
 

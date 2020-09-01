@@ -1,7 +1,8 @@
 import React, { useState } from "react";
 import experienceService from "../Services/experience-service";
 import FormGeneral from "../FormGeneral/FormGeneral";
-import { Error } from "./styles"
+import { StyledAddExperienceForm, Error } from "./styles"
+import { Link } from "react-router-dom";
 
 const AddExperienceForm = (props) => {
   const [showError, setShowError] = useState("")
@@ -33,7 +34,7 @@ const AddExperienceForm = (props) => {
   };
 
   return (
-    <div>
+    <StyledAddExperienceForm>
       <FormGeneral
         formTitle="Add a new experience to this step :"
         formSubmit={handleFormSubmit}
@@ -46,7 +47,8 @@ const AddExperienceForm = (props) => {
           {showError}
         </Error>
       }
-    </div>
+      <p><Link to={`/trips/${props.match.params.id}`}>Back</Link></p>
+    </StyledAddExperienceForm>
   );
 };
 

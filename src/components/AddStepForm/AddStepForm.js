@@ -1,7 +1,8 @@
 import React, { useState } from "react";
 import stepService from "../Services/step-service";
 import FormGeneral from "../FormGeneral/FormGeneral";
-import { Error } from "./styles"
+import { StyledAddStepForm, Error } from "./styles"
+import { Link } from "react-router-dom";
 
 const AddStepForm = (props) => {
   const [showError, setShowError] = useState("")
@@ -33,7 +34,7 @@ const AddStepForm = (props) => {
   };
 
   return (
-    <div>
+    <StyledAddStepForm>
       <FormGeneral
         formTitle="Add a new step to this trip :"
         formSubmit={handleFormSubmit}
@@ -46,7 +47,8 @@ const AddStepForm = (props) => {
           {showError}
         </Error>
       }
-    </div>
+      <p><Link to={`/trips/${props.match.params.id}`}>Back</Link></p>
+    </StyledAddStepForm>
   );
 };
 

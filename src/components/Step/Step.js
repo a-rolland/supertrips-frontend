@@ -2,11 +2,11 @@ import React, { useState, useEffect } from "react";
 import tripService from "../Services/trip-service";
 import stepService from "../Services/step-service";
 import experienceService from "../Services/experience-service";
-import Button from "../Button/Button";
 import Experience from "../Experience/Experience"
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faChevronDown, faChevronRight } from '@fortawesome/free-solid-svg-icons'
-import { StyledStep, StyledStepHeader, Ul, Box, Li } from "./styles"
+import { faChevronDown, faChevronRight, faAsterisk, faEdit } from '@fortawesome/free-solid-svg-icons'
+import { StyledStep, OwnerControls, StyledStepHeader, Ul, Box, Li } from "./styles"
+import { Link } from "react-router-dom";
 
 const Step = (props) => {
   const initialState = {
@@ -61,19 +61,6 @@ const Step = (props) => {
       );
   }, [props.userInSession, props.step.trip._id, props.step.trip, props.step._id]);
 
-  const editStep = () => {
-    props.history.push({
-      pathname: `/trips/${state.step.trip._id}/edit-step/${state.step._id}`,
-    });
-  };
-
-  const addExperience = () => {
-    props.history.push({
-      pathname: `/trips/${state.step.trip._id}/steps/${state.step._id}/add-experience`,
-      state: { trip: state.trip }
-    });
-  };
-
   const experiencesList = state.experiences.map((experience, index) => {
     return(
       <Li key={experience._id}>
@@ -109,8 +96,18 @@ const Step = (props) => {
           {
             state.loggedInUser && state.loggedInUser._id === state.step.trip.author &&
               <>
-                <Button addExperience={addExperience} formButton="ADD A NEW EXPERIENCE" />
-                <Button editStep={editStep} formButton="EDIT STEP" />
+                <OwnerControls>
+                  <Link to={{ pathname: `/trips/${state.step.trip._id}/steps/${state.step._id}/add-experience`, state: { trip: state.trip }}}>
+                    <FontAwesomeIcon icon={faAsterisk} />
+                    <span>Add an experience</span>
+                  </Link>
+                </OwnerControls>
+                <OwnerControls>
+                  <Link to={`/trips/${state.step.trip._id}/edit-step/${state.step._id}`}>
+                    <FontAwesomeIcon icon={faEdit} />
+                    <span>Edit step</span>
+                  </Link>
+                </OwnerControls>
               </>
           }
         </>

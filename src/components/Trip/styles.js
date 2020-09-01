@@ -5,6 +5,11 @@ export const StyledTrip = styled.div`
     text-decoration: none;
   }
 `
+export const OwnerControls = styled.p`
+  svg {
+    margin: 0 10px;
+  }
+`
 
 export const Ul = styled.ul`
   margin: 0 auto;

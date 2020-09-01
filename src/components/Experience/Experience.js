@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from "react";
 // import stepService from "../Services/step-service";
 import experienceService from "../Services/experience-service";
-import Button from "../Button/Button";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faChevronDown, faChevronRight } from '@fortawesome/free-solid-svg-icons'
-import { StyledExperience, StyledStepHeader } from "./styles"
+import { faChevronDown, faChevronRight, faEdit } from '@fortawesome/free-solid-svg-icons'
+import { StyledExperience, OwnerControls, StyledStepHeader } from "./styles"
+import { Link } from "react-router-dom";
 
 const Experience = (props) => {
   const initialState = {
@@ -37,12 +37,6 @@ const Experience = (props) => {
       );
   }, [props.userInSession, props.experience._id]);
 
-  const editExperience = () => {
-    props.history.push({
-      pathname: `/trips/${state.experience.step.trip}/steps/${state.experience.step._id}/edit-experience/${state.experience._id}`,
-    });
-  };
-
   return (
     <StyledExperience>
       <StyledStepHeader onClick={toggleExpand}>
@@ -60,7 +54,12 @@ const Experience = (props) => {
           {
             state.loggedInUser && state.loggedInUser._id === props.author._id &&
               <>
-                <Button editStep={editExperience} formButton="EDIT EXPERIENCE" />
+                <OwnerControls>
+                  <Link to={`/trips/${state.experience.step.trip}/steps/${state.experience.step._id}/edit-experience/${state.experience._id}`}>
+                    <FontAwesomeIcon icon={faEdit} />
+                    <span>Edit experience</span>
+                  </Link>
+                </OwnerControls>
               </>
           }
         </>

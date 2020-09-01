@@ -1,10 +1,11 @@
 import React, { useState, useEffect } from "react";
 import tripService from "../Services/trip-service";
 import stepService from "../Services/step-service";
-import Button from "../Button/Button";
-import { StyledTrip, Ul, Box, Li } from "./styles"
+import { StyledTrip, OwnerControls, Ul, Box, Li } from "./styles"
 import Step from "../Step/Step";
 import { Link } from "react-router-dom";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faPlus, faEdit } from '@fortawesome/free-solid-svg-icons'
 
 const Trip = (props) => {
   const initialState = {
@@ -43,20 +44,6 @@ const Trip = (props) => {
       );
   }, [props.userInSession, props.match.params.id]);
 
-  const editTrip = () => {
-    props.history.push({
-      pathname: `/trips/edit/${state.trip._id}`,
-      state: { trip: state.trip }
-    });
-  };
-
-  const addStep = () => {
-    props.history.push({
-      pathname: `/trips/${state.trip._id}/add-step`,
-      state: { trip: state.trip }
-    });
-  };
-
   const stepsList = state.steps.map((step, index) => {
     return(
       <Li key={step._id}>
@@ -85,8 +72,18 @@ const Trip = (props) => {
       }
       {state.loggedInUser && state.loggedInUser._id === state.trip.author._id && (
         <>
-          <Button addStep={addStep} formButton="ADD A NEW STEP" />
-          <Button editTrip={editTrip} formButton="EDIT TRIP" />
+          <OwnerControls>
+            <Link to={{pathname: `/trips/${state.trip._id}/add-step`, state: { trip: state.trip }}}>
+              <FontAwesomeIcon icon={faPlus} />
+              <span>Add a step</span>
+            </Link>
+          </OwnerControls>
+          <OwnerControls>
+            <Link to={{pathname: `/trips/${state.trip._id}/add-step`, state: { trip: state.trip }}}>
+              <FontAwesomeIcon icon={faEdit} />
+              <span>Edit trip</span>
+            </Link>
+          </OwnerControls>
         </>
       )}
       <p><Link to="/trips">Back to trips</Link></p>

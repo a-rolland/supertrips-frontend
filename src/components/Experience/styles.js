@@ -13,6 +13,12 @@ export const StyledExperience = styled.div`
   animation: slide-up 0.65s ease-in-out forwards;
 `;
 
+export const OwnerControls = styled.p`
+  svg {
+    margin: 0 10px;
+  }
+`
+
 export const StyledStepHeader = styled.div`
   &:hover {
     cursor: pointer;
