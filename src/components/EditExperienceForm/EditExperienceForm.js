@@ -3,7 +3,8 @@ import React, { useState, useEffect} from "react";
 import experienceService from "../Services/experience-service";
 import FormGeneral from "../FormGeneral/FormGeneral";
 import Button from "../Button/Button";
-import { Error } from "./styles"
+import { StyledExperienceStepForm, Error } from "./styles"
+import { Link } from "react-router-dom";
 
 const EditExperienceForm = (props) => {
   const [experienceState, setExperienceState] = useState({})
@@ -65,8 +66,9 @@ const EditExperienceForm = (props) => {
   };
 
   return (
-    <div>
+    <StyledExperienceStepForm>
       <FormGeneral
+        formTitle={`Edit "${experienceState.title}"`}
         formSubmit={handleFormSubmit}
         formState={experienceState}
         formInputs={formInputs}
@@ -100,7 +102,8 @@ const EditExperienceForm = (props) => {
           {showError}
         </Error>
       }
-    </div>
+      <p><Link to={`/trips/${props.match.params.id}`}>Back</Link></p>
+    </StyledExperienceStepForm>
   );
 };
 

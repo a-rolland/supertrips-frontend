@@ -2,7 +2,8 @@ import React, { useState, useEffect} from "react";
 import tripService from "../Services/trip-service";
 import FormGeneral from "../FormGeneral/FormGeneral";
 import Button from "../Button/Button";
-import { Error } from "./styles"
+import { StyledEditTripForm, Error } from "./styles"
+import { Link } from "react-router-dom";
 
 const EditTripForm = (props) => {
   const [tripState, setTripState] = useState({})
@@ -100,8 +101,9 @@ const EditTripForm = (props) => {
   ];
 
   return (
-    <div>
+    <StyledEditTripForm>
       <FormGeneral
+        formTitle={`Edit "${tripState.title}"`}
         formSubmit={handleFormSubmit}
         formState={tripState}
         formInputs={formInputs}
@@ -136,8 +138,9 @@ const EditTripForm = (props) => {
               {showError}
             </Error>
           }
+          <p><Link to={`/trips/${props.match.params.id}`}>Back to trip</Link></p>
         </>
-    </div>
+    </StyledEditTripForm>
   );
 };
 

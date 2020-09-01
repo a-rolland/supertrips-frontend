@@ -1,5 +1,11 @@
 import styled from "styled-components";
 
+export const StyledTrip = styled.div`
+  a {
+    text-decoration: none;
+  }
+`
+
 export const Ul = styled.ul`
   margin: 0 auto;
   padding: 0;

@@ -2,7 +2,8 @@ import React, { useState, useEffect} from "react";
 import stepService from "../Services/step-service";
 import FormGeneral from "../FormGeneral/FormGeneral";
 import Button from "../Button/Button";
-import { Error } from "./styles"
+import { StyledEditStepForm, Error } from "./styles"
+import { Link } from "react-router-dom";
 
 const EditStepForm = (props) => {
   const [stepState, setStepState] = useState({})
@@ -64,8 +65,9 @@ const EditStepForm = (props) => {
   };
 
   return (
-    <div>
+    <StyledEditStepForm>
       <FormGeneral
+        formTitle={`Edit "${stepState.title}"`}
         formSubmit={handleFormSubmit}
         formState={stepState}
         formInputs={formInputs}
@@ -99,7 +101,8 @@ const EditStepForm = (props) => {
           {showError}
         </Error>
       }
-    </div>
+      <p><Link to={`/trips/${props.match.params.id}`}>Back</Link></p>
+    </StyledEditStepForm>
   );
 };
 

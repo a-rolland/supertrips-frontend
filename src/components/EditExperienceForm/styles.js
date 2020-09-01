@@ -1,5 +1,11 @@
 import styled from "styled-components";
 
+export const StyledExperienceStepForm = styled.div`
+  a {
+    text-decoration: none;
+  }
+`
+
 export const Error = styled.p`
   color: red;
   border: solid red 1px;

@@ -2,8 +2,9 @@ import React, { useState, useEffect } from "react";
 import tripService from "../Services/trip-service";
 import stepService from "../Services/step-service";
 import Button from "../Button/Button";
-import { Ul, Box, Li } from "./styles"
+import { StyledTrip, Ul, Box, Li } from "./styles"
 import Step from "../Step/Step";
+import { Link } from "react-router-dom";
 
 const Trip = (props) => {
   const initialState = {
@@ -71,7 +72,7 @@ const Trip = (props) => {
   })
 
   return (
-    <div>
+    <StyledTrip>
       <h1>Trip details</h1>
       <h2>{state.trip.title}</h2>
       <p>{state.trip.duration} days</p>
@@ -88,7 +89,8 @@ const Trip = (props) => {
           <Button editTrip={editTrip} formButton="EDIT TRIP" />
         </>
       )}
-    </div>
+      <p><Link to="/trips">Back to trips</Link></p>
+    </StyledTrip>
   );
 };
 
