@@ -11,11 +11,28 @@ const FormGeneral = (props) => {
     ))
   }, [props.formState]);
 
+  const formatDate = (date) => {
+    var d = new Date(date),
+        month = '' + (d.getMonth() + 1),
+        day = '' + d.getDate(),
+        year = d.getFullYear();
+
+    if (month.length < 2) 
+        month = '0' + month;
+    if (day.length < 2) 
+        day = '0' + day;
+
+    const formattedDate = [year, month, day].join('-')
+    // console.log("SSSSSSSSSS",formattedDate)
+
+    return formattedDate
+}
+
   const handleChange = (event) => {
     const { name, value, type, checked } = event.target;
     setState((state) => ({
       ...state,
-      [name]: type === "checkbox" ? checked : value,
+      [name]: type === "checkbox" ? checked : type === "date" ? formatDate(value) : value
     }));
   };
 

@@ -48,6 +48,23 @@ const EditTripForm = (props) => {
       });
   };
 
+  const formatDate = (date) => {
+    var d = new Date(date),
+        month = '' + (d.getMonth() + 1),
+        day = '' + d.getDate(),
+        year = d.getFullYear();
+
+    if (month.length < 2) 
+        month = '0' + month;
+    if (day.length < 2) 
+        day = '0' + day;
+
+    const formattedDate = [year, month, day].join('-')
+    console.log("SSSSSSSSSS",formattedDate)
+
+    return formattedDate
+}
+
   const formInputs = [
     {
       label: "Title",
@@ -63,6 +80,18 @@ const EditTripForm = (props) => {
       checked: tripState.isPublic,
       name: "isPublic",
     },
+    {
+      label: "Start date",
+      type: "date",
+      value: formatDate(tripState.startDate),
+      name: "startDate",
+    },
+    {
+      label: "End date",
+      type: "date",
+      value: formatDate(tripState.endDate),
+      name: "endDate",
+    }
   ];
 
   return (

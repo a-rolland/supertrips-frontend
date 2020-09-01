@@ -74,6 +74,7 @@ const Trip = (props) => {
     <div>
       <h1>Trip details</h1>
       <h2>{state.trip.title}</h2>
+      <p>{state.trip.duration} days</p>
       { state.steps && 
         <Ul>
           <Box>

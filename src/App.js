@@ -16,6 +16,7 @@ import EditStepForm from "./components/EditStepForm/EditStepForm";
 import AddExperienceForm from "./components/AddExperienceForm/AddExperienceForm";
 import EditExperienceForm from "./components/EditExperienceForm/EditExperienceForm";
 import { StyledApp } from "./styles";
+import CreateTripForm from "./components/CreateTripForm/CreateTripForm";
 
 const App = () => {
   const initialState = { loggedInUser: null };
@@ -123,6 +124,12 @@ const App = () => {
           path="/profile"
           userInSession={state.loggedInUser}
           component={Profile}
+        />
+        <ProtectedRoute
+          exact
+          path="/create-trip"
+          userInSession={state.loggedInUser}
+          component={CreateTripForm}
         />
       </Switch>
     </StyledApp>
