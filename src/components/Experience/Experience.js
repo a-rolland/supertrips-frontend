@@ -50,7 +50,9 @@ const Experience = (props) => {
       {
         state.expanded &&
         <>
-          <p>Description: An experience from this trip.</p>
+          {state.experience.description
+            && state.experience.description
+          }
           {
             state.loggedInUser && state.loggedInUser._id === props.author._id &&
               <>

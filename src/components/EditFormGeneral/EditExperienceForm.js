@@ -23,6 +23,13 @@ const EditExperienceForm = (props) => {
       name: "title",
       value: experienceState.title,
       placeholder: "Ex.: Dinner at the Eiffel Tower",
+    },
+    {
+      label: "Description",
+      type: "textarea",
+      name: "description",
+      value: experienceState.description,
+      placeholder: 'Ex.: "This restaurant was absolutely incredible !"'
     }
   ];
 
