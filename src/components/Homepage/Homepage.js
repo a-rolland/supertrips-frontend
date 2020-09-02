@@ -52,7 +52,7 @@ const Homepage = (props) => {
       { loggedInUser && 
         <AddLogo>
           <Link to="/create-trip">
-            <FontAwesomeIcon icon={faSuitcaseRolling} size="3x" />
+            <FontAwesomeIcon icon={faSuitcaseRolling} size="2x" />
             <span>NEW TRIP</span>
           </Link>
         </AddLogo>

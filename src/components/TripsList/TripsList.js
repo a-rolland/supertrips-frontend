@@ -1,23 +1,30 @@
 import React from 'react'
 import { Ul, LiContainer, Li } from "./styles"
 import { Link } from 'react-router-dom';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faCalendarAlt } from '@fortawesome/free-solid-svg-icons'
 
 const TripsList = props => {
 
   const listTrips = props.trips.map((trip) => {
     return (
       <Li key={trip._id}>
-        {trip.imageUrl &&
-          // CHECK RESPONSIVE
-          <img src={trip.imageUrl} alt="trip cover" style={{height: "150px", width: "auto", marginRight: "20px"}} />
-        }
         <Link
           to={{
             pathname: `/trips/${trip._id}`,
             state: { userInSession: props.loggedInUser, trip: trip },
           }}
         >
-          {trip.title}
+          {trip.imageUrl &&
+            <img src={trip.imageUrl} alt="trip cover" />
+          }
+          <div>
+            <h4>{trip.title}</h4>
+            <div>
+              <FontAwesomeIcon icon={faCalendarAlt} size="1x" />
+              <span>{trip.duration} days</span>
+            </div>
+          </div>
         </Link>
       </Li>
     );

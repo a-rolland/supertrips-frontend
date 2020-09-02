@@ -13,9 +13,7 @@ const Trips = (props) => {
     trips: [],
   };
   const [state, setState] = useState(initialState);
-
-  // equiv. componentWillReceiveProps
-  // Correct ?
+  
   useEffect(() => {
     setState((state) => ({
       ...state,
@@ -61,7 +59,7 @@ const Trips = (props) => {
       { state.loggedInUser &&
         <AddLogo>
           <Link to="/create-trip">
-            <FontAwesomeIcon icon={faSuitcaseRolling} size="3x" />
+            <FontAwesomeIcon icon={faSuitcaseRolling} size="2x" />
             <span>NEW TRIP</span>
           </Link>
         </AddLogo>

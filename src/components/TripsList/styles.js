@@ -16,15 +16,61 @@ export const Li = styled.li`
   margin: 40px;
   text-align: left;
   display: flex;
+  flex-direction: row;
   justify-content: flex-start;
   align-items: center;
 
   svg {
-    margin: 0 10px;
+    margin: 0 10px 0 0;
     padding-top: 4px;
   }
 
   a {
     text-decoration: none;
+    display: flex;
+    flex-direction: row;
+
+    @media (max-width: 767px) {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    img {
+      @keyframes slow-popup {
+        0% {
+          opacity: 0;
+        }
+        100% {
+          opacity: 1;
+        }
+      }
+
+      height: 150px;
+      width: auto;
+      margin-right: 40px;
+      animation: slow-popup 0.5s ease-in-out forwards;
+
+      @media (max-width: 767px) {
+        margin-right: 0;
+      }
+    }
+
+    div {
+      @media (max-width: 767px) {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+      }
+
+      div {
+        @media (max-width: 767px) {
+          display: flex;
+          flex-direction: row;
+          justify-content: center;
+        }
+      }
+    }
   }
 `;

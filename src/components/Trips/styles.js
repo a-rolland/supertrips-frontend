@@ -12,10 +12,15 @@ export const AddLogo = styled.span`
     }
   }
 
-  position: absolute;
+  position: fixed;
   bottom: 50px;
   right: 90px;
   animation: slide-up 0.65s ease-in-out forwards;
+
+  border-radius: 20px;
+  background-color: white;
+  padding: 8px;
+  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.1);
 
   a{
     display: flex;
