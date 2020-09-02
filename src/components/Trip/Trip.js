@@ -79,7 +79,7 @@ const Trip = (props) => {
             </Link>
           </OwnerControls>
           <OwnerControls>
-            <Link to={{pathname: `/trips/${state.trip._id}/add-step`, state: { trip: state.trip }}}>
+            <Link to={{	pathname: `/trips/edit/${state.trip._id}`, state: { trip: state.trip }}}>
               <FontAwesomeIcon icon={faEdit} />
               <span>Edit trip</span>
             </Link>

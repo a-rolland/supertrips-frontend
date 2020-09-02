@@ -10,11 +10,11 @@ import authService from "./components/Services/auth-service";
 import ProtectedRoute from "./components/Auth/protected-route";
 import Profile from "./components/Profile/Profile";
 import Trip from "./components/Trip/Trip";
-import EditTripForm from "./components/EditTripForm/EditTripForm";
+import EditTripForm from "./components/EditFormGeneral/EditTripForm";
 import AddStepForm from "./components/AddStepForm/AddStepForm";
-import EditStepForm from "./components/EditStepForm/EditStepForm";
+import EditStepForm from "./components/EditFormGeneral/EditStepForm";
 import AddExperienceForm from "./components/AddExperienceForm/AddExperienceForm";
-import EditExperienceForm from "./components/EditExperienceForm/EditExperienceForm";
+import EditExperienceForm from "./components/EditFormGeneral/EditExperienceForm";
 import { StyledApp } from "./styles";
 import CreateTripForm from "./components/CreateTripForm/CreateTripForm";
 

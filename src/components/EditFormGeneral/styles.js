@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-export const StyledEditStepForm = styled.div`
+export const StyledEditForm = styled.div`
   a {
     text-decoration: none;
   }
