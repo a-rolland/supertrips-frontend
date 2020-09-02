@@ -5,7 +5,7 @@ import { StyledTrip, OwnerControls, Ul, Box, Li, Back } from "./styles"
 import Step from "../Step/Step";
 import { Link } from "react-router-dom";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faPlus, faFeatherAlt } from '@fortawesome/free-solid-svg-icons'
+import { faPlus, faFeatherAlt, faHourglassHalf } from '@fortawesome/free-solid-svg-icons'
 
 const Trip = (props) => {
   const initialState = {
@@ -62,7 +62,10 @@ const Trip = (props) => {
     <StyledTrip>
       <h1>Trip details</h1>
       <h2>{state.trip.title}</h2>
-      <p>{state.trip.duration} days</p>
+      <div>
+        <FontAwesomeIcon icon={faHourglassHalf} size="1x" />
+        <span>{state.trip.duration} days</span>
+      </div>
       { state.steps && 
         <Ul>
           <Box>

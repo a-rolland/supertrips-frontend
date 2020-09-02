@@ -2,7 +2,7 @@ import React from 'react'
 import { Ul, LiContainer, Li } from "./styles"
 import { Link } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faCalendarAlt } from '@fortawesome/free-solid-svg-icons'
+import { faHourglassHalf } from '@fortawesome/free-solid-svg-icons'
 
 const TripsList = props => {
 
@@ -21,7 +21,7 @@ const TripsList = props => {
           <div>
             <h4>{trip.title}</h4>
             <div>
-              <FontAwesomeIcon icon={faCalendarAlt} size="1x" />
+              <FontAwesomeIcon icon={faHourglassHalf} size="1x" />
               <span>{trip.duration} days</span>
             </div>
           </div>

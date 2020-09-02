@@ -4,6 +4,11 @@ export const StyledTrip = styled.div`
   a {
     text-decoration: none;
   }
+
+  svg {
+    margin: 0 10px;
+    padding-top: 4px;
+  }
 `
 export const OwnerControls = styled.p`
   svg {
