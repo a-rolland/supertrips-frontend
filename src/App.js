@@ -11,12 +11,12 @@ import ProtectedRoute from "./components/Auth/protected-route";
 import Profile from "./components/Profile/Profile";
 import Trip from "./components/Trip/Trip";
 import EditTripForm from "./components/EditFormGeneral/EditTripForm";
-import AddStepForm from "./components/AddStepForm/AddStepForm";
+import AddStepForm from "./components/CreateFormGeneral/AddStepForm";
 import EditStepForm from "./components/EditFormGeneral/EditStepForm";
-import AddExperienceForm from "./components/AddExperienceForm/AddExperienceForm";
+import AddExperienceForm from "./components/CreateFormGeneral/AddExperienceForm";
 import EditExperienceForm from "./components/EditFormGeneral/EditExperienceForm";
 import { StyledApp } from "./styles";
-import CreateTripForm from "./components/CreateTripForm/CreateTripForm";
+import CreateTripForm from "./components/CreateFormGeneral/CreateTripForm";
 
 const App = () => {
   const initialState = { loggedInUser: null };

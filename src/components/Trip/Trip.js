@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import tripService from "../Services/trip-service";
 import stepService from "../Services/step-service";
-import { StyledTrip, OwnerControls, Ul, Box, Li } from "./styles"
+import { StyledTrip, OwnerControls, Ul, Box, Li, Back } from "./styles"
 import Step from "../Step/Step";
 import { Link } from "react-router-dom";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
@@ -86,7 +86,7 @@ const Trip = (props) => {
           </OwnerControls>
         </>
       )}
-      <p><Link to="/trips">Back to trips</Link></p>
+      <Back><Link to="/trips">Back to trips</Link></Back>
     </StyledTrip>
   );
 };

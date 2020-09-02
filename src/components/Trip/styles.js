@@ -35,3 +35,12 @@ export const Li = styled.li`
     padding-top: 4px;
   }
 `;
+
+export const Back = styled.p`
+  position: absolute;
+  margin: 0 auto;
+  left: 0;
+  right: 0;
+  bottom: 40px;
+  text-align: center;
+`

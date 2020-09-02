@@ -23,7 +23,6 @@ const FormGeneral = (props) => {
         day = '0' + day;
 
     const formattedDate = [year, month, day].join('-')
-    // console.log("SSSSSSSSSS",formattedDate)
 
     return formattedDate
 }
