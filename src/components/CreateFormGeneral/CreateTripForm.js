@@ -10,6 +10,11 @@ const CreateTripForm = (props) => {
       placeholder: "Ex.: My magical trip to Paris",
     },
     {
+      label: "Image",
+      type: "file",
+      name: "imageUrl",
+    },
+    {
       label: "Do you want to make it public ?",
       type: "checkbox",
       name: "isPublic",
@@ -30,7 +35,9 @@ const CreateTripForm = (props) => {
     title: "",
     isPublic: false,
     startDate: "",
-    endDate: ""
+    endDate: "",
+    imageUrl: "",
+    archive: null
   };
 
   return (

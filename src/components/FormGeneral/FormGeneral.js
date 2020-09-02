@@ -28,11 +28,22 @@ const FormGeneral = (props) => {
 }
 
   const handleChange = (event) => {
-    const { name, value, type, checked } = event.target;
-    setState((state) => ({
-      ...state,
-      [name]: type === "checkbox" ? checked : type === "date" ? formatDate(value) : value
-    }));
+    const { name, value, type, checked, files } = event.target;
+    type === "file"
+      ? setState((state) => ({
+        ...state,
+        archive: files[0]
+      }))
+      : setState((state) => ({
+          ...state,
+          [name]: type === "checkbox" 
+                    ? checked
+                    : type === "date"
+                    ? formatDate(value)
+                    : type === "file"
+                    ? files[0]
+                    : value
+        }));
   };
 
   const liftFormSubmit = (event, stateToLift) => {

@@ -9,8 +9,17 @@ import FormGeneral from "../FormGeneral/FormGeneral";
 const CreateFormGeneral = (props) => {
   const [showError, setShowError] = useState("")
   const handleFormSubmit = (formObject) => {
+    const uploadData = new FormData();
+    if (props.tripForm) {
+      uploadData.append("title", formObject.title);
+      uploadData.append("imageUrl", formObject.archive);
+      uploadData.append("isPublic", formObject.isPublic);
+      uploadData.append("startDate", formObject.startDate);
+      uploadData.append("endDate", formObject.endDate);
+      console.log("uploadData",uploadData)
+    }
     const dynamicService = props.tripForm
-      ? tripService.newTrip(formObject)
+      ? tripService.newTrip(uploadData)
       : props.stepForm
       ? stepService.newStep(formObject)
       : experienceService.newExperience(formObject)

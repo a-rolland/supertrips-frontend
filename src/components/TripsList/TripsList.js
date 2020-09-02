@@ -7,6 +7,10 @@ const TripsList = props => {
   const listTrips = props.trips.map((trip) => {
     return (
       <Li key={trip._id}>
+        {trip.imageUrl &&
+          // CHECK RESPONSIVE
+          <img src={trip.imageUrl} alt="trip cover" style={{height: "150px", width: "auto", marginRight: "20px"}} />
+        }
         <Link
           to={{
             pathname: `/trips/${trip._id}`,
