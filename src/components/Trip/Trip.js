@@ -5,7 +5,7 @@ import { StyledTrip, OwnerControls, Ul, Box, Li, Back } from "./styles"
 import Step from "../Step/Step";
 import { Link } from "react-router-dom";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faPlus, faEdit } from '@fortawesome/free-solid-svg-icons'
+import { faPlus, faFeatherAlt } from '@fortawesome/free-solid-svg-icons'
 
 const Trip = (props) => {
   const initialState = {
@@ -80,7 +80,7 @@ const Trip = (props) => {
           </OwnerControls>
           <OwnerControls>
             <Link to={{	pathname: `/trips/edit/${state.trip._id}`, state: { trip: state.trip }}}>
-              <FontAwesomeIcon icon={faEdit} />
+              <FontAwesomeIcon icon={faFeatherAlt} />
               <span>Edit trip</span>
             </Link>
           </OwnerControls>

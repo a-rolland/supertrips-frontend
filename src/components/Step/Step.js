@@ -4,7 +4,7 @@ import stepService from "../Services/step-service";
 import experienceService from "../Services/experience-service";
 import Experience from "../Experience/Experience"
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faChevronDown, faChevronRight, faAsterisk, faEdit } from '@fortawesome/free-solid-svg-icons'
+import { faChevronCircleDown, faChevronCircleRight, faAsterisk, faFeatherAlt } from '@fortawesome/free-solid-svg-icons'
 import { StyledStep, OwnerControls, StyledStepHeader, Ul, Box, Li } from "./styles"
 import { Link } from "react-router-dom";
 
@@ -80,8 +80,8 @@ const Step = (props) => {
       <StyledStepHeader onClick={toggleExpand}>
         {
           state.expanded
-          ? <FontAwesomeIcon icon={faChevronDown} />
-          : <FontAwesomeIcon icon={faChevronRight} />
+          ? <FontAwesomeIcon icon={faChevronCircleDown} />
+          : <FontAwesomeIcon icon={faChevronCircleRight} />
         }
         {state.step.title}  
       </StyledStepHeader>
@@ -104,7 +104,7 @@ const Step = (props) => {
                 </OwnerControls>
                 <OwnerControls>
                   <Link to={`/trips/${state.step.trip._id}/edit-step/${state.step._id}`}>
-                    <FontAwesomeIcon icon={faEdit} />
+                    <FontAwesomeIcon icon={faFeatherAlt} />
                     <span>Edit step</span>
                   </Link>
                 </OwnerControls>

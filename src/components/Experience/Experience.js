@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 // import stepService from "../Services/step-service";
 import experienceService from "../Services/experience-service";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faChevronDown, faChevronRight, faEdit } from '@fortawesome/free-solid-svg-icons'
+import { faChevronDown, faChevronRight, faFeatherAlt } from '@fortawesome/free-solid-svg-icons'
 import { StyledExperience, OwnerControls, StyledStepHeader } from "./styles"
 import { Link } from "react-router-dom";
 
@@ -56,7 +56,7 @@ const Experience = (props) => {
               <>
                 <OwnerControls>
                   <Link to={`/trips/${state.experience.step.trip}/steps/${state.experience.step._id}/edit-experience/${state.experience._id}`}>
-                    <FontAwesomeIcon icon={faEdit} />
+                    <FontAwesomeIcon icon={faFeatherAlt} />
                     <span>Edit experience</span>
                   </Link>
                 </OwnerControls>
