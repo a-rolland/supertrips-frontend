@@ -4,7 +4,7 @@ import CreateFormGeneral from "./CreateFormGeneral";
 const AddStepForm = (props) => {
   const formInputs = [
     {
-      label: "Title",
+      label: "Title*",
       type: "text",
       name: "title",
       placeholder: 'Ex.: "First day - London South and East"'

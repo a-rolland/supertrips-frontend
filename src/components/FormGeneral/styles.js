@@ -24,3 +24,22 @@ export const Input = styled.input`
     }
   }
 `;
+
+export const Textarea = styled.textarea`
+  width: 100%;
+  height: 150px;
+  padding: 12px 20px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+  resize: none;
+
+  &.btn {
+    &:hover {
+      cursor: pointer;
+      background-color: lightsteelblue;
+    }
+  }
+`;

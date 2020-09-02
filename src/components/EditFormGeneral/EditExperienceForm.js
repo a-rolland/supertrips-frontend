@@ -18,7 +18,7 @@ const EditExperienceForm = (props) => {
 
   const formInputs = [
     {
-      label: "Title",
+      label: "Title*",
       type: "text",
       name: "title",
       value: experienceState.title,

@@ -9,6 +9,7 @@ import FormGeneral from "../FormGeneral/FormGeneral";
 const CreateFormGeneral = (props) => {
   const [showError, setShowError] = useState("")
   const handleFormSubmit = (formObject) => {
+    console.log(formObject)
     const uploadData = new FormData();
     if (props.tripForm) {
       uploadData.append("title", formObject.title);

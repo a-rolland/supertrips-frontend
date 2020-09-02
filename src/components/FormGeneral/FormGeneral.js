@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Form, Input } from "./styles";
+import { Form, Input, Textarea } from "./styles";
 import Button from "../Button/Button";
 
 const FormGeneral = (props) => {
@@ -53,6 +53,19 @@ const FormGeneral = (props) => {
 
   const dynamicInputs = props.formInputs.map((input) => {
     return (
+      input.type === "textarea" ? 
+      <React.Fragment key={input.name}>
+        <label>{input.label}</label>
+        <Textarea
+          type={input.type}
+          name={input.name}
+          checked={state[input.name] || false}
+          value={state[input.name] || ""}
+          placeholder={input.placeholder}
+          onChange={handleChange}
+        />
+      </React.Fragment>
+      : 
       <React.Fragment key={input.name}>
         <label>{input.label}</label>
         <Input
@@ -72,6 +85,7 @@ const FormGeneral = (props) => {
       <Form onSubmit={(event) => liftFormSubmit(event, state)}>
         <h3>{props.formTitle}</h3>
         {dynamicInputs}
+        <p>*required</p>
         <Button formButton={props.formButton} />
       </Form>
     </div>

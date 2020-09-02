@@ -18,7 +18,7 @@ const EditStepForm = (props) => {
 
   const formInputs = [
     {
-      label: "Title",
+      label: "Title*",
       type: "text",
       name: "title",
       value: stepState.title,

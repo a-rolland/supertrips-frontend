@@ -34,7 +34,7 @@ const EditTripForm = (props) => {
 
   const formInputs = [
     {
-      label: "Title",
+      label: "Title*",
       type: "text",
       name: "title",
       value: tripState.title,
@@ -48,13 +48,13 @@ const EditTripForm = (props) => {
       name: "isPublic",
     },
     {
-      label: "Start date",
+      label: "Start date*",
       type: "date",
       value: formatDate(tripState.startDate),
       name: "startDate",
     },
     {
-      label: "End date",
+      label: "End date*",
       type: "date",
       value: formatDate(tripState.endDate),
       name: "endDate",

@@ -4,7 +4,7 @@ import CreateFormGeneral from "./CreateFormGeneral";
 const CreateTripForm = (props) => {
   const formInputs = [
     {
-      label: "Title",
+      label: "Title*",
       type: "text",
       name: "title",
       placeholder: "Ex.: My magical trip to Paris",
@@ -20,12 +20,12 @@ const CreateTripForm = (props) => {
       name: "isPublic",
     },
     {
-      label: "Start Date",
+      label: "Start Date*",
       type: "date",
       name: "startDate",
     },
     {
-      label: "End Date",
+      label: "End Date*",
       type: "date",
       name: "endDate",
     }
