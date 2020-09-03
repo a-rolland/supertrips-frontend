@@ -1,11 +1,12 @@
 import React, { useState, useEffect } from "react";
 import tripService from "../Services/trip-service";
 import stepService from "../Services/step-service";
-import { StyledTrip, OwnerControls, Ul, Box, Li, Back } from "./styles"
+import { StyledTrip, Duration, OwnerControls, Ul, Box, Li, Back } from "./styles"
 import Step from "../Step/Step";
 import { Link } from "react-router-dom";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faPlus, faFeatherAlt, faHourglassHalf } from '@fortawesome/free-solid-svg-icons'
+import Map from "../Map/Map";
 
 const Trip = (props) => {
   const initialState = {
@@ -60,13 +61,20 @@ const Trip = (props) => {
 
   return (
     <StyledTrip>
-      {/* <h1>Trip details</h1> */}
       <h1>{state.trip.title}</h1>
-      <img src={state.trip.imageUrl} alt="trip cover pic" />
-      <div>
+      <Duration>
         <FontAwesomeIcon icon={faHourglassHalf} size="1x" />
         <span>{state.trip.duration} days</span>
-      </div>
+      </Duration>
+      <img src={state.trip.imageUrl} alt="trip cover pic" />
+      <Map
+        address={""}
+        lat={45}
+        lng={3}
+        zoom="6"
+        height="300px"
+        width="100%"
+      />
       { state.steps && 
         <Ul>
           <Box>

@@ -7,6 +7,5 @@ export const MapContainer = styled.div`
   @media (max-width: 667px) {
     width: 300px;
     height: 200px;
-    margin: 0 auto;
   }
 `;

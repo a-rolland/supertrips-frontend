@@ -40,7 +40,7 @@ export const Box = styled.div`
 `;
 
 export const Li = styled.li`
-  margin: 10px;
+  margin: 20px;
   text-align: left;
   display: flex;
   justify-content: flex-start;

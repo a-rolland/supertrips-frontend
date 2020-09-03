@@ -14,7 +14,16 @@ export const StyledTrip = styled.div`
     height: auto;
     width: 100%;
   }
+
+  div {
+    width: 100%;
+  }
 `
+
+export const Duration = styled.div`
+  margin: 20px auto;
+`
+
 export const OwnerControls = styled.p`
   svg {
     margin: 0 10px;
@@ -22,7 +31,7 @@ export const OwnerControls = styled.p`
 `
 
 export const Ul = styled.ul`
-  margin: 0 auto;
+  margin: 20px auto;
   padding: 0;
   display: flex;
   flex-direction: column;
@@ -34,7 +43,7 @@ export const Box = styled.div`
 `;
 
 export const Li = styled.li`
-  margin: 10px;
+  margin: 20px;
   text-align: left;
   display: flex;
   justify-content: flex-start;
