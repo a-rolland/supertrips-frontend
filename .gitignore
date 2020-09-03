@@ -12,7 +12,7 @@
 /build
 
 # other
-/public/index.html
+/public
 
 # misc
 .DS_Store
