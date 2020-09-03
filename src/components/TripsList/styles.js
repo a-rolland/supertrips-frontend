@@ -50,13 +50,15 @@ export const Li = styled.li`
         }
       }
 
-      height: 150px;
-      width: auto;
+      height: auto;
+      width: 300px;
       margin-right: 40px;
       animation: slow-popup 0.5s ease-in-out forwards;
 
       @media (max-width: 767px) {
         margin-right: 0;
+        height: auto;
+        width: 100%;
       }
     }
 
