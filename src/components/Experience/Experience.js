@@ -5,6 +5,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faChevronDown, faChevronRight, faFeatherAlt } from '@fortawesome/free-solid-svg-icons'
 import { StyledExperience, OwnerControls, StyledStepHeader } from "./styles"
 import { Link } from "react-router-dom";
+import Map from "../Map/Map";
 
 const Experience = (props) => {
   const initialState = {
@@ -52,6 +53,14 @@ const Experience = (props) => {
         <>
           {state.experience.description
             && state.experience.description
+          }
+          {state.experience.place
+            && 
+            <Map 
+              address={state.experience.place.address}
+              lat={state.experience.place.lat}
+              lng={state.experience.place.lng}
+            />
           }
           {
             state.loggedInUser && state.loggedInUser._id === props.author._id &&

@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Form, Input, Textarea } from "./styles";
 import Button from "../Button/Button";
+import LocationSearchInput from "../LocationSearchInput/LocationSearchInput";
 
 const FormGeneral = (props) => {
   const [state, setState] = useState(props.formState);
@@ -51,33 +52,45 @@ const FormGeneral = (props) => {
     props.formSubmit(stateToLift);
   };
 
+  const setPlace = (newPlace) => {
+    setState(state => ({
+      ...state,
+      place: newPlace
+    }))
+  }
+
   const dynamicInputs = props.formInputs.map((input) => {
     return (
-      input.type === "textarea" ? 
-      <React.Fragment key={input.name}>
-        <label>{input.label}</label>
-        <Textarea
-          type={input.type}
-          name={input.name}
-          checked={state[input.name] || false}
-          value={state[input.name] || ""}
-          placeholder={input.placeholder}
-          onChange={handleChange}
-        />
-      </React.Fragment>
-      : 
-      <React.Fragment key={input.name}>
-        <label>{input.label}</label>
-        <Input
-          type={input.type}
-          name={input.name}
-          checked={state[input.name] || false}
-          value={state[input.name] || ""}
-          placeholder={input.placeholder}
-          onChange={handleChange}
-        />
-      </React.Fragment>
-    );
+      input.type === "textarea" 
+        ? <React.Fragment key={input.name}>
+            <label>{input.label}</label>
+            <Textarea
+              type={input.type}
+              name={input.name}
+              checked={state[input.name] || false}
+              value={state[input.name] || ""}
+              placeholder={input.placeholder}
+              onChange={handleChange}
+            />
+          </React.Fragment>
+        : input.name === "place"
+        ? <React.Fragment key={input.name}>
+            <label>{input.label}</label>
+            <LocationSearchInput setPlace={setPlace}
+            />
+          </React.Fragment>
+        : <React.Fragment key={input.name}>
+            <label>{input.label}</label>
+            <Input
+              type={input.type}
+              name={input.name}
+              checked={state[input.name] || false}
+              value={state[input.name] || ""}
+              placeholder={input.placeholder}
+              onChange={handleChange}
+            />
+          </React.Fragment>
+      );
   });
 
   return (

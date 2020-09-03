@@ -14,13 +14,20 @@ const AddExperienceForm = (props) => {
       type: "textarea",
       name: "description",
       placeholder: 'Ex.: "This restaurant was absolutely incredible !"'
+    },
+    {
+      label: "Find the place",
+      type: "text",
+      name: "place",
+      placeholder: 'Ex: "Paris..."'
     }
   ];
 
   const initialState = {
     title: "",
     step: props.match.params.stepId,
-    description: ""
+    description: "",
+    place: {}
   };
 
   return (
