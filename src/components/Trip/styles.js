@@ -9,6 +9,11 @@ export const StyledTrip = styled.div`
     margin: 0 10px;
     padding-top: 4px;
   }
+
+  img {
+    height: auto;
+    width: 100%;
+  }
 `
 export const OwnerControls = styled.p`
   svg {

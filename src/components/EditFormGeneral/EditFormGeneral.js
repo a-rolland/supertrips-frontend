@@ -27,7 +27,8 @@ const EditFormGeneral = (props) => {
       
     dynamicService  
       .then(response => {
-        setState(response)
+        props.tripForm ? setState({...response, imageUrl:"", originalImg: response.imageUrl})
+          : setState(response)
       })
       .catch((error) =>
         console.log(`Error while getting ${props.formType} details :`, error)
@@ -36,8 +37,22 @@ const EditFormGeneral = (props) => {
 
   const handleFormSubmit = (formObject) => {
     const { params } = props.match;
+    
+    console.log(formObject)
+    const uploadData = new FormData();
+    if (props.tripForm) {
+      uploadData.append("title", formObject.title);
+      formObject.archive
+        ? uploadData.append("imageUrl", formObject.archive)
+        : uploadData.append("imageUrl", formObject.originalImg)
+      uploadData.append("isPublic", formObject.isPublic);
+      uploadData.append("startDate", formObject.startDate);
+      uploadData.append("endDate", formObject.endDate);
+      console.log("uploadData",uploadData)
+    }
+
     const dynamicService = props.tripForm
-      ? tripService.editTrip(params.id, formObject)
+      ? tripService.editTrip(params.id, uploadData)
       : props.stepForm
       ? stepService.editStep(params.stepId, formObject)
       : experienceService.editExperience(params.experienceId, formObject)

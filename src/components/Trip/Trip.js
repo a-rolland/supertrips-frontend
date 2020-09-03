@@ -60,8 +60,9 @@ const Trip = (props) => {
 
   return (
     <StyledTrip>
-      <h1>Trip details</h1>
-      <h2>{state.trip.title}</h2>
+      {/* <h1>Trip details</h1> */}
+      <h1>{state.trip.title}</h1>
+      <img src={state.trip.imageUrl} alt="trip cover pic" />
       <div>
         <FontAwesomeIcon icon={faHourglassHalf} size="1x" />
         <span>{state.trip.duration} days</span>

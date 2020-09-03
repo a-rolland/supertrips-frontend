@@ -48,6 +48,12 @@ const EditTripForm = (props) => {
       name: "isPublic",
     },
     {
+      label: "Image",
+      type: "file",
+      value: "",
+      name: "imageUrl"
+    },
+    {
       label: "Start date*",
       type: "date",
       value: formatDate(tripState.startDate),

@@ -16,7 +16,7 @@ const TripsList = props => {
           }}
         >
           {trip.imageUrl &&
-            <img src={trip.imageUrl} alt="trip cover" />
+            <img src={trip.imageUrl} alt="trip cover pic" />
           }
           <div>
             <h4>{trip.title}</h4>

@@ -29,7 +29,7 @@ const FormGeneral = (props) => {
 
   const handleChange = (event) => {
     const { name, value, type, checked, files } = event.target;
-    type === "file"
+    name === "imageUrl"
       ? setState((state) => ({
         ...state,
         archive: files[0]

@@ -20,6 +20,10 @@ export const Li = styled.li`
   justify-content: flex-start;
   align-items: center;
 
+  @media (max-width: 767px) {
+    justify-content: center;
+  }
+
   svg {
     margin: 0 10px 0 0;
     padding-top: 4px;
@@ -29,11 +33,11 @@ export const Li = styled.li`
     text-decoration: none;
     display: flex;
     flex-direction: row;
+    justify-content: space-between;
 
     @media (max-width: 767px) {
       display: flex;
       flex-direction: column;
-      justify-content: center;
     }
 
     img {
