@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import GoogleMapReact from 'google-map-react'
+import { MapContainer } from "./styles"
 
 export class Map extends Component {
     constructor(props) {
@@ -54,19 +55,17 @@ export class Map extends Component {
         }
 
         return (
-            <div>
-              <div style={{height: this.props.height,width: this.props.width}}>
-                  <GoogleMapReact 
-                      key={this.state.name}
-                    //   bootstrapURLKeys={ { key: 'YOURKEYHERE'} }
-                      defaultCenter={center}
-                      defaultZoom={zoom}
-                      options={getMapOptions}
-                      yesIWantToUseGoogleMapApiInternals
-                      onGoogleApiLoaded={({ map, maps }) => renderMarkers(map, maps)}
-                  />
-              </div>
-            </div>    
+            <MapContainer height={this.props.height} width={this.props.width}>
+                <GoogleMapReact 
+                    key={this.state.name}
+                //   bootstrapURLKeys={ { key: 'YOURKEYHERE'} }
+                    defaultCenter={center}
+                    defaultZoom={zoom}
+                    options={getMapOptions}
+                    yesIWantToUseGoogleMapApiInternals
+                    onGoogleApiLoaded={({ map, maps }) => renderMarkers(map, maps)}
+                />
+            </MapContainer>
         )
     }
 }

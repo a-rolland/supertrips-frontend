@@ -27,18 +27,20 @@ const AddExperienceForm = (props) => {
     title: "",
     step: props.match.params.stepId,
     description: "",
-    place: {}
+    place: null
   };
 
   return (
-    <CreateFormGeneral
-      experienceForm
-      formType="experience"
-      formInputs={formInputs}
-      initialState={initialState}
-      tripId={props.match.params.id}
-      {...props}
-    />
+    <>
+      <CreateFormGeneral
+        experienceForm
+        formType="experience"
+        formInputs={formInputs}
+        initialState={initialState}
+        tripId={props.match.params.id}
+        {...props}
+      />
+    </>
   );
 };
 

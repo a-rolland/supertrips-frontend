@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { Form, Input, Textarea } from "./styles";
 import Button from "../Button/Button";
 import LocationSearchInput from "../LocationSearchInput/LocationSearchInput";
+import Map from "../Map/Map";
 
 const FormGeneral = (props) => {
   const [state, setState] = useState(props.formState);
@@ -55,7 +56,11 @@ const FormGeneral = (props) => {
   const setPlace = (newPlace) => {
     setState(state => ({
       ...state,
-      place: newPlace
+      place: {
+        address: newPlace.address,
+        lat: parseFloat(newPlace.lat),
+        lng: parseFloat(newPlace.lng)
+      }
     }))
   }
 
@@ -77,6 +82,20 @@ const FormGeneral = (props) => {
         ? <React.Fragment key={input.name}>
             <label>{input.label}</label>
             <LocationSearchInput setPlace={setPlace} />
+            { state.place &&
+              <React.Fragment>
+                <p>Is this the correct place ?</p>
+                <Map
+                  key={state.place.address}
+                  address={state.place.address}
+                  lat={state.place.lat}
+                  lng={state.place.lng}
+                  zoom="14"
+                  height="200px"
+                  width="350px"
+                />
+              </React.Fragment>
+            }
           </React.Fragment>
         : <React.Fragment key={input.name}>
             <label>{input.label}</label>
