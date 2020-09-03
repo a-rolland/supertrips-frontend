@@ -45,6 +45,7 @@ const AuthForm = (props) => {
   return (
     <div>
       <FormGeneral
+        auth
         formTitle={ props.login ? "Login" : "Sign-up" }
         formSubmit={handleFormSubmit}
         formState={initialState}

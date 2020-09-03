@@ -30,6 +30,13 @@ const EditExperienceForm = (props) => {
       name: "description",
       value: experienceState.description,
       placeholder: 'Ex.: "This restaurant was absolutely incredible !"'
+    },
+    {
+      label: "Find the place",
+      type: "text",
+      name: "place",
+      value: experienceState.place,
+      placeholder: 'Ex: "Paris..."'
     }
   ];
 

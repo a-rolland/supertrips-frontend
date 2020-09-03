@@ -60,6 +60,9 @@ const Experience = (props) => {
               address={state.experience.place.address}
               lat={state.experience.place.lat}
               lng={state.experience.place.lng}
+              zoom="15"
+              height="150px"
+              width="500px"
             />
           }
           {

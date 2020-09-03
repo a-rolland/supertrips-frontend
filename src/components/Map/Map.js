@@ -8,6 +8,7 @@ export class Map extends Component {
             name: this.props.address,
             lat: this.props.lat,
             lng: this.props.lng,
+            zoom: this.props.zoom,
             showMap: false
         }
     }
@@ -26,7 +27,7 @@ export class Map extends Component {
             lng: this.state.lng
         }
 
-        const zoom = 14
+        const zoom = parseInt(this.state.zoom)
 
         const getMapOptions = (maps) => {
             return {
@@ -54,10 +55,10 @@ export class Map extends Component {
 
         return (
             <div>
-              <div className="mapa mx-auto" style={this.props.detailsStyle || {height:"200px",width:"300px"}}>
+              <div style={{height: this.props.height,width: this.props.width}}>
                   <GoogleMapReact 
                       key={this.state.name}
-                      bootstrapURLKeys={ { key: 'YOURKEYHERE'} }
+                    //   bootstrapURLKeys={ { key: 'YOURKEYHERE'} }
                       defaultCenter={center}
                       defaultZoom={zoom}
                       options={getMapOptions}

@@ -76,8 +76,7 @@ const FormGeneral = (props) => {
         : input.name === "place"
         ? <React.Fragment key={input.name}>
             <label>{input.label}</label>
-            <LocationSearchInput setPlace={setPlace}
-            />
+            <LocationSearchInput setPlace={setPlace} />
           </React.Fragment>
         : <React.Fragment key={input.name}>
             <label>{input.label}</label>
@@ -98,7 +97,7 @@ const FormGeneral = (props) => {
       <Form onSubmit={(event) => liftFormSubmit(event, state)}>
         <h3>{props.formTitle}</h3>
         {dynamicInputs}
-        <p>*required</p>
+        { props.auth || <p>*required</p>}
         <Button formButton={props.formButton} />
       </Form>
     </div>

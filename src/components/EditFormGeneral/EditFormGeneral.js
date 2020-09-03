@@ -29,7 +29,8 @@ const EditFormGeneral = (props) => {
       
     dynamicService  
       .then(response => {
-        props.tripForm ? setState({...response, imageUrl:"", originalImg: response.imageUrl})
+        props.tripForm
+          ? setState({...response, imageUrl:"", originalImg: response.imageUrl})
           : setState(response)
       })
       .catch((error) =>
