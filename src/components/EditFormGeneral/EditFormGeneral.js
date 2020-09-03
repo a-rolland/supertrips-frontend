@@ -6,6 +6,8 @@ import FormGeneral from "../FormGeneral/FormGeneral";
 import Button from "../Button/Button";
 import { StyledEditForm, Error } from "./styles"
 import { Link } from "react-router-dom";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faArrowCircleLeft } from '@fortawesome/free-solid-svg-icons'
 
 const EditFormGeneral = (props) => {
   const [state, setState] = useState({})
@@ -129,7 +131,10 @@ const EditFormGeneral = (props) => {
               {showError}
             </Error>
           }
-          <p><Link to={`/trips/${props.match.params.id}`}>Back to trip</Link></p>
+          <p><Link to={`/trips/${props.match.params.id}`}>
+              <FontAwesomeIcon icon={faArrowCircleLeft} size="2x" />
+            </Link>
+          </p>
         </>
     </StyledEditForm>
   );

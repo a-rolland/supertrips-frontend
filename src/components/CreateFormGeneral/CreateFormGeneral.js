@@ -5,9 +5,12 @@ import experienceService from "../Services/experience-service";
 import { StyledCreateForm, Error } from "./styles"
 import { Link } from "react-router-dom";
 import FormGeneral from "../FormGeneral/FormGeneral";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faArrowCircleLeft } from '@fortawesome/free-solid-svg-icons'
 
 const CreateFormGeneral = (props) => {
   const [showError, setShowError] = useState("")
+
   const handleFormSubmit = (formObject) => {
     const uploadData = new FormData();
     if (props.tripForm) {
@@ -36,6 +39,10 @@ const CreateFormGeneral = (props) => {
       });
   };
 
+  const redirectLink = props.match.path === "/create-trip"
+                          ? "/trips"
+                          : `/trips/${props.match.params.id}`
+
   return (
     <StyledCreateForm>
       <FormGeneral
@@ -50,7 +57,11 @@ const CreateFormGeneral = (props) => {
           {showError}
         </Error>
       }
-      <p><Link to={`/trips/${props.tripId}`}>Back</Link></p>
+      <p>
+        <Link to={`${redirectLink}`}>
+          <FontAwesomeIcon icon={faArrowCircleLeft} size="2x" />
+        </Link>
+      </p>
     </StyledCreateForm>
   );
 };
