@@ -57,7 +57,7 @@ export class Map extends Component {
               <div className="mapa mx-auto" style={this.props.detailsStyle || {height:"200px",width:"300px"}}>
                   <GoogleMapReact 
                       key={this.state.name}
-                      bootstrapURLKeys={ { key: 'AIzaSyC5R2OYlhvGRMmpofdkJ0jL60Tsa7dtZUY'} }
+                      bootstrapURLKeys={ { key: 'YOURKEYHERE'} }
                       defaultCenter={center}
                       defaultZoom={zoom}
                       options={getMapOptions}
