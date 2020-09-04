@@ -20,3 +20,6 @@ export const Error = styled.p`
     margin: 0 auto;
   }
 `
+export const Loading = styled.div`
+  margin: 40px;
+` 

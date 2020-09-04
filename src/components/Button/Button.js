@@ -4,13 +4,9 @@ import { ButtonStyled } from "./styles";
 const Button = (props) => {
   const handleClick = () => {
     props.toggleDeleteConfirmation && props.toggleDeleteConfirmation()
+    props.closeDeleteConfirmation && props.closeDeleteConfirmation()
     props.deleteItem && props.deleteItem()
-    // props.toggleDeleteTripConfirmation && props.toggleDeleteTripConfirmation();
-    // props.toggleDeleteStepConfirmation && props.toggleDeleteStepConfirmation();
-    // props.toggleDeleteExperienceConfirmation && props.toggleDeleteExperienceConfirmation();
-    // props.deleteTrip && props.deleteTrip();
-    // props.deleteStep && props.deleteStep();
-    // props.deleteExperience && props.deleteExperience();
+    props.toggleProfilePictureForm && props.toggleProfilePictureForm()
     props.logoutUser && props.logoutUser();
   };
 

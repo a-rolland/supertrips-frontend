@@ -2,16 +2,18 @@ import React, { useState } from "react";
 import tripService from "../Services/trip-service";
 import stepService from "../Services/step-service";
 import experienceService from "../Services/experience-service";
-import { StyledCreateForm, Error } from "./styles"
+import { StyledCreateForm, Loading, Error } from "./styles"
 import { Link } from "react-router-dom";
 import FormGeneral from "../FormGeneral/FormGeneral";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faArrowCircleLeft } from '@fortawesome/free-solid-svg-icons'
+import { faArrowCircleLeft, faSpinner } from '@fortawesome/free-solid-svg-icons'
 
 const CreateFormGeneral = (props) => {
   const [showError, setShowError] = useState("")
+  const [loading, setLoading] = useState("")
 
   const handleFormSubmit = (formObject) => {
+    setLoading(true)
     const uploadData = new FormData();
     if (props.tripForm) {
       uploadData.append("title", formObject.title);
@@ -28,12 +30,14 @@ const CreateFormGeneral = (props) => {
       : experienceService.newExperience(formObject)
     dynamicService  
       .then((response) => {
+        setLoading(false)
         console.log(`New ${props.formType} created !`, response)
         props.tripForm
           ? props.history.push("/trips")
           : props.history.push(`/trips/${props.tripId}`)
       })
       .catch((error) => {
+        setLoading(false)
         console.log(`Error while getting ${props.formType} details :`, error)
         setShowError(error.response.data.message)
       });
@@ -45,13 +49,16 @@ const CreateFormGeneral = (props) => {
 
   return (
     <StyledCreateForm>
-      <FormGeneral
-        formTitle={`Create a new ${props.formType}`}
-        formSubmit={handleFormSubmit}
-        formState={props.initialState}
-        formInputs={props.formInputs}
-        formButton="CREATE"
-      />
+      {loading
+        ? <Loading><FontAwesomeIcon icon={faSpinner} size="2x" /><p>Loading</p></Loading>
+        : <FormGeneral
+            formTitle={`Create a new ${props.formType}`}
+            formSubmit={handleFormSubmit}
+            formState={props.initialState}
+            formInputs={props.formInputs}
+            formButton="CREATE"
+          />
+}
       { showError &&
         <Error>
           {showError}

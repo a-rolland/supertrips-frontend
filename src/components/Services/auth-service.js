@@ -33,6 +33,13 @@ export default {
     return authService.post("/logout", {}).then((response) => response.data);
   },
 
+  editProfilePicture: (id, formFields) => {
+    return authService
+      .put("/profile/profilePicture", formFields)
+      .then((response) => response.data)
+      .catch(errorHandler);
+  },
+
   // upload: data => {
   //     return service.post('/upload', data)
   //         .then(response => response.data)

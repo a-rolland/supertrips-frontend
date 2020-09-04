@@ -57,7 +57,7 @@ const Map = (props) => {
     <MapContainer height={props.height} width={props.width}>
       <GoogleMapReact
         key={state.name}
-        // bootstrapURLKeys={ { key: 'YOURKEYHERE'} }
+        bootstrapURLKeys={ { key: 'YOURKEYHERE'} }
         defaultCenter={center}
         defaultZoom={zoom}
         options={getMapOptions}
