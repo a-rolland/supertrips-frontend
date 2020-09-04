@@ -1,5 +1,3 @@
-// Copyright (c) 2016-present, Ken Hibino
-// See https://kenny-hibino.github.io/react-places-autocomplete
 import React from "react";
 import PlacesAutocomplete, {
   geocodeByAddress,
@@ -46,8 +44,8 @@ class LocationSearchInput extends React.Component {
               })}
             />
             <div className="autocomplete-dropdown-container">
-              { loading && <FontAwesomeIcon icon={faSpinner} size="2x" /> }
-              { suggestions.map((suggestion) => {
+              {loading && <FontAwesomeIcon icon={faSpinner} size="2x" />}
+              {suggestions.map((suggestion) => {
                 const className = suggestion.active
                   ? "suggestion-item--active"
                   : "suggestion-item";
@@ -58,7 +56,7 @@ class LocationSearchInput extends React.Component {
                   <PlaceSuggestion
                     {...getSuggestionItemProps(suggestion, {
                       className,
-                      style
+                      style,
                     })}
                     key={suggestion.index}
                   >
@@ -75,3 +73,6 @@ class LocationSearchInput extends React.Component {
 }
 
 export default LocationSearchInput;
+
+// Copyright (c) 2016-present, Ken Hibino
+// See https://kenny-hibino.github.io/react-places-autocomplete

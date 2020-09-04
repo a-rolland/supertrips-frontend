@@ -16,6 +16,22 @@ const EditExperienceForm = (props) => {
       );
   }, [props.match.params.experienceId]);
 
+  const formatDate = (date) => {
+    var d = new Date(date),
+        month = '' + (d.getMonth() + 1),
+        day = '' + d.getDate(),
+        year = d.getFullYear();
+
+    if (month.length < 2) 
+        month = '0' + month;
+    if (day.length < 2) 
+        day = '0' + day;
+
+    const formattedDate = [year, month, day].join('-')
+
+    return formattedDate
+}
+
   const formInputs = [
     {
       label: "Title*",
@@ -23,6 +39,25 @@ const EditExperienceForm = (props) => {
       name: "title",
       value: experienceState.title,
       placeholder: "Ex.: Dinner at the Eiffel Tower",
+    },
+    {
+      label: "Date*",
+      type: "date",
+      value: formatDate(experienceState.date),
+      name: "date",
+    },
+    {
+      label: "Time*",
+      type: "time",
+      value: experienceState.time,
+      name: "time",
+    },
+    {
+      label: "Make date/time public ? (Hidden by default)",
+      type: "checkbox",
+      value: experienceState.showDateTime,
+      checked: experienceState.showDateTime,
+      name: "showDateTime",
     },
     {
       label: "Description",

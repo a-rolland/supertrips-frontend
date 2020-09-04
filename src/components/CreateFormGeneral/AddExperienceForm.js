@@ -10,6 +10,21 @@ const AddExperienceForm = (props) => {
       placeholder: 'Ex.: "Dinner in Camden Town"'
     },
     {
+      label: "Date*",
+      type: "date",
+      name: "date",
+    },
+    {
+      label: "Time*",
+      type: "time",
+      name: "time"
+    },
+    {
+      label: "Make date/time public ? (Hidden by default)",
+      type: "checkbox",
+      name: "showDateTime",
+    },
+    {
       label: "Description",
       type: "textarea",
       name: "description",
@@ -25,6 +40,9 @@ const AddExperienceForm = (props) => {
 
   const initialState = {
     title: "",
+    date: "",
+    time: "",
+    showDateTime: false,
     step: props.match.params.stepId,
     description: "",
     place: null
