@@ -46,7 +46,10 @@ const Experience = (props) => {
           ? <FontAwesomeIcon icon={faChevronDown} />
           : <FontAwesomeIcon icon={faChevronRight} />
         }
-        {state.experience.title}  
+        <span>
+          {state.experience.title}
+          {state.experience.date && <span>{state.experience.date}  {state.experience.time}</span>}
+        </span>
       </StyledStepHeader>
       {
         state.expanded &&

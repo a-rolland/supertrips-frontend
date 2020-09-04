@@ -23,6 +23,12 @@ export const StyledStepHeader = styled.div`
   &:hover {
     cursor: pointer;
   }
+
+  span {
+    span {
+      margin-left: 50px;
+    }
+  }
 `;
 
 export const Ul = styled.ul`
