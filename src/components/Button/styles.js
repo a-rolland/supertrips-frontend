@@ -9,6 +9,7 @@ export const ButtonStyled = styled.input`
   box-sizing: border-box;
   background-color: ${(props) => props.theme};
   color: ${(props) => props.color};
+  width: ${(props) => props.width};
 
   &:hover {
     cursor: pointer;

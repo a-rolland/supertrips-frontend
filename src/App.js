@@ -17,6 +17,7 @@ import AddExperienceForm from "./components/CreateFormGeneral/AddExperienceForm"
 import EditExperienceForm from "./components/EditFormGeneral/EditExperienceForm";
 import { StyledApp } from "./styles";
 import CreateTripForm from "./components/CreateFormGeneral/CreateTripForm";
+import MyTrips from "./components/MyTrips/MyTrips";
 
 const App = () => {
   const initialState = { loggedInUser: null };
@@ -124,6 +125,12 @@ const App = () => {
           path="/profile"
           userInSession={state.loggedInUser}
           component={Profile}
+        />
+        <ProtectedRoute
+          exact
+          path="/profile/my-trips"
+          userInSession={state.loggedInUser}
+          component={MyTrips}
         />
         <ProtectedRoute
           exact

@@ -21,6 +21,7 @@ const Button = (props) => {
       onClick={handleClick}
       theme={props.theme}
       color={props.color}
+      width={props.width}
     />
   );
 };
