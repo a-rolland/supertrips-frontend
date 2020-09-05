@@ -13,7 +13,7 @@ const AddStepForm = (props) => {
 
   const initialState = {
     title: "",
-    trip: props.location.state.trip._id
+    trip: props.match.params.id
   };
 
   return (

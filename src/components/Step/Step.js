@@ -47,7 +47,7 @@ const Step = (props) => {
               console.log("Error while getting experiences :", error
             ))
         tripService
-            .tripDetails(props.step.trip)
+            .tripDetails(props.step.trip._id)
               .then((response) => {
                 setState(state => ({
                   ...state,
@@ -58,7 +58,7 @@ const Step = (props) => {
       .catch((error) =>
         console.log("Error while getting step details :", error)
       );
-  }, [props.userInSession, props.step.trip._id, props.step.trip, props.step._id]);
+  }, [props.userInSession, props.step.trip._id, props.step.trip._id, props.step._id]);
 
   const experiencesList = state.experiences.map((experience, index) => {
     return(

@@ -20,7 +20,7 @@ const MyTrips = (props) => {
     }));
     const fetchAuthorizedTripsList = async () => {
       const response = await tripService.trips();
-      const myTrips = response.filter(trip =>  state.loggedInUser._id === trip.author);
+      const myTrips = response.filter(trip =>  state.loggedInUser._id === trip.author._id);
       setState((state) => ({
         ...state,
         trips: myTrips,
