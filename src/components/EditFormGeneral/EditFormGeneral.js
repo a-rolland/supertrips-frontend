@@ -165,7 +165,8 @@ const EditFormGeneral = (props) => {
                   {showError}
                 </Error>
               }
-              <p><Link to={`/trips/${props.match.params.id}`}>
+              <p>
+                <Link to={`/trips/${props.match.params.id}`}>
                   <FontAwesomeIconComponent chosenIcon={"faArrowCircleLeft"} size="2x" />
                 </Link>
               </p> 

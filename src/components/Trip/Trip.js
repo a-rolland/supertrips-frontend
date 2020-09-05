@@ -105,7 +105,11 @@ const Trip = (props) => {
           </OwnerControls>
         </>
       )}
-      {/* <Back><Link to="/trips">Back to trips</Link></Back> */}
+      <p style={{marginTop: "40px"}}>
+        <Link to={`/trips`}>
+          <FontAwesomeIconComponent chosenIcon={"faArrowCircleLeft"} size="2x" />
+        </Link>
+      </p> 
     </StyledTrip>
   );
 };

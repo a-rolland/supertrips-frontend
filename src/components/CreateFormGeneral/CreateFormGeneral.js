@@ -65,7 +65,7 @@ const CreateFormGeneral = (props) => {
       }
       <p>
         <Link to={`${redirectLink}`}>
-        <FontAwesomeIconComponent chosenIcon={"faArrowCircleLeft"} size="2x" />
+          <FontAwesomeIconComponent chosenIcon={"faArrowCircleLeft"} size="2x" />
         </Link>
       </p>
     </StyledCreateForm>
