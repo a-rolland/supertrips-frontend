@@ -23,12 +23,6 @@ export const StyledStepHeader = styled.div`
   &:hover {
     cursor: pointer;
   }
-
-  span {
-    span {
-      margin-left: 50px;
-    }
-  }
 `;
 
 export const Ul = styled.ul`
@@ -55,3 +49,8 @@ export const Li = styled.li`
     padding-top: 4px;
   }
 `;
+
+export const StyledDateTime = styled.span`
+  margin: 15px 5px 5px 40px;
+  display: block;
+`

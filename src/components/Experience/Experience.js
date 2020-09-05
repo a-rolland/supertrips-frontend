@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 // import stepService from "../Services/step-service";
 import experienceService from "../Services/experience-service";
-import { StyledExperience, OwnerControls, StyledStepHeader } from "./styles"
+import { StyledExperience, StyledDateTime, OwnerControls, StyledStepHeader } from "./styles"
 import { Link } from "react-router-dom";
 import Map from "../Map/Map";
 import FontAwesomeIconComponent from "../ElementalComponents/FontAwesomeIconComponent/FontAwesomeIconComponent";
@@ -47,7 +47,17 @@ const Experience = (props) => {
         }
         <span>
           {state.experience.title}
-          {state.experience.date && <span>{state.experience.date}  {state.experience.time}</span>}
+          {state.experience.date &&
+            <React.Fragment>
+              <StyledDateTime>
+                <FontAwesomeIconComponent chosenIcon={"faCalendarAlt"} color="grey" />
+                {state.experience.date}
+              </StyledDateTime>
+              <StyledDateTime>
+                <FontAwesomeIconComponent chosenIcon={"faClock"} color="grey" />
+                {state.experience.time}
+              </StyledDateTime>
+            </React.Fragment>}
         </span>
       </StyledStepHeader>
       {

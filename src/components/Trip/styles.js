@@ -51,19 +51,3 @@ export const Li = styled.li`
     padding-top: 4px;
   }
 `;
-
-// export const Back = styled.p`
-//   position: fixed;
-//   width: 100px;
-//   padding: 5px 5px 8px;
-//   background-color: white;
-//   margin: 0 auto;
-//   left: 0;
-//   right: 0;
-//   bottom: 40px;
-//   text-align: center;
-
-//   border-radius: 20px;
-//   background-color: white;
-//   box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
-// `

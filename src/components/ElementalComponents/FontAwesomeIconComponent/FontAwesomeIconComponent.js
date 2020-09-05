@@ -13,7 +13,9 @@ import {
   faTimes,
   faBars,
   faSpinner,
-  faArrowCircleLeft
+  faArrowCircleLeft,
+  faClock,
+  faCalendarAlt
 
 } from '@fortawesome/free-solid-svg-icons'
 
@@ -58,6 +60,12 @@ const FontAwesomeIconComponent = props => {
       break;
     case "faArrowCircleLeft":
       icon = faArrowCircleLeft
+      break;
+    case "faClock":
+      icon = faClock
+      break;
+    case "faCalendarAlt":
+      icon = faCalendarAlt
       break;
     default:
       icon = null
