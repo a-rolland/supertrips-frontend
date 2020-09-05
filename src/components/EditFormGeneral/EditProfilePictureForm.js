@@ -7,7 +7,7 @@ const EditProfilePictureForm = (props) => {
 
   useEffect(() => {
     authService
-      .loggedin()
+      .loggedIn()
       .then(response => {
         setUserState(response)
       })

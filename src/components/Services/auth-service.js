@@ -19,8 +19,8 @@ export default {
       .catch(errorHandler);
   },
 
-  loggedin: () => {
-    return authService.get("/loggedin").then((response) => response.data);
+  loggedIn: () => {
+    return authService.get("/loggedIn").then((response) => response.data);
   },
 
   login: (credentials) => {

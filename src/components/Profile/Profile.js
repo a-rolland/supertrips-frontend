@@ -19,7 +19,7 @@ const Profile = (props) => {
   }
 
   const updateProfilePicture = useCallback(() => 
-    authService.loggedin()
+    authService.loggedIn()
       .then(response => {
         closeProfilePictureForm()
         setUserState({loggedInUser: response})

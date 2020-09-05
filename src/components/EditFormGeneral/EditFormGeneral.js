@@ -33,7 +33,7 @@ const EditFormGeneral = (props) => {
       ? stepService.stepDetails(params.stepId)
       : props.experienceForm
       ? experienceService.experienceDetails(params.experienceId)
-      : authService.loggedin();
+      : authService.loggedIn();
       
     dynamicService  
       .then(response => {

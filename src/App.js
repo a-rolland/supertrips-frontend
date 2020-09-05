@@ -32,7 +32,7 @@ const App = () => {
   const fetchUser = () => {
     if (state.loggedInUser === null) {
       authService
-        .loggedin()
+        .loggedIn()
         .then((response) => {
           setState({
             loggedInUser: response,
