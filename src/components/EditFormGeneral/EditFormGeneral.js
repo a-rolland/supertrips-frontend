@@ -4,11 +4,10 @@ import tripService from "../Services/trip-service";
 import stepService from "../Services/step-service";
 import experienceService from "../Services/experience-service";
 import FormGeneral from "../FormGeneral/FormGeneral";
-import Button from "../Button/Button";
+import Button from "../ElementalComponents/Button/Button";
 import { StyledEditForm, Loading, Error } from "./styles"
 import { Link } from "react-router-dom";
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faArrowCircleLeft, faSpinner } from '@fortawesome/free-solid-svg-icons'
+import FontAwesomeIconComponent from "../ElementalComponents/FontAwesomeIconComponent/FontAwesomeIconComponent";
 
 const EditFormGeneral = (props) => {
   const [state, setState] = useState({})
@@ -125,7 +124,7 @@ const EditFormGeneral = (props) => {
   return (
     <StyledEditForm>
       {loading
-        ? <Loading><FontAwesomeIcon icon={faSpinner} size="2x" /><p>Loading</p></Loading>
+        ? <Loading><FontAwesomeIconComponent chosenIcon={"faSpinner"} size="2x" /><p>Loading</p></Loading>
         : <FormGeneral
             formTitle={props.formTitle}
             formSubmit={handleFormSubmit}
@@ -167,7 +166,7 @@ const EditFormGeneral = (props) => {
                 </Error>
               }
               <p><Link to={`/trips/${props.match.params.id}`}>
-                  <FontAwesomeIcon icon={faArrowCircleLeft} size="2x" />
+                  <FontAwesomeIconComponent chosenIcon={"faArrowCircleLeft"} size="2x" />
                 </Link>
               </p> 
             </React.Fragment>

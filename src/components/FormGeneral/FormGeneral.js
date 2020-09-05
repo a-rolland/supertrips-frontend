@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Form, Input, Textarea } from "./styles";
-import Button from "../Button/Button";
+import Button from "../ElementalComponents/Button/Button";
 import LocationSearchInput from "../LocationSearchInput/LocationSearchInput";
 import Map from "../Map/Map";
 

@@ -5,8 +5,7 @@ import experienceService from "../Services/experience-service";
 import { StyledCreateForm, Loading, Error } from "./styles"
 import { Link } from "react-router-dom";
 import FormGeneral from "../FormGeneral/FormGeneral";
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faArrowCircleLeft, faSpinner } from '@fortawesome/free-solid-svg-icons'
+import FontAwesomeIconComponent from "../ElementalComponents/FontAwesomeIconComponent/FontAwesomeIconComponent";
 
 const CreateFormGeneral = (props) => {
   const [showError, setShowError] = useState("")
@@ -50,7 +49,7 @@ const CreateFormGeneral = (props) => {
   return (
     <StyledCreateForm>
       {loading
-        ? <Loading><FontAwesomeIcon icon={faSpinner} size="2x" /><p>Loading</p></Loading>
+        ? <Loading><FontAwesomeIconComponent chosenIcon={"faSpinner"} size="2x" /><p>Loading</p></Loading>
         : <FormGeneral
             formTitle={`Create a new ${props.formType}`}
             formSubmit={handleFormSubmit}
@@ -66,7 +65,7 @@ const CreateFormGeneral = (props) => {
       }
       <p>
         <Link to={`${redirectLink}`}>
-          <FontAwesomeIcon icon={faArrowCircleLeft} size="2x" />
+        <FontAwesomeIconComponent chosenIcon={"faArrowCircleLeft"} size="2x" />
         </Link>
       </p>
     </StyledCreateForm>

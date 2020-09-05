@@ -4,9 +4,8 @@ import stepService from "../Services/step-service";
 import { StyledTrip, Duration, OwnerControls, Ul, Box, Li, Back } from "./styles"
 import Step from "../Step/Step";
 import { Link } from "react-router-dom";
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faPlus, faFeatherAlt, faHourglassHalf } from '@fortawesome/free-solid-svg-icons'
 import Map from "../Map/Map";
+import FontAwesomeIconComponent from "../ElementalComponents/FontAwesomeIconComponent/FontAwesomeIconComponent";
 
 const Trip = (props) => {
   const initialState = {
@@ -63,7 +62,7 @@ const Trip = (props) => {
     <StyledTrip>
       <h1>{state.trip.title}</h1>
       <Duration>
-        <FontAwesomeIcon icon={faHourglassHalf} size="1x" />
+        <FontAwesomeIconComponent chosenIcon={"faHourglassHalf"} size="1x" />
         <span>{state.trip.duration} days</span>
       </Duration>
       <img src={state.trip.imageUrl} alt="trip cover pic" />
@@ -86,19 +85,19 @@ const Trip = (props) => {
         <>
           <OwnerControls>
             <Link to={{pathname: `/trips/${state.trip._id}/add-step`, state: { trip: state.trip }}}>
-              <FontAwesomeIcon icon={faPlus} />
+            <FontAwesomeIconComponent chosenIcon={"faPlus"} />
               <span>Add a step</span>
             </Link>
           </OwnerControls>
           <OwnerControls>
             <Link to={{	pathname: `/trips/edit/${state.trip._id}`, state: { trip: state.trip }}}>
-              <FontAwesomeIcon icon={faFeatherAlt} />
+            <FontAwesomeIconComponent chosenIcon={"faFeatherAlt"} />
               <span>Edit trip</span>
             </Link>
           </OwnerControls>
         </>
       )}
-      <Back><Link to="/trips">Back to trips</Link></Back>
+      {/* <Back><Link to="/trips">Back to trips</Link></Back> */}
     </StyledTrip>
   );
 };

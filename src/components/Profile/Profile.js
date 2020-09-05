@@ -1,9 +1,10 @@
 import React, { useState, useCallback } from "react";
-import Button from "../Button/Button.js";
+import Button from "../ElementalComponents/Button/Button.js";
 import { Link } from "react-router-dom";
 import { StyledProfile } from "./styles";
 import EditProfilePictureForm from "../EditFormGeneral/EditProfilePictureForm"
 import authService from "../Services/auth-service.js";
+import ProfilePicture from "../ElementalComponents/ProfilePicture/ProfilePicture.js";
 
 const Profile = (props) => {
   const [userState, setUserState] = useState({ loggedInUser: props.userInSession})
@@ -29,7 +30,7 @@ const Profile = (props) => {
   return (
     <StyledProfile>
       <h1>Profile</h1>
-      <img src={userState.loggedInUser.profilePicture} alt="Your profile pic" />
+      <ProfilePicture src={userState.loggedInUser.profilePicture} width="150px" height="150px" margin="0 auto 20px" />
       { showProfilePictureForm &&
         <EditProfilePictureForm updateProfilePicture={updateProfilePicture} {...props} />
       }

@@ -2,9 +2,8 @@ import React, { useState, useEffect  } from "react";
 import authService from "../Services/auth-service";
 import { Nav, Dropdown } from "./styles";
 import { Link } from "react-router-dom";
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faBars, faTimes } from '@fortawesome/free-solid-svg-icons'
-import Button from "../Button/Button";
+import Button from "../ElementalComponents/Button/Button";
+import FontAwesomeIconComponent from "../ElementalComponents/FontAwesomeIconComponent/FontAwesomeIconComponent";
 
 const Navbar = (props) => {
   const initialState = { loggedInUser: null };
@@ -60,13 +59,13 @@ const Navbar = (props) => {
         <Link to="/" onClick={closeDropdown}>Supertrips</Link>
       </h3>
       <span>
-        <FontAwesomeIcon
-          icon={ showDropdown ? faTimes : faBars}
+        <FontAwesomeIconComponent
+          chosenIcon={showDropdown ? "faTimes" : "faBars"}
           size="lg"
           color={dropDownButtonColor}
-          onMouseEnter={toggleDropdownButtonColor}
-          onMouseLeave={toggleDropdownButtonColor}
-          onClick={toggleDropdown} 
+          handleMouseEnter={toggleDropdownButtonColor}
+          handleMouseLeave={toggleDropdownButtonColor}
+          handleClick={toggleDropdown}
         />
       </span>
       <Dropdown showDropdown={showDropdown ? "flex" : "none"}>

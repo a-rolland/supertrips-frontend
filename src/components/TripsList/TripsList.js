@@ -1,8 +1,8 @@
 import React from 'react'
 import { Ul, LiContainer, Li } from "./styles"
 import { Link } from 'react-router-dom';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faHourglassHalf } from '@fortawesome/free-solid-svg-icons'
+import ProfilePicture from '../ElementalComponents/ProfilePicture/ProfilePicture';
+import FontAwesomeIconComponent from '../ElementalComponents/FontAwesomeIconComponent/FontAwesomeIconComponent';
 
 const TripsList = props => {
 
@@ -21,8 +21,12 @@ const TripsList = props => {
           <div>
             <h4>{trip.title}</h4>
             <div>
-              <FontAwesomeIcon icon={faHourglassHalf} size="1x" />
+              <FontAwesomeIconComponent chosenIcon={"faHourglassHalf"} size="1x" />
               <span>{trip.duration} days</span>
+            </div>
+            <div style={{display:"flex", alignItems:"center", marginTop:"20px"}}>
+              <ProfilePicture src={trip.author.profilePicture} width="20px" height="20px" margin="5px 5px 5px 0" display="inline-block" />
+              <span>Author: {trip.author.username}</span>
             </div>
           </div>
         </Link>

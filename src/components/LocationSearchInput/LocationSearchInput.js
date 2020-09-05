@@ -3,9 +3,8 @@ import PlacesAutocomplete, {
   geocodeByAddress,
   getLatLng,
 } from "react-places-autocomplete";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faSpinner } from "@fortawesome/free-solid-svg-icons";
 import { Input, PlaceSuggestion } from "./styles";
+import FontAwesomeIconComponent from "../ElementalComponents/FontAwesomeIconComponent/FontAwesomeIconComponent";
 
 class LocationSearchInput extends React.Component {
   constructor(props) {
@@ -44,7 +43,7 @@ class LocationSearchInput extends React.Component {
               })}
             />
             <div className="autocomplete-dropdown-container">
-              {loading && <FontAwesomeIcon icon={faSpinner} size="2x" />}
+              {loading && <FontAwesomeIconComponent chosenIcon={"faSpinner"} size="2x" />}
               {suggestions.map((suggestion) => {
                 const className = suggestion.active
                   ? "suggestion-item--active"

@@ -1,11 +1,10 @@
 import React, { useState, useEffect } from 'react'
 import tripService from "../Services/trip-service";
 import TripsList from "../TripsList/TripsList";
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faSuitcaseRolling } from '@fortawesome/free-solid-svg-icons'
 import { Link } from "react-router-dom";
 import { AddLogo } from "./styles";
-import Button from '../Button/Button';
+import Button from '../ElementalComponents/Button/Button';
+import FontAwesomeIconComponent from '../ElementalComponents/FontAwesomeIconComponent/FontAwesomeIconComponent';
 
 const MyTrips = (props) => {
   const initialState = {
@@ -50,7 +49,7 @@ const MyTrips = (props) => {
       { state.loggedInUser &&
         <AddLogo>
           <Link to="/create-trip">
-            <FontAwesomeIcon icon={faSuitcaseRolling} size="2x" />
+            <FontAwesomeIconComponent chosenIcon={"faSuitcaseRolling"} size="2x" />
             <span>NEW TRIP</span>
           </Link>
         </AddLogo>

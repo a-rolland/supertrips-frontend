@@ -3,10 +3,9 @@ import tripService from "../Services/trip-service";
 import stepService from "../Services/step-service";
 import experienceService from "../Services/experience-service";
 import Experience from "../Experience/Experience"
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faChevronCircleDown, faChevronCircleRight, faAsterisk, faFeatherAlt } from '@fortawesome/free-solid-svg-icons'
 import { StyledStep, OwnerControls, StyledStepHeader, Ul, Box, Li } from "./styles"
 import { Link } from "react-router-dom";
+import FontAwesomeIconComponent from "../ElementalComponents/FontAwesomeIconComponent/FontAwesomeIconComponent";
 
 const Step = (props) => {
   const initialState = {
@@ -80,8 +79,8 @@ const Step = (props) => {
       <StyledStepHeader onClick={toggleExpand}>
         {
           state.expanded
-          ? <FontAwesomeIcon icon={faChevronCircleDown} />
-          : <FontAwesomeIcon icon={faChevronCircleRight} />
+          ? <FontAwesomeIconComponent chosenIcon={"faChevronCircleDown"} />
+          : <FontAwesomeIconComponent chosenIcon={"faChevronCircleRight"} />
         }
         {state.step.title}  
       </StyledStepHeader>
@@ -98,13 +97,13 @@ const Step = (props) => {
               <>
                 <OwnerControls>
                   <Link to={{ pathname: `/trips/${state.step.trip._id}/steps/${state.step._id}/add-experience`, state: { trip: state.trip }}}>
-                    <FontAwesomeIcon icon={faAsterisk} />
+                    <FontAwesomeIconComponent chosenIcon={"faAsterisk"} />
                     <span>Add an experience</span>
                   </Link>
                 </OwnerControls>
                 <OwnerControls>
                   <Link to={`/trips/${state.step.trip._id}/edit-step/${state.step._id}`}>
-                    <FontAwesomeIcon icon={faFeatherAlt} />
+                    <FontAwesomeIconComponent chosenIcon={"faFeatherAlt"} />
                     <span>Edit step</span>
                   </Link>
                 </OwnerControls>

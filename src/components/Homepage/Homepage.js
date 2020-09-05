@@ -1,10 +1,9 @@
 import React, { useState, useEffect } from "react";
 import SearchBar from "../SearchBar/SearchBar";
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faSuitcaseRolling } from '@fortawesome/free-solid-svg-icons'
 import { AddLogo } from "./styles"
 import { Link } from "react-router-dom";
-import Button from "../Button/Button";
+import Button from "../ElementalComponents/Button/Button";
+import FontAwesomeIconComponent from "../ElementalComponents/FontAwesomeIconComponent/FontAwesomeIconComponent";
 
 const Homepage = (props) => {
   const initialSearch = {
@@ -52,7 +51,7 @@ const Homepage = (props) => {
       { loggedInUser && 
         <AddLogo>
           <Link to="/create-trip">
-            <FontAwesomeIcon icon={faSuitcaseRolling} size="2x" />
+            <FontAwesomeIconComponent chosenIcon={"faSuitcaseRolling"} size="2x" />
             <span>NEW TRIP</span>
           </Link>
         </AddLogo>
