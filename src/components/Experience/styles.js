@@ -53,4 +53,5 @@ export const Li = styled.li`
 export const StyledDateTime = styled.span`
   margin: 15px 5px 5px 40px;
   display: block;
+  opacity: ${(props) => props.opacity};
 `

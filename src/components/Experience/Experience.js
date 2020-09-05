@@ -49,14 +49,20 @@ const Experience = (props) => {
           {state.experience.title}
           {state.experience.date &&
             <React.Fragment>
-              <StyledDateTime>
-                <FontAwesomeIconComponent chosenIcon={"faCalendarAlt"} color="grey" />
-                {state.experience.date}
-              </StyledDateTime>
-              <StyledDateTime>
-                <FontAwesomeIconComponent chosenIcon={"faClock"} color="grey" />
-                {state.experience.time}
-              </StyledDateTime>
+              { (state.experience.showDate || props.author._id === state.loggedInUser._id) &&
+                <StyledDateTime opacity={!state.experience.showDate ? "0.4" : "1" }>
+                  <FontAwesomeIconComponent chosenIcon={"faCalendarAlt"} color="grey" />
+                  {state.experience.date}
+                  {!state.experience.showDate && " (Hidden)"}
+                </StyledDateTime>
+              }
+              { (state.experience.showTime || props.author._id === state.loggedInUser._id) &&
+                <StyledDateTime opacity={!state.experience.showTime ? "0.4" : "1" }>
+                  <FontAwesomeIconComponent chosenIcon={"faClock"} color="grey" />
+                  {state.experience.time}
+                  {!state.experience.showTime && " (Hidden)"}
+                </StyledDateTime>
+              }
             </React.Fragment>}
         </span>
       </StyledStepHeader>

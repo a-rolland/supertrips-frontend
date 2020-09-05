@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import tripService from "../Services/trip-service";
 import stepService from "../Services/step-service";
-import { StyledTrip, Duration, OwnerControls, Ul, Box, Li, Back } from "./styles"
+import { StyledTrip, Duration, OwnerControls, Ul, Box, Li } from "./styles"
 import Step from "../Step/Step";
 import ProfilePicture from "../ElementalComponents/ProfilePicture/ProfilePicture"
 import { Link } from "react-router-dom";

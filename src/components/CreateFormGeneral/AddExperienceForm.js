@@ -20,9 +20,14 @@ const AddExperienceForm = (props) => {
       name: "time"
     },
     {
-      label: "Make date/time public ? (Hidden by default)",
+      label: "Make date public ? (Hidden by default)",
       type: "checkbox",
-      name: "showDateTime",
+      name: "showDate",
+    },
+    {
+      label: "Make time public ? (Hidden by default)",
+      type: "checkbox",
+      name: "showTime",
     },
     {
       label: "Description",
@@ -42,7 +47,8 @@ const AddExperienceForm = (props) => {
     title: "",
     date: "",
     time: "",
-    showDateTime: false,
+    showDate: false,
+    showTime: false,
     step: props.match.params.stepId,
     description: "",
     place: null
