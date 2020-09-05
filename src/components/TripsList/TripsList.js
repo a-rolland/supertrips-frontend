@@ -25,8 +25,8 @@ const TripsList = props => {
               <span>{trip.duration} days</span>
             </div>
             <div style={{display:"flex", alignItems:"center", marginTop:"20px"}}>
-              <ProfilePicture src={trip.author.profilePicture} width="20px" height="20px" margin="5px 5px 5px 0" display="inline-block" />
-              <span>Author: {trip.author.username}</span>
+              <ProfilePicture src={trip.author.profilePicture} width="20px" height="20px" margin="5px 10px 5px 0" display="inline-block" />
+              <span>By {trip.author.username}</span>
             </div>
           </div>
         </Link>

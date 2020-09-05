@@ -58,7 +58,7 @@ const Step = (props) => {
       .catch((error) =>
         console.log("Error while getting step details :", error)
       );
-  }, [props.userInSession, props.step.trip._id, props.step.trip._id, props.step._id]);
+  }, [props.userInSession, props.step.trip._id, props.step._id]);
 
   const experiencesList = state.experiences.map((experience, index) => {
     return(

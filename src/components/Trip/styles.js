@@ -14,10 +14,6 @@ export const StyledTrip = styled.div`
     height: auto;
     width: 100%;
   }
-
-  div {
-    width: 100%;
-  }
 `
 
 export const Duration = styled.div`
@@ -40,6 +36,7 @@ export const Ul = styled.ul`
 
 export const Box = styled.div`
   margin: 0 auto;
+  width: 100%;
 `;
 
 export const Li = styled.li`

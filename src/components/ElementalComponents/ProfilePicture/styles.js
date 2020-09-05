@@ -2,6 +2,7 @@ import styled from "styled-components";
 
 export const StyledProfilePicture = styled.div`
   display: ${(props) => props.display || "block"};
+  align-self: ${(props) => props.alignSelf};
   width: ${(props) => props.width};
   height: ${(props) => props.height};
   margin: ${(props) => props.margin};

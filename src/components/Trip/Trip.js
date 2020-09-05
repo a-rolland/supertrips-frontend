@@ -3,6 +3,7 @@ import tripService from "../Services/trip-service";
 import stepService from "../Services/step-service";
 import { StyledTrip, Duration, OwnerControls, Ul, Box, Li, Back } from "./styles"
 import Step from "../Step/Step";
+import ProfilePicture from "../ElementalComponents/ProfilePicture/ProfilePicture"
 import { Link } from "react-router-dom";
 import Map from "../Map/Map";
 import FontAwesomeIconComponent from "../ElementalComponents/FontAwesomeIconComponent/FontAwesomeIconComponent";
@@ -65,6 +66,13 @@ const Trip = (props) => {
         <FontAwesomeIconComponent chosenIcon={"faHourglassHalf"} size="1x" />
         <span>{state.trip.duration} days</span>
       </Duration>
+      { state.trip.author && 
+        <div style={{display:"flex", alignItems:"center", justifyContent:"center", margin:"20px auto"}}>
+          <ProfilePicture src={state.trip.author.profilePicture} width="50px" height="50px" margin="5px 15px 5px 0" display="inline-block" />
+          <span>By {state.trip.author.username}</span>
+        </div>
+      }
+      
       <img src={state.trip.imageUrl} alt="trip cover pic" />
       <Map
         address={""}
