@@ -11,8 +11,8 @@ export const StyledTrip = styled.div`
   }
 
   img {
-    height: auto;
-    width: 100%;
+    max-height: 300px;
+    width: auto;
   }
 `
 

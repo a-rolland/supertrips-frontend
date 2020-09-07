@@ -137,12 +137,13 @@ const Experience = (props) => {
           {state.experience.place && (
             <MapContainer>
               <Map
+                experienceMap
                 address={state.experience.place.address}
                 lat={state.experience.place.lat}
                 lng={state.experience.place.lng}
                 zoom="15"
-                height="150px"
-                width="500px"
+                // height="150px"
+                // width="500px"
               />
             </MapContainer>
           )}

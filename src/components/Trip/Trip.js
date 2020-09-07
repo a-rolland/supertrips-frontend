@@ -73,14 +73,15 @@ const Trip = (props) => {
         </div>
       }
       
-      <img src={state.trip.imageUrl} alt="trip cover pic" />
+      {/* <img src={state.trip.imageUrl} alt="trip cover pic" /> */}
       <Map
+        tripMap
         address={""}
         lat={45}
         lng={3}
         zoom="6"
-        height="300px"
-        width="100%"
+        // height="300px"
+        // width="100%"
       />
       { state.steps && 
         <Ul>

@@ -7,17 +7,9 @@ const Map = (props) => {
     name: props.address,
     lat: props.lat,
     lng: props.lng,
-    zoom: props.zoom,
-    showMap: false,
+    zoom: props.zoom
   };
   const [state, setState] = useState(initialState);
-
-  // const toggleMap = () => {
-  //   setState((state) => ({
-  //     ...state,
-  //     showMap: !state.showMap,
-  //   }));
-  // };
 
   const center = {
     lat: state.lat,
@@ -54,7 +46,7 @@ const Map = (props) => {
   };
 
   return (
-    <MapContainer height={props.height} width={props.width}>
+    <MapContainer tripMap={props.tripMap} experienceMap={props.experienceMap}>
       <GoogleMapReact
         key={state.name}
         bootstrapURLKeys={ { key: ''} }
