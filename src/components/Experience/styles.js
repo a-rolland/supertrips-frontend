@@ -55,3 +55,39 @@ export const StyledDateTime = styled.span`
   display: block;
   opacity: ${(props) => props.opacity};
 `
+
+export const Description = styled.p`
+  margin: 20px;
+  margin-left: 40px;
+`
+
+export const AddPhotoLogo = styled.span`
+  margin: 15px 5px 5px 40px;
+  display: block;
+
+  &:hover {
+    cursor: pointer;
+    color: grey;
+  }
+`
+
+export const MapContainer = styled.div`
+  display: flex;
+  justify-content: center;
+`
+
+export const PicturesContainer = styled.div`
+  text-align: center;
+
+  img {
+    height: 200px;
+    width: auto;
+    margin: 20px;
+
+    @media (max-width: 767px) {
+      height: 100px;
+      width: auto;
+      margin: 10px;
+    }
+  }
+`

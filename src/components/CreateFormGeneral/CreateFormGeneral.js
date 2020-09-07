@@ -22,15 +22,22 @@ const CreateFormGeneral = (props) => {
       uploadData.append("endDate", formObject.endDate);
       console.log("uploadData",uploadData)
     }
+    if (props.addPhotoToExperience) {
+      uploadData.append("imageUrl", formObject.archive);
+    }
     const dynamicService = props.tripForm
       ? tripService.newTrip(uploadData)
       : props.stepForm
       ? stepService.newStep(formObject)
-      : experienceService.newExperience(formObject)
+      : props.experienceForm
+      ? experienceService.newExperience(formObject)
+      : experienceService.addPictureToExperience(props.experienceId, uploadData)
     dynamicService  
       .then((response) => {
         setLoading(false)
         console.log(`New ${props.formType} created !`, response)
+        props.addPhotoToExperience && props.closeShowAddPhoto()
+        props.addPhotoToExperience && props.updateNewPicture()
         props.tripForm
           ? props.history.push("/trips")
           : props.history.push(`/trips/${props.tripId}`)
@@ -51,11 +58,12 @@ const CreateFormGeneral = (props) => {
       {loading
         ? <Loading><FontAwesomeIconComponent chosenIcon={"faSpinner"} size="2x" /><p>Loading</p></Loading>
         : <FormGeneral
-            formTitle={`Create a new ${props.formType}`}
+            formType={props.formType}
+            formTitle={props.addPhotoToExperience || `Create a new ${props.formType}`}
             formSubmit={handleFormSubmit}
             formState={props.initialState}
             formInputs={props.formInputs}
-            formButton="CREATE"
+            formButton={props.addPhotoToExperience ? "ADD" : "CREATE"}
           />
 }
       { showError &&
@@ -63,11 +71,14 @@ const CreateFormGeneral = (props) => {
           {showError}
         </Error>
       }
-      <p>
-        <Link to={`${redirectLink}`}>
-          <FontAwesomeIconComponent chosenIcon={"faArrowCircleLeft"} size="2x" />
-        </Link>
-      </p>
+      {
+        props.addPhotoToExperience ||
+          <p>
+            <Link to={`${redirectLink}`}>
+              <FontAwesomeIconComponent chosenIcon={"faArrowCircleLeft"} size="2x" />
+            </Link>
+          </p>
+      }
     </StyledCreateForm>
   );
 };

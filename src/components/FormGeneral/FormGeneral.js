@@ -116,7 +116,7 @@ const FormGeneral = (props) => {
       <Form onSubmit={(event) => liftFormSubmit(event, state)}>
         <h3>{props.formTitle}</h3>
         {dynamicInputs}
-        { props.auth || <p>*required</p>}
+        { (props.auth || props.formType === "experience photo") || <p>*required</p>}
         <Button formButton={props.formButton} />
       </Form>
     </div>

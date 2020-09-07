@@ -46,4 +46,11 @@ export default {
       .then((response) => response.data)
       .catch(errorHandler);
   },
+
+  addPictureToExperience: (id, formFields) => {
+    return experienceService
+      .put(`/experiences/addPicture/${id}`, formFields)
+      .then((response) => response.data)
+      .catch(errorHandler);
+  }
 };
