@@ -15,14 +15,14 @@ const AddExperienceForm = (props) => {
       name: "date",
     },
     {
-      label: "Time*",
-      type: "time",
-      name: "time"
-    },
-    {
       label: "Make date public ? (Hidden by default)",
       type: "checkbox",
       name: "showDate",
+    },
+    {
+      label: "Time*",
+      type: "time",
+      name: "time"
     },
     {
       label: "Make time public ? (Hidden by default)",

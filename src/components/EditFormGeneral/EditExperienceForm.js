@@ -47,17 +47,17 @@ const EditExperienceForm = (props) => {
       name: "date",
     },
     {
-      label: "Time*",
-      type: "time",
-      value: experienceState.time,
-      name: "time",
-    },
-    {
       label: "Make date public ? (Hidden by default)",
       type: "checkbox",
       value: experienceState.showDate,
       checked: experienceState.showDate,
       name: "showDate",
+    },
+    {
+      label: "Time*",
+      type: "time",
+      value: experienceState.time,
+      name: "time",
     },
     {
       label: "Make time public ? (Hidden by default)",

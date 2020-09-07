@@ -106,7 +106,7 @@ const Experience = (props) => {
                     color="grey"
                   />
                   {state.experience.date}
-                  {!state.experience.showDate && " (Hidden)"}
+                  {!state.experience.showDate && " (Hidden for other users)"}
                 </StyledDateTime>
               )}
               {(state.experience.showTime ||
@@ -119,7 +119,7 @@ const Experience = (props) => {
                     color="grey"
                   />
                   {state.experience.time}
-                  {!state.experience.showTime && " (Hidden)"}
+                  {!state.experience.showTime && " (Hidden for other users)"}
                 </StyledDateTime>
               )}
             </React.Fragment>
