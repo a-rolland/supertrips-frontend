@@ -17,7 +17,7 @@ export const Nav = styled.div`
   align-items: center;
   padding: 0;
 
-  @media (max-width: 767px) {
+  @media (max-width: 768px) {
     justify-content: space-between;
   }
 
@@ -36,7 +36,7 @@ export const Nav = styled.div`
       cursor: pointer;
     }
 
-    @media (min-width: 768px) {
+    @media (min-width: 767px) {
       display: none;
     }
   }
@@ -73,7 +73,7 @@ export const Dropdown = styled.ul`
     }
   }
 
-  @media (min-width: 768px) {
+  @media (min-width: 767px) {
     display: flex;
     flex-direction: row;
     align-items: center;

@@ -24,9 +24,9 @@ const Navbar = (props) => {
         height: window.innerHeight
       };
     }
-    size.width > 767 && closeDropdown()
     const handleResize = () => setSize(getSize())
     window.addEventListener('resize', handleResize)
+    size.width >= 767 && closeDropdown()
 
     console.log("User In Session :", props.userInSession);
     setState({ loggedInUser: props.userInSession });

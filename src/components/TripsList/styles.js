@@ -55,10 +55,16 @@ export const Li = styled.li`
       margin-right: 40px;
       animation: slow-popup 0.5s ease-in-out forwards;
 
-      @media (max-width: 767px) {
+      @media (max-width: 667px) {
         margin-right: 0;
         height: auto;
         width: 100%;
+      }
+
+      @media (min-width: 992px) {
+        height: auto;
+        width: 400px;
+        margin-right: 40px;
       }
     }
 
