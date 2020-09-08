@@ -24,7 +24,7 @@ const Trip = (props) => {
       .then((response) => {
         console.log("Trip details :", response);
         response === null 
-        ? setShowError("This trip doesn't exist.")
+        ? setShowError("Sorry, this trip doesn't exist.")
         : setState((state) => ({
             ...state,
             loggedInUser: props.userInSession,
@@ -71,7 +71,8 @@ const Trip = (props) => {
         <Error>
           {showError}
         </Error>
-        :
+        : (state.trip && state.trip.isPublic) || (state.trip && state.loggedInUser && state.trip.author._id === state.loggedInUser._id)
+        ?
         <React.Fragment>
         <span>
           <h1>{state.trip.title}</h1>
@@ -128,6 +129,7 @@ const Trip = (props) => {
           </Link>
         </p> 
         </React.Fragment>
+        : "Sorry, this is a private trip."
       }
     </StyledTrip>
   );
