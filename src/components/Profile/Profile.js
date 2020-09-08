@@ -39,6 +39,9 @@ const Profile = (props) => {
       <Link to="/profile/my-trips">
         <Button formButton="MY TRIPS" width={"250px"} />
       </Link>
+      <Link to="/profile/favorite-trips">
+        <Button formButton="FAVORITE TRIPS" width={"250px"} />
+      </Link>
       <Link to="/create-trip">
         <Button formButton="CREATE A NEW TRIP" width={"250px"} />
       </Link>
