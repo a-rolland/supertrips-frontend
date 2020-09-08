@@ -26,6 +26,13 @@ export default {
       .catch(errorHandler);
   },
 
+  fullTripExperiences: (id) => {
+    return experienceService
+      .get(`/experiences/trip/${id}`)
+      .then((response) => response.data)
+      .catch(errorHandler);
+  },
+
   experienceDetails: (id) => {
     return experienceService
       .get(`/experienceDetails/${id}`)

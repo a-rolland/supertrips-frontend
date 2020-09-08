@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import tripService from "../Services/trip-service";
 import stepService from "../Services/step-service";
+import experienceService from "../Services/experience-service";
 import { StyledTrip, Duration, OwnerControls, Ul, Box, Li, Error } from "./styles"
 import Step from "../Step/Step";
 import ProfilePicture from "../ElementalComponents/ProfilePicture/ProfilePicture"
@@ -14,30 +15,58 @@ const Trip = (props) => {
   const initialState = {
     loggedInUser: null,
     trip: [],
-    steps: []
+    steps: [],
+    experiences: [],
+    lat: null,
+    lng: null
   };
   const [state, setState] = useState(initialState);
 
   useEffect(() => {
+    experienceService
+      .fullTripExperiences(props.match.params.id)
+        .then((experienceResponse) => {
+          const experienceLatAverage = experienceResponse
+          .filter(experience => experience.place)
+          .reduce((acc, curr) => acc + curr.place.lat, 0).toFixed(2) / experienceResponse
+          .filter(experience => experience.place).length
+
+          const experienceLngAverage = experienceResponse
+            .filter(experience => experience.place)
+            .reduce((acc, curr) => acc + curr.place.lng, 0).toFixed(2) / experienceResponse
+            .filter(experience => experience.place).length
+          console.log("Experiences of this trip:", experienceResponse)
+
+          console.log(experienceLatAverage, experienceLngAverage)
+          setState((state) => ({
+            ...state,
+            experiences: experienceResponse,
+            lat: experienceLatAverage,
+            lng: experienceLngAverage
+          }));
+        })
+        .catch((error) => 
+          console.log("Error while getting experiences :", error
+        ))
     tripService
       .tripDetails(props.match.params.id)
-      .then((response) => {
-        console.log("Trip details :", response);
-        response === null 
+      .then((tripResponse) => {
+        console.log("Trip details :", tripResponse);
+        tripResponse === null 
         ? setShowError("Sorry, this trip doesn't exist.")
         : setState((state) => ({
             ...state,
             loggedInUser: props.userInSession,
-            trip: response
+            trip: tripResponse
           }));
           stepService
             .steps(props.match.params.id)
-              .then((response) => {
-                console.log("Steps of this trip:", response)
+              .then((stepResponse) => {
+                console.log("Steps of this trip:", stepResponse)
                 setState((state) => ({
                   ...state,
                   loggedInUser: props.userInSession,
-                  steps: response
+                  steps: stepResponse
                 }));
               })
               .catch((error) => 
@@ -64,6 +93,17 @@ const Trip = (props) => {
     )
   })
 
+  const allExperiencesCoords = state.experiences
+    .filter(experience => experience.place)
+    .map((experience) => {
+      return(
+        {
+          lat: experience.place.lat,
+          lng: experience.place.lng
+        }
+      )
+  })
+  
   return (
     <StyledTrip>
       { showError
@@ -92,14 +132,18 @@ const Trip = (props) => {
         }
         
         {/* <img src={state.trip.imageUrl} alt="trip cover pic" /> */}
-        <Map
-          tripMap
-          mapType = "tripPresentation"
-          address={""}
-          lat={45}
-          lng={3}
-          zoom="6"
-        />
+        { state.experiences && state.experiences.filter(experience => experience.place).length >= 1 &&
+          <Map
+            tripMap
+            mapType = "tripPresentation"
+            address={""}
+            lat={state.experiences.length === 1 ? state.experiences[0].place.lat : state.lat}
+            lng={state.experiences.length === 1 ? state.experiences[0].place.lng : state.lng}
+            zoom="14"
+            allExperiencesCoords={allExperiencesCoords}
+            hasOnlyOneLocalisation={allExperiencesCoords.length === 1}
+          />
+        }
         { state.steps && 
           <Ul>
             <Box>

@@ -5,8 +5,8 @@ import { MapContainer } from "./styles";
 const Map = (props) => {
   const initialState = {
     name: props.address,
-    lat: props.lat,
-    lng: props.lng,
+    lat: parseFloat(props.lat),
+    lng: parseFloat(props.lng),
     zoom: props.zoom
   };
   const [state, setState] = useState(initialState);
@@ -33,22 +33,40 @@ const Map = (props) => {
     };
   };
 
-  const renderMarkers = (map, maps) => {
-    if (props.mapType === "tripPresentation") {
-      const elements = [
-        {
-          lat: 40,
-          lng: 3
-        },
-        {
-          lat: 42,
-          lng: 2.5
-        }
-      ]
+  const getMapBounds = (map, maps, places) => {
+    const bounds = new maps.LatLngBounds();
   
-      elements.forEach((elem, index) => {
+    places.forEach((place) => {
+      bounds.extend(new maps.LatLng(
+        place.lat,
+        place.lng,
+      ));
+    });
+    return bounds;
+  };
+
+  const bindResizeListener = (map, maps, bounds) => {
+    maps.event.addDomListenerOnce(map, 'idle', () => {
+      maps.event.addDomListener(window, 'resize', () => {
+        map.fitBounds(bounds);
+      });
+    });
+  };
+
+  const apiIsLoaded = (map, maps, places) => {
+    // Get bounds by our places
+    const bounds = getMapBounds(map, maps, places);
+    // Fit map to bounds
+    map.fitBounds(bounds);
+    // Bind the resize listener
+    bindResizeListener(map, maps, bounds);
+  };
+
+  const renderMarkers = (map, maps) => {
+    if (props.mapType === "tripPresentation") {  
+      props.allExperiencesCoords.forEach((coord) => {
         let marker = new maps.Marker({
-          position: elem,
+          position: coord,
           map,
         });
       })
@@ -74,7 +92,10 @@ const Map = (props) => {
         defaultZoom={zoom}
         options={getMapOptions}
         yesIWantToUseGoogleMapApiInternals
-        onGoogleApiLoaded={({ map, maps }) => renderMarkers(map, maps)}
+        onGoogleApiLoaded={({ map, maps }) => {
+          props.tripMap && !props.hasOnlyOneLocalisation && apiIsLoaded(map, maps, props.allExperiencesCoords)
+          renderMarkers(map, maps)
+        }}
       />
     </MapContainer>
   );

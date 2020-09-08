@@ -4,6 +4,7 @@ export const MapContainer = styled.div`
   ${(props) => props.formMap && "box-sizing: border-box; height: 200px; border-radius: 4px;"};
 
   @media (max-width: 600px) {
+    ${(props) => props.tripMap && "width: 100%; height: 200px;"};
     ${(props) => props.experienceMap && "width: 300px; height: 200px; margin: 0 auto;"};
   }
 
