@@ -65,7 +65,7 @@ const Trip = (props) => {
       <span>
         <h1>{state.trip.title}</h1>
         { state.loggedInUser && 
-          <AddToFavoritesLogo trip={state.trip} userInSession={state.loggedInUser} />
+          <AddToFavoritesLogo trip={state.trip} userInSession={state.loggedInUser} updateUser={props.updateUser} />
         }
       </span>
       <Duration>

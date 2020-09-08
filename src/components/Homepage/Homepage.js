@@ -28,7 +28,7 @@ const Homepage = (props) => {
       pathname: "/search",
       state: {
         userInSession: props.userInSession,
-        searchKeys: searchState.search,
+        searchKeys: searchState.search
       },
     });
   };

@@ -32,6 +32,7 @@ const MyTrips = (props) => {
   const listTrips = <TripsList
                       trips={state.trips}
                       userInSession={state.loggedInUser}
+                      updateUser={props.updateUser}
                     />
 
   return (

@@ -19,6 +19,7 @@ const AddToFavoritesLogo = props => {
     authService.toggleAddToFavorites(tripId)
       .then(() => {
         updateUser()
+        props.updateUser()
       })
       .catch(err => console.log("An error occurred while adding/removing to/from favorites: ",err))
   }

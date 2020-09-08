@@ -31,7 +31,7 @@ const TripsList = props => {
                 <h3>{trip.title}</h3>
               </Link>
               { props.userInSession && 
-                <AddToFavoritesLogo trip={trip} userInSession={props.userInSession} />
+                <AddToFavoritesLogo trip={trip} userInSession={props.userInSession} updateUser={props.updateUser} />
               }
             </span>
             <div>

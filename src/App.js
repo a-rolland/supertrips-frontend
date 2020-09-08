@@ -47,6 +47,21 @@ const App = () => {
     }
   };
 
+  const handleUpdateUser = () => {
+    authService
+        .loggedIn()
+        .then((response) => {
+          setState({
+            loggedInUser: response,
+          });
+        })
+        .catch((err) => {
+          setState({
+            loggedInUser: false,
+          });
+        });
+  }
+
   fetchUser();
 
   return (
@@ -64,21 +79,21 @@ const App = () => {
           exact
           path="/trips"
           render={(props) => (
-            <Trips {...props} userInSession={state.loggedInUser} />
+            <Trips {...props} userInSession={state.loggedInUser} updateUser={handleUpdateUser} />
           )}
         />
         <Route
           exact
           path="/search"
           render={(props) => (
-            <SearchTripsResults {...props} userInSession={state.loggedInUser} />
+            <SearchTripsResults {...props} userInSession={state.loggedInUser} updateUser={handleUpdateUser} />
           )}
         />
         <Route
           exact
           path="/trips/:id"
           render={(props) => (
-            <Trip {...props} userInSession={state.loggedInUser} />
+            <Trip {...props} userInSession={state.loggedInUser} updateUser={handleUpdateUser} />
           )}
         />
         <ProtectedRoute
@@ -132,12 +147,14 @@ const App = () => {
           path="/profile/my-trips"
           userInSession={state.loggedInUser}
           component={MyTrips}
+          updateUser={handleUpdateUser}
         />
         <ProtectedRoute
           exact
           path="/profile/favorite-trips"
           userInSession={state.loggedInUser}
           component={MyFavoriteTrips}
+          updateUser={handleUpdateUser}
         />
         <ProtectedRoute
           exact
