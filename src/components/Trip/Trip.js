@@ -82,6 +82,7 @@ const Trip = (props) => {
       {/* <img src={state.trip.imageUrl} alt="trip cover pic" /> */}
       <Map
         tripMap
+        mapType = "tripPresentation"
         address={""}
         lat={45}
         lng={3}

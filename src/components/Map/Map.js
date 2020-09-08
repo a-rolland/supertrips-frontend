@@ -34,15 +34,35 @@ const Map = (props) => {
   };
 
   const renderMarkers = (map, maps) => {
-    const position = {
-      lat: state.lat,
-      lng: state.lng,
-    };
+    if (props.mapType === "tripPresentation") {
+      const elements = [
+        {
+          lat: 40,
+          lng: 3
+        },
+        {
+          lat: 42,
+          lng: 2.5
+        }
+      ]
+  
+      elements.forEach((elem, index) => {
+        let marker = new maps.Marker({
+          position: elem,
+          map,
+        });
+      })
+    } else {
+      const position = {
+        lat: state.lat,
+        lng: state.lng,
+      };
 
-    let marker = new maps.Marker({
-      position: position,
-      map,
-    });
+      let marker = new maps.Marker({
+        position: position,
+        map,
+      });
+    }
   };
 
   return (

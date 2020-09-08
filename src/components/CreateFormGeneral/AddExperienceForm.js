@@ -50,6 +50,7 @@ const AddExperienceForm = (props) => {
     showDate: false,
     showTime: false,
     step: props.match.params.stepId,
+    trip: props.match.params.id,
     description: "",
     place: null
   };
