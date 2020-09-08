@@ -7,6 +7,7 @@ import ProfilePicture from "../ElementalComponents/ProfilePicture/ProfilePicture
 import { Link } from "react-router-dom";
 import Map from "../Map/Map";
 import FontAwesomeIconComponent from "../ElementalComponents/FontAwesomeIconComponent/FontAwesomeIconComponent";
+import AddToFavoritesLogo from "../ElementalComponents/AddToFavoritesLogo/AddToFavoritesLogo";
 
 const Trip = (props) => {
   const initialState = {
@@ -61,7 +62,12 @@ const Trip = (props) => {
 
   return (
     <StyledTrip>
-      <h1>{state.trip.title}</h1>
+      <span>
+        <h1>{state.trip.title}</h1>
+        { state.loggedInUser && 
+          <AddToFavoritesLogo trip={state.trip} userInSession={state.loggedInUser} />
+        }
+      </span>
       <Duration>
         <FontAwesomeIconComponent chosenIcon={"faHourglassHalf"} size="1x" />
         <span>{state.trip.duration} days</span>
@@ -80,8 +86,6 @@ const Trip = (props) => {
         lat={45}
         lng={3}
         zoom="6"
-        // height="300px"
-        // width="100%"
       />
       { state.steps && 
         <Ul>

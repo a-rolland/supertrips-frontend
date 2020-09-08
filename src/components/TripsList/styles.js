@@ -86,6 +86,11 @@ export const TripContainer = styled.div`
       margin-right: 20px;
     }
 
+    h3 {
+      @media (min-width: 992px) {
+        font-size: 26px;
+    }
+
     div {
       @media (max-width: 767px) {
         display: flex;

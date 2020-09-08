@@ -28,7 +28,7 @@ const TripsList = props => {
                   state: { userInSession: props.loggedInUser, trip: trip },
                 }}
               >
-                <h4>{trip.title}</h4>
+                <h3>{trip.title}</h3>
               </Link>
               { props.userInSession && 
                 <AddToFavoritesLogo trip={trip} userInSession={props.userInSession} />

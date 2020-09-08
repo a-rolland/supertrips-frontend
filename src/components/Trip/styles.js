@@ -14,6 +14,17 @@ export const StyledTrip = styled.div`
     max-height: 300px;
     width: auto;
   }
+
+  span {
+    h1 {
+      display: inline-block;
+    }
+
+    svg {
+      margin-left: 20px;
+      padding-bottom: 2px;
+    }
+  }
 `
 
 export const Duration = styled.div`
