@@ -30,6 +30,7 @@ export default {
   },
 
   logout: () => {
+    localStorage.removeItem("loggedInUser");
     return authService.post("/logout", {}).then((response) => response.data);
   },
 

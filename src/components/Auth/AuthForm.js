@@ -13,6 +13,7 @@ const AuthForm = (props) => {
 
     dynamicService
       .then((response) => {
+        localStorage.setItem('loggedInUser', JSON.stringify(response))
         props.getUser(response);
         props.history.push("/");
       })

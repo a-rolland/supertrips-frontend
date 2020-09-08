@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Switch, Route } from "react-router-dom";
 import NavBar from "./components/Navbar/Navbar";
 import Homepage from "./components/Homepage/Homepage";
@@ -22,7 +22,7 @@ import MyFavoriteTrips from "./components/MyFavoriteTrips/MyFavoriteTrips";
 import NoMatch from "./components/NoMatch/NoMatch";
 
 const App = () => {
-  const initialState = { loggedInUser: null };
+  const initialState = { loggedInUser: JSON.parse(localStorage.getItem('loggedInUser')) || null };
   const [state, setState] = useState(initialState);
 
   const getTheUser = (userObj) => {
@@ -31,22 +31,26 @@ const App = () => {
     });
   };
 
-  const fetchUser = () => {
-    if (state.loggedInUser === null) {
-      authService
-        .loggedIn()
-        .then((response) => {
-          setState({
-            loggedInUser: response,
+  useEffect(() => {
+    const fetchUser = () => {
+      if (state.loggedInUser === null) {
+        authService
+          .loggedIn()
+          .then((response) => {
+            localStorage.setItem('loggedInUser', JSON.stringify(response));
+            setState({
+              loggedInUser: response,
+            })
+          })
+          .catch((err) => {
+            setState({
+              loggedInUser: false,
+            });
           });
-        })
-        .catch((err) => {
-          setState({
-            loggedInUser: false,
-          });
-        });
-    }
-  };
+      }
+    };
+    fetchUser();
+  }, [state.loggedInUser]);
 
   const handleUpdateUser = () => {
     authService
@@ -62,8 +66,6 @@ const App = () => {
           });
         });
   }
-
-  fetchUser();
 
   return (
     <StyledApp>
