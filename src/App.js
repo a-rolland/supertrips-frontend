@@ -19,6 +19,7 @@ import { StyledApp } from "./styles";
 import CreateTripForm from "./components/CreateFormGeneral/CreateTripForm";
 import MyTrips from "./components/MyTrips/MyTrips";
 import MyFavoriteTrips from "./components/MyFavoriteTrips/MyFavoriteTrips";
+import NoMatch from "./components/NoMatch/NoMatch";
 
 const App = () => {
   const initialState = { loggedInUser: null };
@@ -162,6 +163,7 @@ const App = () => {
           userInSession={state.loggedInUser}
           component={CreateTripForm}
         />
+        <Route component={NoMatch} />
       </Switch>
     </StyledApp>
   );
