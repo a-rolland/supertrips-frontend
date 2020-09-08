@@ -66,7 +66,7 @@ const Map = (props) => {
   };
 
   return (
-    <MapContainer tripMap={props.tripMap} experienceMap={props.experienceMap}>
+    <MapContainer tripMap={props.tripMap} experienceMap={props.experienceMap} formMap={props.formMap}>
       <GoogleMapReact
         key={state.name}
         bootstrapURLKeys={ { key: ''} }

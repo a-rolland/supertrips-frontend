@@ -86,13 +86,12 @@ const FormGeneral = (props) => {
               <React.Fragment>
                 <p>Is this the correct place ?</p>
                 <Map
+                  formMap
                   key={state.place.address}
                   address={state.place.address}
                   lat={state.place.lat}
                   lng={state.place.lng}
                   zoom="14"
-                  height="200px"
-                  width="350px"
                 />
               </React.Fragment>
             }
