@@ -31,58 +31,71 @@ export const Li = styled.li`
 
   a {
     text-decoration: none;
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
+  }
+`;
 
-    @media (max-width: 767px) {
+export const TripContainer = styled.div`
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+
+  @media (max-width: 767px) {
       display: flex;
       flex-direction: column;
     }
 
-    img {
-      @keyframes slow-popup {
-        0% {
-          opacity: 0;
-        }
-        100% {
-          opacity: 1;
-        }
+  img {
+    @keyframes slow-popup {
+      0% {
+        opacity: 0;
       }
+      100% {
+        opacity: 1;
+      }
+    }
 
+    height: auto;
+    width: 300px;
+    max-width: 400px;
+    margin-right: 40px;
+    animation: slow-popup 0.5s ease-in-out forwards;
+
+    @media (max-width:768px) {
+      margin-right: 0;
       height: auto;
-      width: 300px;
+      width: 100%;
+    }
+
+    @media (min-width: 992px) {
+      height: auto;
+      width: 400px;
       margin-right: 40px;
-      animation: slow-popup 0.5s ease-in-out forwards;
+    }
+  }
 
-      @media (max-width: 667px) {
-        margin-right: 0;
-        height: auto;
-        width: 100%;
-      }
+  div {
+    @media (max-width: 767px) {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+    }
 
-      @media (min-width: 992px) {
-        height: auto;
-        width: 400px;
-        margin-right: 40px;
-      }
+    a {
+      display: inline-block;
+      margin-right: 20px;
     }
 
     div {
       @media (max-width: 767px) {
         display: flex;
-        flex-direction: column;
+        flex-direction: row;
         justify-content: center;
-        align-items: center;
       }
 
-      div {
-        @media (max-width: 767px) {
-          display: flex;
-          flex-direction: row;
-          justify-content: center;
-        }
+      a {
+        display: inline-block;
       }
     }
   }
-`;
+`

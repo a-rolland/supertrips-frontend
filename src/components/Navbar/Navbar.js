@@ -65,7 +65,7 @@ const Navbar = (props) => {
           color={dropDownButtonColor}
           handleMouseEnter={toggleDropdownButtonColor}
           handleMouseLeave={toggleDropdownButtonColor}
-          handleClick={toggleDropdown}
+          toggleDropdown={toggleDropdown}
         />
       </span>
       <Dropdown showDropdown={showDropdown ? "flex" : "none"}>

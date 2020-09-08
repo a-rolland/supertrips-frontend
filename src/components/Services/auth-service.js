@@ -40,13 +40,10 @@ export default {
       .catch(errorHandler);
   },
 
-  // upload: data => {
-  //     return service.post('/upload', data)
-  //         .then(response => response.data)
-  // },
-
-  // edit: () => {
-  //     return service.post('/edit', data)
-  //         .then(response => response.data)
-  // }
+  toggleAddToFavorites: (id) => {
+    return authService
+      .put(`/toggleAddToFavorites/${id}`)
+      .then((response) => response.data)
+      .catch(errorHandler);
+  }
 };

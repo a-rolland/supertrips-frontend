@@ -18,7 +18,8 @@ import {
   faCalendarAlt,
   faPlusSquare,
   faMinusSquare,
-  faCommentDots
+  faCommentDots,
+  faHeart
 
 } from '@fortawesome/free-solid-svg-icons'
 
@@ -79,8 +80,16 @@ const FontAwesomeIconComponent = props => {
     case "faCommentDots":
       icon = faCommentDots
       break;
+    case "faHeart":
+      icon = faHeart
+      break;
     default:
       icon = null
+  }
+
+  const handleClick = () => {
+    props.toggleDropdown && props.toggleDropdown()
+    props.toggleAddToFavorites && props.toggleAddToFavorites(props.trip._id)
   }
 
   return (
@@ -90,7 +99,7 @@ const FontAwesomeIconComponent = props => {
       color={props.color}
       onMouseEnter={props.handleMouseEnter}
       onMouseLeave={props.handleMouseLeave}
-      onClick={props.handleClick}
+      onClick={handleClick}
     />
   )
 }
