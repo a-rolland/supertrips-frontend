@@ -72,19 +72,11 @@ const EditFormGeneral = (props) => {
 
     const dynamicService = props.tripForm
       ? tripService.editTrip(params.id, uploadData)
-          .then(response => console.log(response))
-          .catch(err => console.log(err))
       : props.stepForm
       ? stepService.editStep(params.stepId, formObject)
-          .then(response => console.log(response))
-          .catch(err => console.log(err))
       : props.experienceForm
       ? experienceService.editExperience(params.experienceId, formObject)
-          .then(response => console.log(response))
-          .catch(err => console.log(err))
       : authService.editProfilePicture(props.user._id, uploadData)
-          .then(response => console.log(response))
-          .catch(err => console.log(err))
       
     dynamicService
       .then((response) => {
@@ -107,16 +99,10 @@ const EditFormGeneral = (props) => {
     const { params } = props.match;
     const dynamicService = props.tripForm
       ? tripService.deleteTrip(params.id)
-          .then(response => console.log(response))
-          .catch(err => console.log(err))
       : props.stepForm
       ? stepService.deleteStep(params.stepId)
-          .then(response => console.log(response))
-          .catch(err => console.log(err))
       : props.experienceForm
       ? experienceService.deleteExperience(params.experienceId)
-          .then(response => console.log(response))
-          .catch(err => console.log(err))
       : authService.editProfilePicture(props.user._id, {profilePicture: "https://res.cloudinary.com/nutriapp/image/upload/v1599217287/profileDefault_jr9j16.png"})
     
     const dynamicRedirectLink = props.tripForm
@@ -126,7 +112,8 @@ const EditFormGeneral = (props) => {
       : `/trips/${params.id}`
 
     dynamicService
-      .then(() => {
+      .then((response) => {
+        console.log(response)
         props.profilePictureForm && props.updateProfilePicture()
         props.history.push(dynamicRedirectLink);
       })
