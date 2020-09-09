@@ -59,5 +59,12 @@ export default {
       .put(`/experiences/addPicture/${id}`, formFields)
       .then((response) => response.data)
       .catch(errorHandler);
+  },
+
+  deleteExperiencePicture: (id, imageId) => {
+    return experienceService
+      .delete(`/experiences/${id}/deletePicture/${imageId}`)
+      .then((response) => response.data)
+      .catch(errorHandler);
   }
 };

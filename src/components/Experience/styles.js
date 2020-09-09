@@ -58,10 +58,20 @@ export const StyledDateTime = styled.span`
 
 export const Description = styled.p`
   margin: 20px;
-  margin-left: 40px;
+  margin-left: 50px;
 `
 
 export const AddPhotoLogo = styled.span`
+  margin: 15px 5px 5px 40px;
+  display: block;
+
+  &:hover {
+    cursor: pointer;
+    color: grey;
+  }
+`
+
+export const EditPhotoLogo = styled.span`
   margin: 15px 5px 5px 40px;
   display: block;
 
@@ -78,6 +88,11 @@ export const MapContainer = styled.div`
 
 export const PicturesContainer = styled.div`
   text-align: center;
+`
+
+export const SinglePictureContainer = styled.div`
+  position: relative;
+  text-align: center;
 
   img {
     height: 200px;
@@ -88,6 +103,26 @@ export const PicturesContainer = styled.div`
       height: 100px;
       width: auto;
       margin: 10px;
+    }
+
+    @media (min-width: 992px) {
+      height: 300px;
+      width: auto;
+      margin: 20px;
+    }
+  }
+
+  svg {
+    position: absolute;
+    top: 10%;
+    left: 10%;
+    background-color: rgba(255,255,255,.4);
+    border: 1px solid rgba(0,0,0,0.2);
+    border-radius: 25%;
+    padding: 3px;
+
+    &:hover {
+      cursor: pointer;
     }
   }
 `

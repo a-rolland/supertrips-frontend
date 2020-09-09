@@ -7,9 +7,11 @@ import {
   Description,
   MapContainer,
   AddPhotoLogo,
+  EditPhotoLogo,
   PicturesContainer,
   OwnerControls,
   StyledStepHeader,
+  SinglePictureContainer
 } from "./styles";
 import { Link } from "react-router-dom";
 import Map from "../Map/Map";
@@ -22,6 +24,7 @@ const Experience = (props) => {
     experience: [],
     expanded: false,
     showAddPhoto: false,
+    editingPhotos: false
   };
   const [state, setState] = useState(initialState);
 
@@ -33,9 +36,25 @@ const Experience = (props) => {
   };
 
   const toggleShowAddPhoto = () => {
+    !state.showAddPhoto && handleCloseEditingPhotos()
     setState((state) => ({
       ...state,
       showAddPhoto: !state.showAddPhoto,
+    }));
+  };
+
+  const toggleEditingPhotos = () => {
+    !state.editingPhotos && handleCloseShowAddPhoto()
+    setState((state) => ({
+      ...state,
+      editingPhotos: !state.editingPhotos,
+    }));
+  };
+
+  const handleCloseEditingPhotos = () => {
+    setState((state) => ({
+      ...state,
+      editingPhotos: false,
     }));
   };
 
@@ -62,10 +81,30 @@ const Experience = (props) => {
     [state.experience._id]
   );
 
+  const handleDeletePicture = (imageId) => {
+    console.log("Picture with imageId ",imageId," will be deleted")
+    experienceService.deleteExperiencePicture(state.experience._id, imageId)
+      .then((response) => {
+        console.log("Picture deleted !", response)
+        handleUpdateNewPicture()
+      })
+  }
+
+
   const experiencePictures =
     state.experience.pictures &&
     state.experience.pictures.map((picture, index) => {
-      return <img key={index} src={picture} alt="experience" />;
+      return <SinglePictureContainer key={index} style={{display:"inline-block"}}>
+                <img key={picture._id} src={picture.url} alt="experience" />
+                {props.author._id === state.loggedInUser._id && state.editingPhotos &&
+                  <FontAwesomeIconComponent
+                    chosenIcon={"faTrashAlt"}
+                    color="red"
+                    deleteExperiencePicture={handleDeletePicture}
+                    picture={picture}
+                  />
+                }
+              </SinglePictureContainer>
     });
 
   useEffect(() => {
@@ -142,21 +181,33 @@ const Experience = (props) => {
                 lat={state.experience.place.lat}
                 lng={state.experience.place.lng}
                 zoom="15"
-                // height="150px"
-                // width="500px"
               />
             </MapContainer>
           )}
+          {state.experience.pictures && (
+            <PicturesContainer>{experiencePictures}</PicturesContainer>
+          )}
           {state.loggedInUser && props.author._id === state.loggedInUser._id && (
-            <AddPhotoLogo onClick={toggleShowAddPhoto}>
-              <FontAwesomeIconComponent
-                chosenIcon={
-                  state.showAddPhoto ? "faMinusSquare" : "faPlusSquare"
-                }
-                color="dimgrey"
-              />
-              {state.showAddPhoto || "Add a photo"}
-            </AddPhotoLogo>
+            <React.Fragment>
+              <EditPhotoLogo onClick={toggleEditingPhotos}>
+                <FontAwesomeIconComponent
+                  chosenIcon={
+                    state.editingPhotos ? "faMinusSquare" : "faPenSquare"
+                  }
+                  color="dimgrey"
+                />
+                {state.editingPhotos ? "Close" : "Edit photos"}
+              </EditPhotoLogo>
+              <AddPhotoLogo onClick={toggleShowAddPhoto}>
+                <FontAwesomeIconComponent
+                  chosenIcon={
+                    state.showAddPhoto ? "faMinusSquare" : "faPlusSquare"
+                  }
+                  color="dimgrey"
+                />
+                {state.showAddPhoto ? "Close" : "Add a photo"}
+              </AddPhotoLogo>
+            </React.Fragment>
           )}
           {state.showAddPhoto && (
             <AddPhotoToExperience
@@ -165,9 +216,6 @@ const Experience = (props) => {
               updateNewPicture={handleUpdateNewPicture}
               {...props}
             />
-          )}
-          {state.experience.pictures && (
-            <PicturesContainer>{experiencePictures}</PicturesContainer>
           )}
           {state.loggedInUser && state.loggedInUser._id === props.author._id && (
             <>

@@ -19,7 +19,9 @@ import {
   faPlusSquare,
   faMinusSquare,
   faCommentDots,
-  faHeart
+  faHeart,
+  faTrashAlt,
+  faPenSquare
 
 } from '@fortawesome/free-solid-svg-icons'
 
@@ -83,6 +85,12 @@ const FontAwesomeIconComponent = props => {
     case "faHeart":
       icon = faHeart
       break;
+    case "faTrashAlt":
+      icon = faTrashAlt
+      break;
+    case "faPenSquare":
+      icon = faPenSquare
+      break;
     default:
       icon = null
   }
@@ -90,6 +98,7 @@ const FontAwesomeIconComponent = props => {
   const handleClick = () => {
     props.toggleDropdown && props.toggleDropdown()
     props.toggleAddToFavorites && props.toggleAddToFavorites(props.trip._id)
+    props.deleteExperiencePicture && props.deleteExperiencePicture(props.picture._id)
   }
 
   return (

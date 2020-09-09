@@ -37,7 +37,6 @@ const Trip = (props) => {
             .filter(experience => experience.place).length
           console.log("Experiences of this trip:", experienceResponse)
 
-          console.log(experienceLatAverage, experienceLngAverage)
           setState((state) => ({
             ...state,
             experiences: experienceResponse,
