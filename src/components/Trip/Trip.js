@@ -130,7 +130,9 @@ const Trip = (props) => {
             <span>By {state.trip.author.username}</span>
           </div>
         }
-        
+        { state.trip && state.loggedInUser && state.trip.author._id === state.loggedInUser._id && !state.trip.isPublic &&
+         <p style={{opacity: "0.4"}}>(PRIVATE TRIP)</p>
+        }
         {/* <img src={state.trip.imageUrl} alt="trip cover pic" /> */}
         { state.experiences && state.experiences.filter(experience => experience.place).length >= 1 &&
           <Map
