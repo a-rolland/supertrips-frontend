@@ -42,10 +42,23 @@ const Trips = (props) => {
     }));
   };
 
+  const handleUpdateTrips = () => {
+    const fetchAuthorizedTripsList = async () => {
+      const response = await tripService.trips();
+      const authorizedTripsList = response.filter(trip =>  (state.loggedInUser && trip.author._id === props.userInSession._id) || trip.isPublic);
+      setState((state) => ({
+        ...state,
+        trips: authorizedTripsList,
+      }));
+    };
+    fetchAuthorizedTripsList()
+  }
+
   const listTrips = <TripsList
                       trips={state.trips}
                       userInSession={state.loggedInUser}
                       updateUser={props.updateUser}
+                      updateTrips={handleUpdateTrips}
                     />
 
   return (

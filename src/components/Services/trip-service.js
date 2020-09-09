@@ -46,4 +46,11 @@ export default {
       .then((response) => response.data)
       .catch(errorHandler);
   },
+
+  toggleLikes: (id) => {
+    return tripService
+      .put(`/trip/toggleLikes/${id}`)
+      .then((response) => response.data)
+      .catch(errorHandler);
+  }
 };

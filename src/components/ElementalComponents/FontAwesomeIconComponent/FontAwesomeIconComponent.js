@@ -21,7 +21,8 @@ import {
   faCommentDots,
   faHeart,
   faTrashAlt,
-  faPenSquare
+  faPenSquare,
+  faThumbsUp
 
 } from '@fortawesome/free-solid-svg-icons'
 
@@ -91,6 +92,9 @@ const FontAwesomeIconComponent = props => {
     case "faPenSquare":
       icon = faPenSquare
       break;
+    case "faThumbsUp":
+      icon = faThumbsUp
+      break;
     default:
       icon = null
   }
@@ -99,6 +103,7 @@ const FontAwesomeIconComponent = props => {
     props.toggleDropdown && props.toggleDropdown()
     props.toggleAddToFavorites && props.toggleAddToFavorites(props.trip._id)
     props.deleteExperiencePicture && props.deleteExperiencePicture(props.picture._id)
+    props.toggleLikeTrip && props.toggleLikeTrip(props.trip._id)
   }
 
   return (
