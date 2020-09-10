@@ -103,7 +103,7 @@ const FontAwesomeIconComponent = props => {
     props.toggleDropdown && props.toggleDropdown()
     props.toggleAddToFavorites && props.toggleAddToFavorites(props.trip._id)
     props.deleteExperiencePicture && props.deleteExperiencePicture(props.picture._id)
-    props.toggleLikeTrip && props.toggleLikeTrip(props.trip._id)
+    props.toggleLikeTrip && props.userInSession && !props.tripDescription && props.toggleLikeTrip(props.trip._id)
   }
 
   return (

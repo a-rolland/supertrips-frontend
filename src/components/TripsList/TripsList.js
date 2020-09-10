@@ -1,5 +1,5 @@
 import React from 'react'
-import { Ul, LiContainer, Li, TripContainer } from "./styles"
+import { Ul, LiContainer, Li, TripContainer, SinglePictureContainer } from "./styles"
 import { Link } from 'react-router-dom';
 import ProfilePicture from '../ElementalComponents/ProfilePicture/ProfilePicture';
 import FontAwesomeIconComponent from '../ElementalComponents/FontAwesomeIconComponent/FontAwesomeIconComponent';
@@ -11,16 +11,25 @@ const TripsList = props => {
     return (
       <Li key={trip._id}>
         <TripContainer>
-          <Link
-            to={{
-              pathname: `/trips/${trip._id}`,
-              state: { userInSession: props.loggedInUser, trip: trip },
-            }}
-          >
-            {trip.imageUrl &&
-              <img src={trip.imageUrl} alt="trip cover pic" />
+          <SinglePictureContainer>
+            <Link
+              to={{
+                pathname: `/trips/${trip._id}`,
+                state: { userInSession: props.loggedInUser, trip: trip },
+              }}
+            >
+              {trip.imageUrl &&
+                <img src={trip.imageUrl} alt="trip cover pic" />
+              }
+            </Link>
+            { props.userInSession && 
+              <LikeTripLogo
+                trip={trip}
+                userInSession={props.userInSession}
+                updateTrips={props.updateTrips}
+              />
             }
-          </Link>
+          </SinglePictureContainer>
           <div>
             <span>
               <Link
@@ -46,13 +55,14 @@ const TripsList = props => {
               />
               <span>{trip.duration} days</span>
             </div>
-            <div>
+            <div style={{marginTop:"15px"}}>
               <LikeTripLogo
+                tripDescription
                 trip={trip}
                 userInSession={props.userInSession}
                 updateTrips={props.updateTrips}
               />
-              <span>{trip.likes.length} likes</span>
+              <span>{trip.likes.length}</span>
             </div>
             <div style={{display:"flex", alignItems:"center", marginTop:"20px"}}>
               <ProfilePicture

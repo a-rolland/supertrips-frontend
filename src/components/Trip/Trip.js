@@ -9,6 +9,7 @@ import { Link } from "react-router-dom";
 import Map from "../Map/Map";
 import FontAwesomeIconComponent from "../ElementalComponents/FontAwesomeIconComponent/FontAwesomeIconComponent";
 import AddToFavoritesLogo from "../ElementalComponents/AddToFavoritesLogo/AddToFavoritesLogo";
+import LikeTripLogo from "../ElementalComponents/LikeTripLogo/LikeTripLogo";
 
 const Trip = (props) => {
   const [showError, setShowError] = useState("")
@@ -21,6 +22,25 @@ const Trip = (props) => {
     lng: null
   };
   const [state, setState] = useState(initialState);
+
+  const handleUpdateTrip = () => {
+    tripService
+      .tripDetails(props.match.params.id)
+      .then((tripResponse) => {
+        console.log("Trip details :", tripResponse);
+        tripResponse === null 
+        ? setShowError("Sorry, this trip doesn't exist.")
+        : setState((state) => ({
+            ...state,
+            loggedInUser: props.userInSession,
+            trip: tripResponse
+          }))
+      })
+      .catch((error) => {
+        console.log("Error while getting trip details :", error)
+        setShowError(`Error : ${error.response.data.message}`)        
+      });
+  }
 
   useEffect(() => {
     experienceService
@@ -123,6 +143,16 @@ const Trip = (props) => {
           <FontAwesomeIconComponent chosenIcon={"faHourglassHalf"} size="1x" />
           <span>{state.trip.duration} days</span>
         </Duration>
+        { state.trip && state.loggedInUser &&
+          <div style={{marginTop:"15px"}}>
+            <LikeTripLogo
+              trip={state.trip}
+              userInSession={state.loggedInUser}
+              updateTrips={handleUpdateTrip}
+            />
+            <span>{state.trip.likes.length}</span>
+          </div>
+        }
         { state.trip.author && 
           <div style={{display:"flex", alignItems:"center", justifyContent:"center", margin:"20px auto"}}>
             <ProfilePicture src={state.trip.author.profilePicture} width="50px" height="50px" margin="5px 15px 5px 0" display="inline-block" />

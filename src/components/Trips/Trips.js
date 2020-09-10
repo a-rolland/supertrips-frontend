@@ -73,7 +73,8 @@ const Trips = (props) => {
         <AddLogo>
           <Link to="/create-trip">
             <FontAwesomeIconComponent chosenIcon={"faSuitcaseRolling"} size="2x" />
-            <span>NEW TRIP</span>
+            <span>CREATE</span>
+            <span>TRIP</span>
           </Link>
         </AddLogo>
       }

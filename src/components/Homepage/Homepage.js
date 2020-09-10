@@ -1,9 +1,6 @@
 import React, { useState, useEffect } from "react";
 import SearchBar from "../SearchBar/SearchBar";
-import { AddLogo } from "./styles"
-import { Link } from "react-router-dom";
 import Button from "../ElementalComponents/Button/Button";
-import FontAwesomeIconComponent from "../ElementalComponents/FontAwesomeIconComponent/FontAwesomeIconComponent";
 
 const Homepage = (props) => {
   const initialSearch = {
@@ -47,15 +44,6 @@ const Homepage = (props) => {
         />
         <Button formButton="GO" />
       </form>
-      {/* PROVISIONAL */}
-      { loggedInUser && 
-        <AddLogo>
-          <Link to="/create-trip">
-            <FontAwesomeIconComponent chosenIcon={"faSuitcaseRolling"} size="2x" />
-            <span>NEW TRIP</span>
-          </Link>
-        </AddLogo>
-      }
     </div>
   );
 };

@@ -40,9 +40,9 @@ export const TripContainer = styled.div`
   justify-content: space-between;
 
   @media (max-width: 767px) {
-      display: flex;
-      flex-direction: column;
-    }
+    display: flex;
+    flex-direction: column;
+  }
 
   img {
     @keyframes slow-popup {
@@ -89,6 +89,7 @@ export const TripContainer = styled.div`
     h3 {
       @media (min-width: 992px) {
         font-size: 26px;
+      }
     }
 
     div {
@@ -101,6 +102,56 @@ export const TripContainer = styled.div`
       a {
         display: inline-block;
       }
+    }
+  }
+`
+
+export const SinglePictureContainer = styled.div`
+  position: relative;
+  text-align: center;
+  
+  a {
+    img {
+      @keyframes slow-popup {
+        0% {
+          opacity: 0;
+        }
+        100% {
+          opacity: 1;
+        }
+      }
+
+      height: auto;
+      width: 300px;
+      max-width: 400px;
+      margin-right: 40px;
+      animation: slow-popup 0.5s ease-in-out forwards;
+
+      @media (max-width:768px) {
+        margin-right: 0;
+        height: auto;
+        width: 100%;
+      }
+
+      @media (min-width: 992px) {
+        height: auto;
+        width: 400px;
+        margin-right: 40px;
+      }
+    }
+  }
+
+  svg {
+    position: absolute;
+    bottom: 20px;
+    left: 15px;
+    background-color: rgba(255,255,255,.6);
+    border: 1px solid rgba(0,0,0,0.2);
+    border-radius: 25%;
+    padding: 10px;
+
+    &:hover {
+      cursor: pointer;
     }
   }
 `

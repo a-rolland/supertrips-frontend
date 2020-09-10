@@ -2,6 +2,6 @@ import styled from "styled-components";
 
 export const StyledThumbsUpLogo = styled.span`
   &:hover {
-    cursor: pointer;
+    ${(props) => props.userInSession && !props.tripDescription ? "cursor: pointer" : ""}
   }
 `
