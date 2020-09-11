@@ -32,8 +32,10 @@ const Signup = (props) => {
         <FontAwesomeIconComponent chosenIcon={"faFacebook"} size="3x" color="#4c69ba" />
         <FacebookLogin
           style={{display:"block"}}
-          appId={`${process.env.FACEBOOK_KEY}`}
+          appId={`${process.env.REACT_APP_FACEBOOK_APP_ID}`}
           autoLoad={false}
+          isMobile={false}
+          reauthenticate={true}
           fields="name,email,picture"
           callback={responseFacebook}
         />
