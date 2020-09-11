@@ -46,5 +46,12 @@ export default {
       .put(`/toggleAddToFavorites/${id}`)
       .then((response) => response.data)
       .catch(errorHandler);
-  }
+  },
+
+  facebookLogin: (token) => {
+    return authService
+      .post(`/auth/facebook`, token)
+      .then((response) => response.data)
+      .catch(errorHandler);
+  },
 };

@@ -1,5 +1,6 @@
 import React from "react";
 import AuthForm from "./AuthForm";
+import FacebookLogin from "react-facebook-login";
 
 const Signup = (props) => {
   return (
@@ -13,6 +14,15 @@ const Signup = (props) => {
         formRedirectLink="/login"
         formRedirectText=" Login"
       />
+      <p>
+        <FacebookLogin
+          style={{display:"block"}}
+          appId=""
+          autoLoad={false}
+          fields="name,email,picture"
+          callback={responseFacebook}
+        />
+      </p>
     </div>
   );
 };
