@@ -87,7 +87,7 @@ const Map = (props) => {
     <MapContainer tripMap={props.tripMap} experienceMap={props.experienceMap} formMap={props.formMap}>
       <GoogleMapReact
         key={state.name}
-        bootstrapURLKeys={ { key: ''} }
+        bootstrapURLKeys={ { key: `${process.env.GOOGLE_MAPS_KEY}`} }
         defaultCenter={center}
         defaultZoom={zoom}
         options={getMapOptions}

@@ -32,7 +32,7 @@ const Login = (props) => {
         <FontAwesomeIconComponent chosenIcon={"faFacebook"} size="3x" color="#4c69ba" />
         <FacebookLogin
           style={{display:"block"}}
-          appId="651873985443420"
+          appId={`${process.env.FACEBOOK_KEY}`}
           autoLoad={false}
           fields="name,email,picture"
           callback={responseFacebook}
