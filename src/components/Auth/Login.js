@@ -34,6 +34,7 @@ const Login = (props) => {
           style={{display:"block"}}
           appId={`${process.env.FACEBOOK_KEY}`}
           autoLoad={false}
+          reauthenticate={true}
           fields="name,email,picture"
           callback={responseFacebook}
         />
