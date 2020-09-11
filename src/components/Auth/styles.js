@@ -19,6 +19,7 @@ export const FacebookLoginStyled = styled.p`
   display: flex;
   flex-direction: row;
   justify-content: center;
+  align-items: center;
   flex-wrap: wrap;
   margin: 50px;
 
@@ -28,7 +29,6 @@ export const FacebookLoginStyled = styled.p`
 
   @media (max-width: 667px) {
       flex-direction: column;
-      align-items: center;
 
       svg {
         margin: 20px;
