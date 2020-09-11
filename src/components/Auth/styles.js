@@ -14,3 +14,24 @@ export const Error = styled.p`
     margin: 0 auto;
   }
 `
+
+export const FacebookLoginStyled = styled.p`
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin: 50px;
+
+  svg {
+    margin: 0 20px 0 0;
+  }
+
+  @media (max-width: 667px) {
+      flex-direction: column;
+      align-items: center;
+
+      svg {
+        margin: 20px;
+      }
+    }
+`

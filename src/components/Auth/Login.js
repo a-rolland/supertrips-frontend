@@ -2,9 +2,10 @@ import React from "react";
 import AuthForm from "./AuthForm";
 import authService from "../Services/auth-service";
 import FacebookLogin from "react-facebook-login";
+import { FacebookLoginStyled } from "./styles";
+import FontAwesomeIconComponent from "../ElementalComponents/FontAwesomeIconComponent/FontAwesomeIconComponent";
 
 const Login = (props) => {
-  
   const responseFacebook = (response) => {
     console.log(response)
     authService.facebookLogin({access_token: response.accessToken})
@@ -27,7 +28,8 @@ const Login = (props) => {
         formRedirectLink="/signup"
         formRedirectText=" Sign-up"
       />
-      <p>
+      <FacebookLoginStyled>
+        <FontAwesomeIconComponent chosenIcon={"faFacebook"} size="3x" color="#4c69ba" />
         <FacebookLogin
           style={{display:"block"}}
           appId=""
@@ -35,7 +37,7 @@ const Login = (props) => {
           fields="name,email,picture"
           callback={responseFacebook}
         />
-      </p>
+      </FacebookLoginStyled>
     </div>
   );
 };
