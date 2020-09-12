@@ -94,3 +94,21 @@ export const Dropdown = styled.ul`
     }
   }
 `;
+
+export const BrandLogo = styled.img`
+  padding-top: 6px;
+  margin-right: 15px;
+  width: 150px;
+
+  @media (max-width: 767px) {
+      width: 125px;
+      margin: 25px;
+    }
+
+  @media (min-width: 992px) {
+    width: 200px;
+    margin-right: 20px;
+  }
+
+
+`

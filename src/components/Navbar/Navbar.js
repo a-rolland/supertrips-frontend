@@ -1,6 +1,6 @@
 import React, { useState, useEffect  } from "react";
 import authService from "../Services/auth-service";
-import { Nav, Dropdown } from "./styles";
+import { Nav, Dropdown, BrandLogo } from "./styles";
 import { Link } from "react-router-dom";
 import Button from "../ElementalComponents/Button/Button";
 import FontAwesomeIconComponent from "../ElementalComponents/FontAwesomeIconComponent/FontAwesomeIconComponent";
@@ -55,9 +55,8 @@ const Navbar = (props) => {
     
   return (
     <Nav>
-      <h3>
-        <Link to="/" onClick={closeDropdown}>Supertrips</Link>
-      </h3>
+      {/* <Link to="/" onClick={closeDropdown}><BrandLogo src="/supertrips_logo_blue.png" alt="Supertrips" /></Link> */}
+      <Link to="/" onClick={closeDropdown}><BrandLogo src="/supertrips_logo_blue_ocre.png" alt="Supertrips" /></Link>
       <span>
         <FontAwesomeIconComponent
           chosenIcon={showDropdown ? "faTimes" : "faBars"}
