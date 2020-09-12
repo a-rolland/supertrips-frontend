@@ -3,7 +3,7 @@ import tripService from "../Services/trip-service";
 import SearchBar from "../SearchBar/SearchBar";
 import TripsList from "../TripsList/TripsList";
 import { Link } from "react-router-dom";
-import { AddLogo, SearchBarContainer } from "./styles";
+import { StyledTrips, AddLogo } from "./styles";
 import FontAwesomeIconComponent from "../ElementalComponents/FontAwesomeIconComponent/FontAwesomeIconComponent";
 
 const Trips = (props) => {
@@ -62,14 +62,12 @@ const Trips = (props) => {
                     />
 
   return (
-    <div>
+    <StyledTrips>
       <h1>Trips</h1>
-      <SearchBarContainer>
-        <SearchBar
-          placeholder="Search for a trip.."
-          searchUpdates={handleSearch}
-        />
-      </SearchBarContainer>
+      <SearchBar
+        placeholder="Search for a trip.."
+        searchUpdates={handleSearch}
+      />
       { listTrips }
       { state.loggedInUser &&
         <AddLogo>
@@ -80,7 +78,7 @@ const Trips = (props) => {
           </Link>
         </AddLogo>
       }
-    </div>
+    </StyledTrips>
   );
 };
 

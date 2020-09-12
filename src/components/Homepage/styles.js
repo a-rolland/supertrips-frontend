@@ -21,6 +21,10 @@ export const VideoContainer = styled.div`
     font-size: 4vw;
   }
 
+  video {
+    width: 100%;
+  }
+
   form {
     position: absolute;
     height: 100px;

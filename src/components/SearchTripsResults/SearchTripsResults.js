@@ -32,10 +32,23 @@ const SearchTripsResults = props => {
     fetchAuthorizedTripsList()
   }, [props.userInSession, props.location.search, query]);
 
+  const handleUpdateTrips = () => {
+    const fetchAuthorizedTripsList = async () => {
+      const response = await tripService.trips()
+      const authorizedTripsList = response.filter(trip => ((props.userInSession && trip.author._id === props.userInSession._id) || trip.isPublic) && trip.title.toUpperCase().includes(query.toUpperCase()))
+      setState(state => ({ 
+        ...state,
+        trips: authorizedTripsList
+      }));
+    }
+    fetchAuthorizedTripsList()
+  }
+
   const listTrips = <TripsList
                       trips={state.trips}
                       userInSession={state.loggedInUser}
                       updateUser={props.updateUser}
+                      updateTrips={handleUpdateTrips}
                     />
   
   const listTripsLength = state.trips && state.trips.length

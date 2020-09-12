@@ -1,5 +1,9 @@
 import styled from "styled-components";
 
+export const StyledTrips = styled.div`
+  margin: 0 20px;
+`
+
 export const AddLogo = styled.span`
   @keyframes slide-up {
     0% {
@@ -37,8 +41,4 @@ export const AddLogo = styled.span`
     bottom: 30px;
     right: 30px;
   }
-`
-
-export const SearchBarContainer = styled.div`
-  margin: 0 20px;
 `

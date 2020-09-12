@@ -88,6 +88,7 @@ export const MapContainer = styled.div`
 
 export const PicturesContainer = styled.div`
   text-align: center;
+  margin-top: 20px;
 `
 
 export const SinglePictureContainer = styled.div`

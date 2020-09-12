@@ -83,10 +83,11 @@ export const TripContainer = styled.div`
 
     a {
       display: inline-block;
-      margin-right: 20px;
     }
 
     h3 {
+      margin-right: 20px;
+      
       @media (min-width: 992px) {
         font-size: 26px;
       }

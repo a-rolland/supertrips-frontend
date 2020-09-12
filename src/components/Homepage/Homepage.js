@@ -29,7 +29,7 @@ const Homepage = (props) => {
     <div>
       <VideoContainer>
         <h2>Share your experiences...</h2>
-        <video width="100%" autoPlay loop muted>
+        <video autoPlay loop muted>
           <source src="https://res.cloudinary.com/nutriapp/video/upload/v1599909995/jumbotron_video_hddyyd.mp4" type="video/mp4" />
         </video>
         <h2>...and get inspired</h2>
