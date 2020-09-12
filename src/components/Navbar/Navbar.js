@@ -55,8 +55,8 @@ const Navbar = (props) => {
     
   return (
     <Nav>
-      {/* <Link to="/" onClick={closeDropdown}><BrandLogo src="/supertrips_logo_blue.png" alt="Supertrips" /></Link> */}
-      <Link to="/" onClick={closeDropdown}><BrandLogo src="/supertrips_logo_blue_ocre.png" alt="Supertrips" /></Link>
+      <Link to="/" onClick={closeDropdown}><BrandLogo src="/supertrips_logo_blue.png" alt="Supertrips" /></Link>
+      {/* <Link to="/" onClick={closeDropdown}><BrandLogo src="/supertrips_logo_blue_ocre.png" alt="Supertrips" /></Link> */}
       <span>
         <FontAwesomeIconComponent
           chosenIcon={showDropdown ? "faTimes" : "faBars"}

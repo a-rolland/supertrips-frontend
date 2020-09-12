@@ -22,13 +22,7 @@ const Homepage = (props) => {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    props.history.push({
-      pathname: "/search",
-      state: {
-        userInSession: props.userInSession,
-        searchKeys: searchState.search
-      },
-    });
+    props.history.push(`/search?title=${searchState.search}`)
   };
 
   return (
