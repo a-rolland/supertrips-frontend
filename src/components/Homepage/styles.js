@@ -23,19 +23,20 @@ export const VideoContainer = styled.div`
 
   form {
     position: absolute;
-    display: flex;
     height: 100px;
-    width: 300px;
+    width: 500px;
     left: 50%;
-    margin-left: -150px;
+    margin-left: -250px;
     top: 50%;
     margin-top: -50px;
 
-    @media (min-width: 768px) {
-      margin-left: -250px;
+    @media (max-width: 768px) {
+      width: 300px;
+      margin-left: -150px;
     }
-    
+
     @media (min-width: 992px) {
+      width: 700px;
       margin-left: -350px;
     }
   }
