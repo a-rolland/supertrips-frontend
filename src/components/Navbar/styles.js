@@ -49,11 +49,12 @@ export const Dropdown = styled.ul`
     display: ${(props) => props.showDropdown};
     flex-direction: column;
     list-style-type: none;
-    top: 50px;
+    top: 75px;
     right: 0px;
     padding-left: 0;
     width: 200px;
     position: absolute;
+    z-index: 2;
     height: fit-content;
     background-color: rgba(255, 255, 255, 0.8);
     box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
@@ -67,10 +68,6 @@ export const Dropdown = styled.ul`
 
       a {
         text-decoration: none;
-
-        &:hover {
-          color: lightgrey;
-        }
       }
     }
   }
@@ -89,10 +86,6 @@ export const Dropdown = styled.ul`
 
       a {
         text-decoration: none;
-
-        &:hover {
-          color: lightgrey;
-        }
       }
     }
   }

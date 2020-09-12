@@ -67,7 +67,7 @@ export const AddPhotoLogo = styled.span`
 
   &:hover {
     cursor: pointer;
-    color: grey;
+    color: lightgrey;
   }
 `
 
@@ -77,7 +77,7 @@ export const EditPhotoLogo = styled.span`
 
   &:hover {
     cursor: pointer;
-    color: grey;
+    color: lightgrey;
   }
 `
 
