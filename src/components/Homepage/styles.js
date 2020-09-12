@@ -1,40 +1,42 @@
 import styled from "styled-components";
 
-export const AddLogo = styled.span`
-  @keyframes slide-up {
-    0% {
-      transform: translateY(calc(100% + 10px));
-      opacity: 0;
-    }
-    100% {
-      transform: translateY(0);
-      opacity: 1;
-    }
+export const VideoContainer = styled.div`
+  position: relative;
+
+  h2 {
+    color: rgba(255,255,255,.8);
   }
 
-  position: fixed;
-  bottom: 50px;
-  right: 90px;
-  animation: slide-up 0.65s ease-in-out forwards;
+  h2:first-of-type {
+    position: absolute;
+    left: 5%;
+    top: 2%;
+    font-size: 4vw;
+  }
 
-  border-radius: 20px;
-  background-color: white;
-  padding: 8px;
-  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.1);
+  h2:nth-of-type(2) {
+    position: absolute;
+    right: 5%;
+    bottom: 2%; 
+    font-size: 4vw;
+  }
 
-  a{
+  form {
+    position: absolute;
     display: flex;
-    flex-direction: column;
-    align-items: center;
-    text-decoration: none;
+    height: 100px;
+    width: 300px;
+    left: 50%;
+    margin-left: -150px;
+    top: 50%;
+    margin-top: -50px;
 
-    span {
-      margin-top: 5px;
+    @media (min-width: 768px) {
+      margin-left: -250px;
     }
-  }
-
-  @media (max-width: 767px) {
-    bottom: 30px;
-    right: 30px;
+    
+    @media (min-width: 992px) {
+      margin-left: -350px;
+    }
   }
 `

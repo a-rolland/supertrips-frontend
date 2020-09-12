@@ -38,3 +38,7 @@ export const AddLogo = styled.span`
     right: 30px;
   }
 `
+
+export const SearchBarContainer = styled.div`
+  margin: 0 20px;
+`

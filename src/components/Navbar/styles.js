@@ -16,9 +16,11 @@ export const Nav = styled.div`
   flex-direction: row;
   align-items: center;
   padding: 0;
+  margin: 0 40px;
 
   @media (max-width: 768px) {
     justify-content: space-between;
+    margin: 0 20px;
   }
 
   h3 {
@@ -98,7 +100,7 @@ export const Dropdown = styled.ul`
 
 export const BrandLogo = styled.img`
   padding-top: 6px;
-  margin: 25px;
+  margin: 25px 25px 25px 0;
   width: 150px;
 
   @media (max-width: 767px) {
