@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import tripService from "../Services/trip-service";
 import stepService from "../Services/step-service";
 import experienceService from "../Services/experience-service";
-import { StyledTrip, Duration, OwnerControls, Ul, Box, Li, Error } from "./styles"
+import { StyledTrip, Duration, OwnerControls, Ul, Box, Li, Error, TripPicture } from "./styles"
 import Step from "../Step/Step";
 import ProfilePicture from "../ElementalComponents/ProfilePicture/ProfilePicture"
 import { Link } from "react-router-dom";
@@ -154,7 +154,7 @@ const Trip = (props) => {
           </div>
         }
         { state.trip.author && 
-          <div style={{display:"flex", alignItems:"center", justifyContent:"center", margin:"20px auto"}}>
+          <div style={{display:"flex", alignItems:"center", justifyContent:"center", margin:"5px auto 20px"}}>
             <ProfilePicture src={state.trip.author.profilePicture} width="50px" height="50px" margin="5px 15px 5px 0" display="inline-block" />
             <span>By {state.trip.author.username}</span>
           </div>
@@ -162,8 +162,7 @@ const Trip = (props) => {
         { state.trip && state.loggedInUser && state.trip.author._id === state.loggedInUser._id && !state.trip.isPublic &&
          <p style={{opacity: "0.4"}}>(PRIVATE TRIP)</p>
         }
-        {/* <img src={state.trip.imageUrl} alt="trip cover pic" /> */}
-        { state.experiences && state.experiences.filter(experience => experience.place).length >= 1 &&
+        { state.experiences && state.experiences.filter(experience => experience.place).length >= 1 ?
           <Map
             tripMap
             mapType = "tripPresentation"
@@ -174,6 +173,8 @@ const Trip = (props) => {
             allExperiencesCoords={allExperiencesCoords}
             hasOnlyOneLocalisation={allExperiencesCoords.length === 1}
           />
+          :
+          <TripPicture src={state.trip.imageUrl} alt="trip cover pic" />
         }
         { state.steps && 
           <Ul>

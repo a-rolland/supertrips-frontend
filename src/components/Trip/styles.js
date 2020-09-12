@@ -10,11 +10,6 @@ export const StyledTrip = styled.div`
     padding-top: 4px;
   }
 
-  img {
-    max-height: 300px;
-    width: auto;
-  }
-
   span {
     h1 {
       display: inline-block;
@@ -76,4 +71,8 @@ export const Error = styled.p`
     width: 350px;
     margin: 50px auto;
   }
+`
+export const TripPicture = styled.img`
+  width: 100%;
+  max-width: 600px;
 `

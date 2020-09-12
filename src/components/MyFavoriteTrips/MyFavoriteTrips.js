@@ -29,10 +29,23 @@ const MyFavoriteTrips = (props) => {
     fetchAuthorizedTripsList();
   }, [state.loggedInUser, props.userInSession]);
 
+  const handleUpdateTrips = () => {
+    const fetchAuthorizedTripsList = async () => {
+      const response = await tripService.trips();
+      const myTrips = response.filter(trip => state.loggedInUser.favorites.indexOf(trip._id) !== -1);
+      setState((state) => ({
+        ...state,
+        trips: myTrips,
+      }));
+    };
+    fetchAuthorizedTripsList();
+  }
+
   const listTrips = <TripsList
                       trips={state.trips}
                       userInSession={state.loggedInUser}
                       updateUser={props.updateUser}
+                      updateTrips={handleUpdateTrips}
                     />
 
   return (
