@@ -30,7 +30,11 @@ const Homepage = (props) => {
       <VideoContainer>
         <h2>Share your experiences...</h2>
         <video autoPlay loop muted>
-          <source src="https://res.cloudinary.com/nutriapp/video/upload/v1599909995/jumbotron_video_hddyyd.mp4" type="video/mp4" />
+          {/* <source src="https://res.cloudinary.com/nutriapp/video/upload/v1599909995/jumbotron_video_hddyyd.mp4" type="video/mp4" /> */}
+          <source src="https://res.cloudinary.com/nutriapp/video/upload/v1599923299/jumbotron_video_nz_nkqmp2.mp4" type="video/mp4" />
+          {/* <source src="https://res.cloudinary.com/nutriapp/video/upload/v1599923596/jumbotron_beach_2_xbypv6.mp4" type="video/mp4" /> */}
+          {/* <source src="https://res.cloudinary.com/nutriapp/video/upload/v1599923598/jumbotron_beach_pxwqhn.mp4" type="video/mp4" /> */}
+          {/* <source src="https://res.cloudinary.com/nutriapp/video/upload/v1599924725/jumbotron_clouds_omdlxp.mp4" type="video/mp4" /> */}
         </video>
         <h2>...and get inspired</h2>
         <form onSubmit={handleSubmit}>
