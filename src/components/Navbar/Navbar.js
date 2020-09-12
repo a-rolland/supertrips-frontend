@@ -68,13 +68,13 @@ const Navbar = (props) => {
         />
       </span>
       <Dropdown showDropdown={showDropdown ? "flex" : "none"}>
-        <li style={showDropdown ? {margin:"20px auto"} : {margin:"auto auto auto 20px"} }>
-          <Link to="/trips" onClick={closeDropdown}>Trips</Link>
+        <li style={showDropdown ? {margin:"30px auto 10px"} : {margin:"auto auto auto 20px"} }>
+          <Link to="/trips" onClick={closeDropdown}>TRIPS</Link>
         </li>
         {state.loggedInUser ? (
           <>
             <li>
-              <Link to="/profile" onClick={closeDropdown}>Profile</Link>
+              <Link to="/profile" onClick={closeDropdown}>PROFILE</Link>
             </li>
             <li>
               <Link to="/" onClick={closeDropdown}>
@@ -85,10 +85,10 @@ const Navbar = (props) => {
         ) : (
           <>
             <li>
-              <Link to="/signup" onClick={closeDropdown}>Signup</Link>
+              <Link to="/signup" onClick={closeDropdown}>SIGNUP</Link>
             </li>
             <li>
-              <Link to="/login" onClick={closeDropdown}>Login</Link>
+              <Link to="/login" onClick={closeDropdown}>LOGIN</Link>
             </li>
           </>
         )}
