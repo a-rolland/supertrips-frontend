@@ -27,7 +27,6 @@ const Signup = (props) => {
         authMessage="Already have an account ?"
         formRedirectLink="/login"
         formRedirectText=" Login"
-        formButton="SIGN-UP"
       />
       <FacebookLoginStyled>
         <FontAwesomeIconComponent chosenIcon={"faFacebook"} size="3x" color="#4c69ba" />

@@ -4,9 +4,10 @@ export const StyledApp = styled.div`
   margin: 0;
   text-align: center;
   font-family: 'Roboto', 'Arial', 'Helvetica', sans-serif;
+  color: darkslategray;
 
   a {
-    color: black;
+    color: darkslategray;
 
     &:hover {
       color: lightgrey;

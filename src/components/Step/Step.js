@@ -3,7 +3,7 @@ import tripService from "../Services/trip-service";
 import stepService from "../Services/step-service";
 import experienceService from "../Services/experience-service";
 import Experience from "../Experience/Experience"
-import { StyledStep, OwnerControls, StyledStepHeader, Ul, Box, Li } from "./styles"
+import { StyledStep, StepTitle, OwnerControls, StyledStepHeader, Ul, Box, Li } from "./styles"
 import { Link } from "react-router-dom";
 import FontAwesomeIconComponent from "../ElementalComponents/FontAwesomeIconComponent/FontAwesomeIconComponent";
 
@@ -82,7 +82,7 @@ const Step = (props) => {
           ? <FontAwesomeIconComponent chosenIcon={"faChevronCircleDown"} />
           : <FontAwesomeIconComponent chosenIcon={"faChevronCircleRight"} />
         }
-        {state.step.title}  
+        <StepTitle>{state.step.title}</StepTitle>
       </StyledStepHeader>
       {
         state.expanded &&

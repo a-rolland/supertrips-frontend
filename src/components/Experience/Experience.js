@@ -5,12 +5,14 @@ import {
   StyledExperience,
   StyledDateTime,
   Description,
+  ExpandedSection,
   MapContainer,
   AddPhotoLogo,
   EditPhotoLogo,
   PicturesContainer,
   OwnerControls,
   StyledStepHeader,
+  ExperienceTitle,
   SinglePictureContainer
 } from "./styles";
 import { Link } from "react-router-dom";
@@ -132,7 +134,7 @@ const Experience = (props) => {
           <FontAwesomeIconComponent chosenIcon={"faChevronRight"} />
         )}
         <span>
-          {state.experience.title}
+          <ExperienceTitle>{state.experience.title}</ExperienceTitle>
           {state.experience.date && (
             <React.Fragment>
               {(state.experience.showDate ||
@@ -166,7 +168,7 @@ const Experience = (props) => {
         </span>
       </StyledStepHeader>
       {state.expanded && (
-        <>
+        <ExpandedSection>
           {state.experience.description && (
             <Description>
               <FontAwesomeIconComponent chosenIcon={"faCommentDots"} color="grey" />
@@ -229,7 +231,7 @@ const Experience = (props) => {
               </OwnerControls>
             </>
           )}
-        </>
+        </ExpandedSection>
       )}
     </StyledExperience>
   );

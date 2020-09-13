@@ -60,6 +60,7 @@ export const Dropdown = styled.ul`
     box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
     animation-name: menu-transition;
     animation-duration: .3s;
+    font-size: 12px;
 
     li {
       margin: ${props => props.margin || "10px auto"};
@@ -89,19 +90,40 @@ export const Dropdown = styled.ul`
       }
     }
   }
+
+  @media (min-width: 992px) {
+
+    li {
+      padding-top: 6px;
+
+      a {
+        font-size: 18px;
+      }
+    }
+  }
 `;
 
 export const BrandLogo = styled.img`
   padding-top: 6px;
-  margin: 25px 25px 25px 0;
-  width: 150px;
 
-  @media (max-width: 767px) {
-      width: 125px;
-    }
+  @media (max-width: 576px) {
+    width: 125px;
+    margin: 10px 10px 10px 0;
+  }
+
+  @media (min-width: 576px) and (max-width: 767px) {
+    width: 150px;
+    margin: 15px 15px 15px 0;
+  }
+  
+  @media (min-width: 767px) and (max-width: 992px) {
+    width: 175px;
+    margin: 15px 15px 15px 0;
+  }
 
   @media (min-width: 992px) {
     width: 200px;
+    margin: 25px 25px 25px 0;
   }
 
 

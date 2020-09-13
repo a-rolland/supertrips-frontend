@@ -50,3 +50,9 @@ export const Li = styled.li`
     padding-top: 4px;
   }
 `;
+
+export const StepTitle = styled.span`
+  :hover {
+    color: lightgrey;
+  }
+`

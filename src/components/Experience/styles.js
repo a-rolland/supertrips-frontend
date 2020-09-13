@@ -127,3 +127,13 @@ export const SinglePictureContainer = styled.div`
     }
   }
 `
+
+export const ExpandedSection = styled.div`
+  width: 90vw;
+`
+
+export const ExperienceTitle = styled.span`
+  :hover {
+    color : lightgrey;
+  }
+`
