@@ -26,6 +26,13 @@ export default {
       .catch(errorHandler);
   },
 
+  popularTrips: () => {
+    return tripService
+      .get("/popularTrips")
+      .then((response) => response.data)
+      .catch(errorHandler);
+  },
+
   tripDetails: (id) => {
     return tripService
       .get(`/trips/${id}`)

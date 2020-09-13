@@ -10,6 +10,9 @@ export const Ul = styled.ul`
 
 export const LiContainer = styled.div`
   margin: 0 auto;
+  ${(props) => props.popularTrips && 
+    "display: flex; flex-direction: row; width: 100%; align-items: flex-start; overflow-x: scroll"
+  }
 `;
 
 export const Li = styled.li`
@@ -38,6 +41,9 @@ export const TripContainer = styled.div`
   display: flex;
   flex-direction: row;
   justify-content: space-between;
+  ${(props) => props.popularTrips && 
+    "display: flex; flex-direction: column; align-items: center;"
+  }
 
   @media (max-width: 767px) {
     display: flex;
@@ -57,6 +63,7 @@ export const TripContainer = styled.div`
     height: auto;
     width: 300px;
     max-width: 400px;
+    min-width: 125px;
     margin-right: 40px;
     animation: slow-popup 0.5s ease-in-out forwards;
 

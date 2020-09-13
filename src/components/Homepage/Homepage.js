@@ -1,18 +1,52 @@
 import React, { useState, useEffect } from "react";
 import SearchBar from "../SearchBar/SearchBar";
 import Button from "../ElementalComponents/Button/Button";
-import { VideoContainer } from "./styles"
+import tripService from "../Services/trip-service";
+import { VideoContainer, HomepageBody } from "./styles"
+import TripsList from "../TripsList/TripsList";
 
 const Homepage = (props) => {
   const initialSearch = {
     search: "",
   };
-  const [loggedInUser, setLoggedInUser] = useState(props.userInSession)
+  const [userState, setLoggedInUser] = useState({loggedInUser: props.userInSession})
   const [searchState, updateSearch] = useState(initialSearch);
+  const [popularTripsState, updatePopularTrips] = useState({trips: []})
 
   useEffect(() => {
-    setLoggedInUser(props.userInSession)
-  }, [props.userInSession ])
+    setLoggedInUser({loggedInUser: props.userInSession})
+      const fetchAuthorizedTripsList = async () => {
+        const response = await tripService.popularTrips();
+        const popularTrips = response
+        updatePopularTrips((state) => ({
+          ...state,
+          trips: popularTrips,
+        }));
+        console.log("Popular trips: ", popularTrips)
+      };
+      fetchAuthorizedTripsList();
+  }, [props.userInSession])
+
+  const handleUpdateTrips = () => {
+    const fetchAuthorizedTripsList = async () => {
+      const response = await tripService.popularTrips();
+      const popularTrips = response
+      updatePopularTrips((state) => ({
+        ...state,
+        trips: popularTrips,
+      }));
+      console.log("Popular trips: ", popularTrips)
+    };
+    fetchAuthorizedTripsList();
+  }
+
+  const popularTripsList = <TripsList
+                          popularTrips
+                          trips={popularTripsState.trips}
+                          userInSession={userState.loggedInUser}
+                          updateUser={props.updateUser}
+                          updateTrips={handleUpdateTrips}
+                        />
 
   const handleSearch = async (currentSearch) => {
     updateSearch({
@@ -45,6 +79,12 @@ const Homepage = (props) => {
           <Button formButton="GO" />
         </form>
       </VideoContainer>
+      { popularTripsState.trips && 
+        <HomepageBody>
+          <h2 style={{textAlign: "left"}}>Popular trips</h2>
+          {popularTripsList}
+        </HomepageBody>
+      }
     </div>
   );
 };

@@ -45,3 +45,13 @@ export const VideoContainer = styled.div`
     }
   }
 `
+
+export const HomepageBody = styled.ul`
+  padding: 0;
+
+  h2 {
+    text-align: left;
+    padding-left: 40px;
+    margin-bottom: 0;
+  }
+`

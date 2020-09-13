@@ -10,7 +10,7 @@ const TripsList = props => {
   const listTrips = props.trips.map((trip) => {
     return (
       <Li key={trip._id}>
-        <TripContainer>
+        <TripContainer popularTrips={props.popularTrips}>
           <SinglePictureContainer>
             <Link
               to={{
@@ -22,7 +22,7 @@ const TripsList = props => {
                 <img src={trip.imageUrl} alt="trip cover pic" />
               }
             </Link>
-            { props.userInSession && 
+            { props.userInSession && !props.popularTrips &&
               <LikeTripLogo
                 trip={trip}
                 userInSession={props.userInSession}
@@ -40,7 +40,7 @@ const TripsList = props => {
               >
                 <h3>{trip.title}</h3>
               </Link>
-              { props.userInSession && 
+              { props.userInSession && !props.popularTrips &&
                 <AddToFavoritesLogo
                   trip={trip}
                   userInSession={props.userInSession}
@@ -82,7 +82,7 @@ const TripsList = props => {
 
   return (
     <Ul>
-      <LiContainer>
+      <LiContainer popularTrips={props.popularTrips}>
         {listTrips}
       </LiContainer>
     </Ul>

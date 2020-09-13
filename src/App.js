@@ -75,7 +75,7 @@ const App = () => {
           exact
           path="/"
           render={(props) => (
-            <Homepage {...props} userInSession={state.loggedInUser} />
+            <Homepage {...props} userInSession={state.loggedInUser} updateUser={handleUpdateUser} />
           )}
         />
         <Route
