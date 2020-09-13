@@ -146,17 +146,17 @@ const App = () => {
           userInSession={state.loggedInUser}
           component={Profile}
         />
-        <Route
-          exact
-          path="/profile/:userId"
-          render={(props) => <ProfilePublic {...props} userInSession={state.loggedInUser} updateUser={handleUpdateUser} />}
-        />
         <ProtectedRoute
           exact
           path="/profile/my-trips"
           userInSession={state.loggedInUser}
           component={MyTrips}
           updateUser={handleUpdateUser}
+        />
+        <Route
+          exact
+          path="/profile/user/:userId"
+          render={(props) => <ProfilePublic {...props} userInSession={state.loggedInUser} updateUser={handleUpdateUser} />}
         />
         <ProtectedRoute
           exact

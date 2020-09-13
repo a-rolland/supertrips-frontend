@@ -143,7 +143,7 @@ const Trip = (props) => {
           <FontAwesomeIconComponent chosenIcon={"faHourglassHalf"} size="1x" />
           <span>{state.trip.duration} days</span>
         </Duration>
-        { state.trip && state.loggedInUser &&
+        { state.trip &&
           <div style={{marginTop:"15px"}}>
             <LikeTripLogo
               trip={state.trip}
@@ -158,7 +158,7 @@ const Trip = (props) => {
             <ProfilePicture src={state.trip.author.profilePicture} width="50px" height="50px" margin="5px 15px 5px 0" display="inline-block" />
             <span>By <Link to={ props.userInSession && props.userInSession._id === state.trip.author._id
                   ? "/profile"
-                  : `/profile/${state.trip.author._id}`
+                  : `/profile/user/${state.trip.author._id}`
                 }
                 >{state.trip.author.username}
                 </Link>

@@ -42,7 +42,7 @@ export const TripContainer = styled.div`
   flex-direction: row;
   justify-content: space-between;
   ${(props) => props.popularTrips && 
-    "display: flex; flex-direction: column; align-items: center;"
+    "display: flex; flex-direction: column; align-items: flex-start;"
   }
 
   @media (max-width: 767px) {
@@ -86,6 +86,9 @@ export const TripContainer = styled.div`
       flex-direction: column;
       justify-content: center;
       align-items: center;
+      ${(props) => props.popularTrips && 
+        "justify-content: flex-start; align-items: flex-start"
+      }
     }
 
     a {

@@ -75,7 +75,7 @@ const TripsList = props => {
               <span>
                 By <Link to={ props.userInSession && props.userInSession._id === trip.author._id
                   ? "/profile"
-                  : `/profile/${trip.author._id}`
+                  : `/profile/user/${trip.author._id}`
                 }
                 >{trip.author.username}
                 </Link>

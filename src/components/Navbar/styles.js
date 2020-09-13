@@ -45,11 +45,12 @@ export const Nav = styled.div`
 `;
 
 export const Dropdown = styled.ul`
+
   @media (max-width: 767px) {
     display: ${(props) => props.showDropdown};
     flex-direction: column;
     list-style-type: none;
-    top: 75px;
+    top: 65px;
     right: 0px;
     padding-left: 0;
     width: 200px;
@@ -71,6 +72,14 @@ export const Dropdown = styled.ul`
         text-decoration: none;
       }
     }
+  }
+
+  @media (max-width: 576px) {
+    top: 48px;
+  }
+  
+  @media (min-width: 576) and (max-width: 768px) {
+    top: 72px;
   }
 
   @media (min-width: 767px) {
