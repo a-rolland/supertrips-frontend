@@ -35,7 +35,6 @@ const Profile = (props) => {
         <EditProfilePictureForm updateProfilePicture={updateProfilePicture} {...props} />
       }
       <Button formButton={ showProfilePictureForm ? "CLOSE" : "EDIT PICTURE" } toggleProfilePictureForm={toggleProfilePictureForm} />
-      <h2></h2>
       <Link to="/profile/my-trips">
         <Button formButton="MY TRIPS" width={"250px"} />
       </Link>

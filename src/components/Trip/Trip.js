@@ -189,8 +189,17 @@ const Trip = (props) => {
             </Box>
           </Ul>
         }
+        {/* {
+          state.loggedInUser &&
+          <React.Fragment>
+            <p>Leave a comment</p>
+            <form>
+              <input type="textarea" />
+            </form>
+          </React.Fragment>
+        } */}
         {state.loggedInUser && state.loggedInUser._id === state.trip.author._id && (
-          <>
+          <React.Fragment>
             <OwnerControls>
               <Link to={{pathname: `/trips/${state.trip._id}/add-step`, state: { trip: state.trip }}}>
               <FontAwesomeIconComponent chosenIcon={"faPlus"} />
@@ -203,7 +212,7 @@ const Trip = (props) => {
                 <span>Edit trip</span>
               </Link>
             </OwnerControls>
-          </>
+          </React.Fragment>
         )}
         <p style={{marginTop: "40px"}}>
           <Link to={`/trips`}>

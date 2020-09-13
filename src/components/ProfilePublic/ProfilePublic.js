@@ -1,6 +1,4 @@
 import React, { useState, useEffect } from "react";
-import Button from "../ElementalComponents/Button/Button.js";
-import { Link } from "react-router-dom";
 import { StyledProfile } from "./styles";
 import authService from "../Services/auth-service.js";
 import tripService from "../Services/trip-service.js";
@@ -8,7 +6,6 @@ import ProfilePicture from "../ElementalComponents/ProfilePicture/ProfilePicture
 import TripsList from "../TripsList/TripsList.js";
 
 const ProfilePublic = (props) => {
-  const [userState, setUserState] = useState({ loggedInUser: props.userInSession})
   const [profileUserState, setProfileUserState] = useState(null)
   const [profileUserTrips, setProfileUserTrips] = useState([])
 
