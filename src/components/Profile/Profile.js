@@ -29,13 +29,13 @@ const Profile = (props) => {
 
   return (
     <StyledProfile>
-      <h1>Profile</h1>
+      <h1>Welcome to your profile, {props.userInSession.username} !</h1>
       <ProfilePicture src={userState.loggedInUser.profilePicture} width="150px" height="150px" margin="0 auto 20px" />
       { showProfilePictureForm &&
         <EditProfilePictureForm updateProfilePicture={updateProfilePicture} {...props} />
       }
-      <Button formButton={ showProfilePictureForm ? "CLOSE" : "EDIT" } toggleProfilePictureForm={toggleProfilePictureForm} />
-      <h2>Welcome to your profile, {props.userInSession.username} !</h2>
+      <Button formButton={ showProfilePictureForm ? "CLOSE" : "EDIT PICTURE" } toggleProfilePictureForm={toggleProfilePictureForm} />
+      <h2></h2>
       <Link to="/profile/my-trips">
         <Button formButton="MY TRIPS" width={"250px"} />
       </Link>

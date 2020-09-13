@@ -12,6 +12,13 @@ const errorHandler = (err) => {
 export default {
   authService,
 
+  getUser: (userId) => {
+    return authService
+      .get(`/getUser/${userId}`)
+      .then((response) => response.data)
+      .catch(errorHandler);
+  },
+
   signup: (credentials) => {
     return authService
       .post("/signup", credentials)

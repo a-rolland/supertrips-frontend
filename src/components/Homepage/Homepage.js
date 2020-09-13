@@ -81,7 +81,7 @@ const Homepage = (props) => {
       </VideoContainer>
       { popularTripsState.trips && 
         <HomepageBody>
-          <h2 style={{textAlign: "left"}}>Popular trips</h2>
+          <h2 style={{textAlign: "left"}}>Most Popular trips</h2>
           {popularTripsList}
         </HomepageBody>
       }

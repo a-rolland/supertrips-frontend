@@ -20,6 +20,7 @@ import CreateTripForm from "./components/CreateFormGeneral/CreateTripForm";
 import MyTrips from "./components/MyTrips/MyTrips";
 import MyFavoriteTrips from "./components/MyFavoriteTrips/MyFavoriteTrips";
 import NoMatch from "./components/NoMatch/NoMatch";
+import ProfilePublic from "./components/ProfilePublic/ProfilePublic";
 
 const App = () => {
   const initialState = { loggedInUser: JSON.parse(localStorage.getItem('loggedInUser')) || null };
@@ -144,6 +145,11 @@ const App = () => {
           path="/profile"
           userInSession={state.loggedInUser}
           component={Profile}
+        />
+        <Route
+          exact
+          path="/profile/:userId"
+          render={(props) => <ProfilePublic {...props} userInSession={state.loggedInUser} updateUser={handleUpdateUser} />}
         />
         <ProtectedRoute
           exact

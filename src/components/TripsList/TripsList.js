@@ -72,7 +72,14 @@ const TripsList = props => {
                 margin="5px 10px 5px 0"
                 display="inline-block"
               />
-              <span>By <Link to="#">{trip.author.username}</Link></span>
+              <span>
+                By <Link to={ props.userInSession && props.userInSession._id === trip.author._id
+                  ? "/profile"
+                  : `/profile/${trip.author._id}`
+                }
+                >{trip.author.username}
+                </Link>
+              </span>
             </div>
           </div>
         </TripContainer>

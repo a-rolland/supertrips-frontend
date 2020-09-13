@@ -156,7 +156,13 @@ const Trip = (props) => {
         { state.trip.author && 
           <div style={{display:"flex", alignItems:"center", justifyContent:"center", margin:"5px auto 20px"}}>
             <ProfilePicture src={state.trip.author.profilePicture} width="50px" height="50px" margin="5px 15px 5px 0" display="inline-block" />
-            <span>By {state.trip.author.username}</span>
+            <span>By <Link to={ props.userInSession && props.userInSession._id === state.trip.author._id
+                  ? "/profile"
+                  : `/profile/${state.trip.author._id}`
+                }
+                >{state.trip.author.username}
+                </Link>
+            </span>
           </div>
         }
         { state.trip && state.loggedInUser && state.trip.author._id === state.loggedInUser._id && !state.trip.isPublic &&
