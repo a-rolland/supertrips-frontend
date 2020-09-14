@@ -7,12 +7,11 @@ const LeaveComment = (props) => {
   const handleFormSubmit = (formObject) => {
     const { params } = props.match;
     tripService.postComment(params.id, formObject)
-      .then((response) => {
-        console.log("New comment :", response)
+      .then(() => {
         props.closeLeavingComment()
         props.updateTrips()
       })
-      .catch((error) => console.log("Error while leaving a comment :", error));
+      .catch(() => console.log("Error while leaving a comment"));
   }
 
   const formInputs = [
