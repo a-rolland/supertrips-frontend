@@ -55,3 +55,56 @@ export const HomepageBody = styled.ul`
     margin-bottom: 0;
   }
 `
+
+export const CreateATrip = styled.div`
+position: relative;
+  img {
+    width: 100%;
+    height: auto;
+  }
+
+  h2 {
+    position: absolute;
+    height: 50px;
+    width: 300px;
+    left: 50%;
+    margin-left: -150px;
+    top: 20%;
+    margin-top: -20px;
+    color: darkslategrey;
+    font-size: 30px;
+    background-color: rgba(176,196,222,.5);
+    padding-top: 10px;
+    border-radius: 4px;
+
+    @media (max-width: 768px) {
+      font-size: 24px;
+      padding-top: 15px;
+    }
+
+    @media (min-width: 992px) {
+      font-size: 40px;
+      padding: 20px 5px;
+    }
+  }
+
+  input {
+    position: absolute;
+    height: 50px;
+    width: 500px;
+    left: 50%;
+    margin-left: -250px;
+    top: 50%;
+    margin-top: -30px;
+
+    @media (max-width: 768px) {
+      width: 300px;
+      margin-left: -150px;
+    }
+
+    @media (min-width: 992px) {
+      width: 700px;
+      margin-left: -350px;
+    }
+  }
+`

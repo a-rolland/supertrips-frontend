@@ -2,8 +2,9 @@ import React, { useState, useEffect } from "react";
 import SearchBar from "../SearchBar/SearchBar";
 import Button from "../ElementalComponents/Button/Button";
 import tripService from "../Services/trip-service";
-import { VideoContainer, HomepageBody } from "./styles"
+import { VideoContainer, HomepageBody, CreateATrip } from "./styles"
 import TripsList from "../TripsList/TripsList";
+import { Link } from "react-router-dom";
 
 const Homepage = (props) => {
   const initialSearch = {
@@ -83,6 +84,13 @@ const Homepage = (props) => {
           {popularTripsList}
         </HomepageBody>
       }
+      <CreateATrip>
+        <h2>Create a trip</h2>
+        <img src="https://res.cloudinary.com/nutriapp/image/upload/v1599217458/tripDefault_gkayed.jpg" alt="Create a trip" />
+        <Link to={props.userInSession ? "/create-trip" : "/login" }>
+          <Button formButton={props.userInSession ? "START" : "LOGIN FIRST"} />
+        </Link>
+      </CreateATrip>
     </div>
   );
 };
