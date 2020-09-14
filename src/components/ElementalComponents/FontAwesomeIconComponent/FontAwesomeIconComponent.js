@@ -2,7 +2,6 @@ import React from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import {
   faHourglassHalf,
-  faSuitcaseRolling,
   faFeatherAlt,
   faPlus,
   faAsterisk,
@@ -32,9 +31,6 @@ const FontAwesomeIconComponent = props => {
   switch(props.chosenIcon) {
     case "faHourglassHalf":
       icon = faHourglassHalf
-      break;
-    case "faSuitcaseRolling":
-      icon = faSuitcaseRolling
       break;
     case "faFeatherAlt":
       icon = faFeatherAlt

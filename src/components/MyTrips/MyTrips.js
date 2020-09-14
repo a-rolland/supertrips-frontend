@@ -2,9 +2,7 @@ import React, { useState, useEffect } from 'react'
 import tripService from "../Services/trip-service";
 import TripsList from "../TripsList/TripsList";
 import { Link } from "react-router-dom";
-import { AddLogo } from "./styles";
 import Button from '../ElementalComponents/Button/Button';
-import FontAwesomeIconComponent from '../ElementalComponents/FontAwesomeIconComponent/FontAwesomeIconComponent';
 
 const MyTrips = (props) => {
   const initialState = {
@@ -59,14 +57,6 @@ const MyTrips = (props) => {
                 <Button formButton="CREATE A NEW TRIP" width={"250px"} />
               </Link>
             </>
-      }
-      { state.loggedInUser &&
-        <AddLogo>
-          <Link to="/create-trip">
-            <FontAwesomeIconComponent chosenIcon={"faSuitcaseRolling"} size="2x" />
-            <span>CREATE TRIP</span>
-          </Link>
-        </AddLogo>
       }
     </div>
   )
