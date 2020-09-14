@@ -131,11 +131,17 @@ export const SinglePictureContainer = styled.div`
   svg {
     position: absolute;
     bottom: 20px;
-    left: 15px;
+    width: 30px;
+    left: 50%;
+    margin-left: -15px;
     background-color: rgba(255,255,255,.6);
     border: 1px solid rgba(0,0,0,0.2);
     border-radius: 25%;
     padding: 10px;
+
+    @media (min-width: 768px) {
+        margin-left: -40px;
+      }
 
     &:hover {
       cursor: pointer;
