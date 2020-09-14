@@ -48,7 +48,7 @@ export const TripContainer = styled.div`
     "display: flex; flex-direction: column; align-items: flex-start;"
   }
 
-  @media (max-width: 767px) {
+  @media (max-width: 768px) {
     display: flex;
     flex-direction: column;
   }
@@ -70,7 +70,7 @@ export const TripContainer = styled.div`
     margin-right: 40px;
     animation: slow-popup 0.5s ease-in-out forwards;
 
-    @media (max-width:768px) {
+    @media (max-width: 767px) {
       margin-right: 0;
       height: auto;
       width: 100%;
@@ -100,21 +100,30 @@ export const SinglePictureContainer = styled.div`
       }
 
       height: auto;
-      width: 300px;
       max-width: 400px;
       margin-right: 40px;
       animation: slow-popup 0.5s ease-in-out forwards;
 
-      @media (max-width:768px) {
+      @media (max-width: 767px) {
         margin-right: 0;
-        height: auto;
+        max-height: 250px;
         width: 100%;
+        object-fit: scale-down;
+      }
+
+      @media (min-width: 767px) and (max-width:991px ) {
+        height: auto;
+        width: 300px;
+        max-height: 200px;
+        object-fit: scale-down;
       }
 
       @media (min-width: 992px) {
         height: auto;
         width: 400px;
+        max-height: 300px;
         margin-right: 40px;
+        object-fit: scale-down;
       }
     }
   }
@@ -169,7 +178,7 @@ export const TripTitle = styled.span`
 
 export const LowerPart = styled.div`
   width: 100%;
-  @media (max-width: 767px) {
+  @media (max-width: 768px) {
     display: flex;
     flex-direction: row;
     justify-content: space-around;

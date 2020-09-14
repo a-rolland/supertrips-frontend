@@ -4,7 +4,7 @@ import CreateFormGeneral from "./CreateFormGeneral";
 const AddPhotoToExperience = (props) => {
   const formInputs = [
     {
-      label: "New photo",
+      label: "New photo (max. 10 Mo)",
       type: "file",
       name: "imageUrl",
     }

@@ -15,7 +15,7 @@ import AddStepForm from "./components/CreateFormGeneral/AddStepForm";
 import EditStepForm from "./components/EditFormGeneral/EditStepForm";
 import AddExperienceForm from "./components/CreateFormGeneral/AddExperienceForm";
 import EditExperienceForm from "./components/EditFormGeneral/EditExperienceForm";
-import { StyledApp } from "./styles";
+import { StyledApp, Body } from "./styles";
 import CreateTripForm from "./components/CreateFormGeneral/CreateTripForm";
 import MyTrips from "./components/MyTrips/MyTrips";
 import MyFavoriteTrips from "./components/MyFavoriteTrips/MyFavoriteTrips";
@@ -72,108 +72,110 @@ const App = () => {
   return (
     <StyledApp>
       <NavBar userInSession={state.loggedInUser} getUser={getTheUser} />
-      <Switch>
-        <Route
-          exact
-          path="/"
-          render={(props) => (
-            <Homepage {...props} userInSession={state.loggedInUser} updateUser={handleUpdateUser} />
-          )}
-        />
-        <Route
-          exact
-          path="/trips"
-          render={(props) => (
-            <Trips {...props} userInSession={state.loggedInUser} updateUser={handleUpdateUser} />
-          )}
-        />
-        <Route
-          exact
-          path="/search"
-          render={(props) => (
-            <SearchTripsResults {...props} userInSession={state.loggedInUser} updateUser={handleUpdateUser} />
-          )}
-        />
-        <Route
-          exact
-          path="/trips/:id"
-          render={(props) => (
-            <Trip {...props} userInSession={state.loggedInUser} updateUser={handleUpdateUser} />
-          )}
-        />
-        <ProtectedRoute
-          exact
-          path="/trips/edit/:id"
-          userInSession={state.loggedInUser}
-          component={EditTripForm}
-        />
-        <ProtectedRoute
-          exact
-          path="/trips/:id/add-step"
-          userInSession={state.loggedInUser}
-          component={AddStepForm}
-        />
-        <ProtectedRoute
-          exact
-          path="/trips/:id/edit-step/:stepId"
-          userInSession={state.loggedInUser}
-          component={EditStepForm}
-        />
-        <ProtectedRoute
-          exact
-          path="/trips/:id/steps/:stepId/add-experience"
-          userInSession={state.loggedInUser}
-          component={AddExperienceForm}
-        />
-        <ProtectedRoute
-          exact
-          path="/trips/:id/steps/:stepId/edit-experience/:experienceId"
-          userInSession={state.loggedInUser}
-          component={EditExperienceForm}
-        />
-        <Route
-          exact
-          path="/signup"
-          render={(props) => <Signup {...props} getUser={getTheUser} />}
-        />
-        <Route
-          exact
-          path="/login"
-          render={(props) => <Login {...props} getUser={getTheUser} />}
-        />
-        <ProtectedRoute
-          exact
-          path="/profile"
-          userInSession={state.loggedInUser}
-          component={Profile}
-        />
-        <ProtectedRoute
-          exact
-          path="/profile/my-trips"
-          userInSession={state.loggedInUser}
-          component={MyTrips}
-          updateUser={handleUpdateUser}
-        />
-        <Route
-          exact
-          path="/profile/user/:userId"
-          render={(props) => <ProfilePublic {...props} userInSession={state.loggedInUser} updateUser={handleUpdateUser} />}
-        />
-        <ProtectedRoute
-          exact
-          path="/profile/favorite-trips"
-          userInSession={state.loggedInUser}
-          component={MyFavoriteTrips}
-          updateUser={handleUpdateUser}
-        />
-        <ProtectedRoute
-          exact
-          path="/create-trip"
-          userInSession={state.loggedInUser}
-          component={CreateTripForm}
-        />
-        <Route component={NoMatch} />
-      </Switch>
+      <Body>
+        <Switch>
+          <Route
+            exact
+            path="/"
+            render={(props) => (
+              <Homepage {...props} userInSession={state.loggedInUser} updateUser={handleUpdateUser} />
+            )}
+          />
+          <Route
+            exact
+            path="/trips"
+            render={(props) => (
+              <Trips {...props} userInSession={state.loggedInUser} updateUser={handleUpdateUser} />
+            )}
+          />
+          <Route
+            exact
+            path="/search"
+            render={(props) => (
+              <SearchTripsResults {...props} userInSession={state.loggedInUser} updateUser={handleUpdateUser} />
+            )}
+          />
+          <Route
+            exact
+            path="/trips/:id"
+            render={(props) => (
+              <Trip {...props} userInSession={state.loggedInUser} updateUser={handleUpdateUser} />
+            )}
+          />
+          <ProtectedRoute
+            exact
+            path="/trips/edit/:id"
+            userInSession={state.loggedInUser}
+            component={EditTripForm}
+          />
+          <ProtectedRoute
+            exact
+            path="/trips/:id/add-step"
+            userInSession={state.loggedInUser}
+            component={AddStepForm}
+          />
+          <ProtectedRoute
+            exact
+            path="/trips/:id/edit-step/:stepId"
+            userInSession={state.loggedInUser}
+            component={EditStepForm}
+          />
+          <ProtectedRoute
+            exact
+            path="/trips/:id/steps/:stepId/add-experience"
+            userInSession={state.loggedInUser}
+            component={AddExperienceForm}
+          />
+          <ProtectedRoute
+            exact
+            path="/trips/:id/steps/:stepId/edit-experience/:experienceId"
+            userInSession={state.loggedInUser}
+            component={EditExperienceForm}
+          />
+          <Route
+            exact
+            path="/signup"
+            render={(props) => <Signup {...props} getUser={getTheUser} />}
+          />
+          <Route
+            exact
+            path="/login"
+            render={(props) => <Login {...props} getUser={getTheUser} />}
+          />
+          <ProtectedRoute
+            exact
+            path="/profile"
+            userInSession={state.loggedInUser}
+            component={Profile}
+          />
+          <ProtectedRoute
+            exact
+            path="/profile/my-trips"
+            userInSession={state.loggedInUser}
+            component={MyTrips}
+            updateUser={handleUpdateUser}
+          />
+          <Route
+            exact
+            path="/profile/user/:userId"
+            render={(props) => <ProfilePublic {...props} userInSession={state.loggedInUser} updateUser={handleUpdateUser} />}
+          />
+          <ProtectedRoute
+            exact
+            path="/profile/favorite-trips"
+            userInSession={state.loggedInUser}
+            component={MyFavoriteTrips}
+            updateUser={handleUpdateUser}
+          />
+          <ProtectedRoute
+            exact
+            path="/create-trip"
+            userInSession={state.loggedInUser}
+            component={CreateTripForm}
+          />
+          <Route component={NoMatch} />
+        </Switch>
+      </Body>
       <Footer userInSession={state.loggedInUser} />
     </StyledApp>
   );

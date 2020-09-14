@@ -14,3 +14,9 @@ export const StyledApp = styled.div`
     }
   }
 `
+
+export const Body = styled.div`
+  @media (max-width: 768px) {
+    padding-bottom: 60px;
+  }
+`
