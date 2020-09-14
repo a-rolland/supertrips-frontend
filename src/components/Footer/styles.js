@@ -33,6 +33,7 @@ export const StyledFooter = styled.div`
         height: 25px;
         width: 25px;
         margin-bottom: 5px;
+        border-radius: 50%;
       }
     }
   }

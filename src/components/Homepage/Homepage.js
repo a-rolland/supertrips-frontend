@@ -18,7 +18,7 @@ const Homepage = (props) => {
     setLoggedInUser({loggedInUser: props.userInSession})
       const fetchAuthorizedTripsList = async () => {
         const response = await tripService.popularTrips();
-        const popularTrips = response
+        const popularTrips = response.filter(trip => trip.isPublic || trip.author._id === props.userInSession)
         updatePopularTrips((state) => ({
           ...state,
           trips: popularTrips,
