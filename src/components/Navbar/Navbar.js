@@ -65,8 +65,8 @@ const Navbar = (props) => {
           toggleDropdown={toggleDropdown}
         />
       </span>
-      <Dropdown showDropdown={showDropdown ? "flex" : "none"}>
-        <li style={showDropdown ? {margin:"30px auto 10px"} : {margin:"auto auto auto 20px"} }>
+      <Dropdown userInSession={props.userInSession} showDropdown={showDropdown ? "flex" : "none"}>
+        <li>
           <Link to="/trips" onClick={closeDropdown}>TRIPS</Link>
         </li>
         {state.loggedInUser ? (

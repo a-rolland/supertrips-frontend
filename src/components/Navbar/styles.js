@@ -64,13 +64,24 @@ export const Dropdown = styled.ul`
     font-size: 12px;
 
     li {
-      margin: ${props => props.margin || "10px auto"};
       list-style-type: none;
       display: flex;
 
       a {
         text-decoration: none;
       }
+    }
+
+    li:first-of-type {
+      margin: 30px auto 10px;
+    }
+
+    li:nth-of-type(2) {
+      margin: 30px auto 10px;
+    }
+
+    li:nth-of-type(3) {
+      margin: ${(props) => props.userInSession ? "15px auto 15px" : "30px auto"};
     }
   }
 
@@ -98,6 +109,14 @@ export const Dropdown = styled.ul`
         text-decoration: none;
       }
     }
+
+    li:first-of-type {
+      margin: auto auto auto 20px;
+    }
+
+    li:nth-of-type(2) {
+      margin-right: 30px;
+    }
   }
 
   @media (min-width: 992px) {
@@ -108,6 +127,10 @@ export const Dropdown = styled.ul`
       a {
         font-size: 18px;
       }
+    }
+
+    li:nth-of-type(2) {
+      margin-right: 50px;
     }
   }
 `;
