@@ -79,22 +79,38 @@ const TripsFetch = (props) => {
   const listTripsLength = state.trips && state.trips.length
 
   return (
-    <StyledTrips allTrips={props.allTrips} searchTrips={props.searchTrips}>
+    <StyledTrips allTrips={props.allTrips} searchTrips={props.searchTrips} myFavoriteTrips={props.myFavoriteTrips}>
       <h1>
         { props.searchTrips
             ? `Search results for: "${query}"`
             : props.title
         }
       </h1>
-      {props.allTrips &&
+      { props.allTrips &&
         <SearchBar
         placeholder="Search for a trip.."
         searchUpdates={handleSearch}
       />
       }
+      { props.allTrips && props.userInSession && 
+        <p>
+          <Link to="/create-trip">
+            <Button formButton="CREATE A NEW TRIP" width={"250px"} />
+          </Link>
+        </p>
+      }
       { props.myTrips || props.myFavoriteTrips
         ? state.trips.length > 0
-            ? listTrips
+            ? props.myTrips
+              ? <>
+                  <Link to="/create-trip">
+                    <Button formButton="CREATE A NEW TRIP" width={"250px"} />
+                  </Link>
+                  { listTrips }
+                </>
+              : <ul>
+                  { listTrips }
+                </ul>     
             : <>
                 <p>{ props.myTrips
                       ? "You don't have any trip yet !"

@@ -5,5 +5,6 @@ export const StyledTrips = styled.div`
   
   ul {
     ${(props) => props.searchTrips && "padding: 0;"}
+    ${(props) => props.myFavoriteTrips && "padding: 0;"}
   }
 `
