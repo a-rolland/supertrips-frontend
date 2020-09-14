@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import tripService from "../Services/trip-service";
 import stepService from "../Services/step-service";
 import experienceService from "../Services/experience-service";
-import { StyledTrip, Duration, OwnerControls, Ul, Box, Li, Error, TripPicture } from "./styles"
+import { StyledTrip, Duration, OwnerControls, Ul, Box, Li, Error, TripPicture, LeaveCommentToggleLogo, Comment } from "./styles"
 import Step from "../Step/Step";
 import ProfilePicture from "../ElementalComponents/ProfilePicture/ProfilePicture"
 import { Link } from "react-router-dom";
@@ -10,6 +10,7 @@ import Map from "../Map/Map";
 import FontAwesomeIconComponent from "../ElementalComponents/FontAwesomeIconComponent/FontAwesomeIconComponent";
 import AddToFavoritesLogo from "../ElementalComponents/AddToFavoritesLogo/AddToFavoritesLogo";
 import LikeTripLogo from "../ElementalComponents/LikeTripLogo/LikeTripLogo";
+import LeaveComment from "../CreateFormGeneral/LeaveComment";
 
 const Trip = (props) => {
   const [showError, setShowError] = useState("")
@@ -18,6 +19,7 @@ const Trip = (props) => {
     trip: [],
     steps: [],
     experiences: [],
+    leavingComment: false,
     lat: null,
     lng: null
   };
@@ -114,6 +116,43 @@ const Trip = (props) => {
         }
       )
   })
+
+  const toggleLeavingComment = () => {
+    setState((state) => ({
+      ...state,
+      leavingComment: !state.leavingComment
+    }))
+  }
+
+  const handleCloseLeavingComment = () => {
+    setState((state) => ({
+      ...state,
+      leavingComment: false
+    }))
+  }
+
+  const commentsList = state.trip.comments && state.trip.comments.map((comment) => {
+    return(
+      <Comment key={comment._id}>
+        <span>
+          <ProfilePicture
+            src={comment.commentAuthor.profilePicture}
+            width="20px"
+            height="20px"
+            margin="5px 10px 5px 0"
+            display="inline-block"
+          />
+          <Link to={ props.userInSession && props.userInSession._id === comment.commentAuthor._id
+            ? "/profile"
+            : `/profile/user/${comment.commentAuthor._id}`
+          }
+          >{comment.commentAuthor.username}
+          </Link> said
+        </span>
+        <p>{comment.comment}</p>
+      </Comment>
+    )
+  })
   
   return (
     <StyledTrip>
@@ -181,15 +220,29 @@ const Trip = (props) => {
             </Box>
           </Ul>
         }
-        {/* {
-          state.loggedInUser &&
+        {
+          state.trip && state.trip.comments && state.trip.comments.length > 0 &&
+            <div>
+              <p>Comments</p>
+              {commentsList}
+            </div>
+        }
+        { state.loggedInUser &&
           <React.Fragment>
-            <p>Leave a comment</p>
-            <form>
-              <input type="textarea" />
-            </form>
+            <LeaveCommentToggleLogo onClick={toggleLeavingComment}>
+              <FontAwesomeIconComponent
+                chosenIcon={
+                  state.leavingComment ? "faMinusSquare" : "faCommentAlt"
+                }
+                color="dimgrey"
+              />
+              {state.leavingComment ? "Close" : "Leave a comment"}
+            </LeaveCommentToggleLogo>
+            { state.leavingComment && 
+              <LeaveComment {...props} closeLeavingComment={handleCloseLeavingComment} updateTrips={handleUpdateTrip} />
+            }
           </React.Fragment>
-        } */}
+        }
         {state.loggedInUser && state.loggedInUser._id === state.trip.author._id && (
           <React.Fragment>
             <OwnerControls>

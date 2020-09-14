@@ -76,3 +76,40 @@ export const TripPicture = styled.img`
   width: 100%;
   max-width: 600px;
 `
+
+export const LeaveCommentToggleLogo = styled.span`
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+
+  &:hover {
+    cursor: pointer;
+    color: lightgrey;
+  }
+`
+
+export const Comment = styled.li`
+  list-style: none;
+  background-color: rgba(0, 0, 0,.1);
+  width: 300px;
+  border-radius: 10px;
+  margin: 10px auto;
+
+  span {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+
+    a {
+      margin-right: 5px;
+    }
+  }
+
+  p {
+    font-weight: 300;
+    font-style: italic;
+    padding: 10px;
+  }
+`

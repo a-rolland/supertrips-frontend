@@ -59,5 +59,12 @@ export default {
       .put(`/trip/toggleLikes/${id}`)
       .then((response) => response.data)
       .catch(errorHandler);
+  },
+
+  postComment: (id, formFields) => {
+    return tripService
+      .post(`/trip/postComment/${id}`, formFields)
+      .then((response) => response.data)
+      .catch(errorHandler);
   }
 };

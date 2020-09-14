@@ -22,7 +22,8 @@ import {
   faHeart,
   faTrashAlt,
   faPenSquare,
-  faThumbsUp
+  faThumbsUp,
+  faCommentAlt,
 } from '@fortawesome/free-solid-svg-icons'
 import { faFacebook } from "@fortawesome/free-brands-svg-icons"
 
@@ -97,6 +98,9 @@ const FontAwesomeIconComponent = props => {
       break;
     case "faFacebook":
       icon = faFacebook
+      break;
+    case "faCommentAlt":
+      icon = faCommentAlt
       break;
     default:
       icon = null
