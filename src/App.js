@@ -21,6 +21,7 @@ import MyTrips from "./components/MyTrips/MyTrips";
 import MyFavoriteTrips from "./components/MyFavoriteTrips/MyFavoriteTrips";
 import NoMatch from "./components/NoMatch/NoMatch";
 import ProfilePublic from "./components/ProfilePublic/ProfilePublic";
+import Footer from "./components/Footer/Footer";
 
 const App = () => {
   const initialState = { loggedInUser: JSON.parse(localStorage.getItem('loggedInUser')) || null };
@@ -173,6 +174,7 @@ const App = () => {
         />
         <Route component={NoMatch} />
       </Switch>
+      <Footer userInSession={state.loggedInUser} />
     </StyledApp>
   );
 };
