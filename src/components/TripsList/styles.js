@@ -16,12 +16,15 @@ export const LiContainer = styled.div`
 `;
 
 export const Li = styled.li`
-  margin: 40px;
+  margin: 40px 0;
   text-align: left;
   display: flex;
   flex-direction: row;
   justify-content: flex-start;
   align-items: center;
+  ${(props) => props.popularTrips && 
+    "margin: 40px;"
+  }
 
   @media (max-width: 767px) {
     justify-content: center;
@@ -79,42 +82,6 @@ export const TripContainer = styled.div`
       margin-right: 40px;
     }
   }
-
-  div {
-    @media (max-width: 767px) {
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      ${(props) => props.popularTrips && 
-        "justify-content: flex-start; align-items: flex-start"
-      }
-    }
-
-    a {
-      display: inline-block;
-    }
-
-    h3 {
-      margin-right: 20px;
-      
-      @media (min-width: 992px) {
-        font-size: 26px;
-      }
-    }
-
-    div {
-      @media (max-width: 767px) {
-        display: flex;
-        flex-direction: row;
-        justify-content: center;
-      }
-
-      a {
-        display: inline-block;
-      }
-    }
-  }
 `
 
 export const SinglePictureContainer = styled.div`
@@ -164,5 +131,99 @@ export const SinglePictureContainer = styled.div`
     &:hover {
       cursor: pointer;
     }
+  }
+`
+
+export const RightPanel = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  ${(props) => props.popularTrips && 
+    "justify-content: flex-start; align-items: flex-start"
+  }
+
+  @media (max-width: 767px) {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+  }
+`
+
+export const TripTitle = styled.span`
+  margin: 0 auto;
+
+  h3 {
+    display: inline-block;
+
+    @media (min-width: 992px) {
+      font-size: 26px;
+    }
+  }
+
+  span {
+    margin-left: 10px;
+  }
+`
+
+export const LowerPart = styled.div`
+  width: 100%;
+  @media (max-width: 767px) {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    align-content: center;
+    ${(props) => props.popularTrips && 
+      "flex-direction: column; flex-start; align-items: flex-start"
+    }
+  }
+
+  div {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    align-content: center;
+    margin: 15px 0;
+    ${(props) => !props.popularTrips && 
+      "margin: 10px 0"
+    }
+
+    @media (max-width: 767px) {
+      margin: 2px 0;
+    }
+  }
+
+  div:nth-of-type(1) {
+    svg {
+      margin-right: 18px;
+      ${(props) => !props.popularTrips && 
+        "padding: 0"
+      }
+    }
+  }
+
+  div:nth-of-type(2) {
+    span {
+      margin-right: 5px;
+      
+      svg {
+        ${(props) => !props.popularTrips && 
+          "padding: 0"
+        }
+      }
+    }
+  }
+
+  div:nth-of-type(3) {
+    div {
+      margin: 0 10px 0 0;
+
+    }
+  }
+
+  a {
+    display: inline-block;
   }
 `
