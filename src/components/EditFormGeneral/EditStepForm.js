@@ -11,9 +11,7 @@ const EditStepForm = (props) => {
       .then(response => {
         setStepState(response);
       })
-      .catch((error) =>
-        console.log("Error while getting step details :", error)
-      );
+      .catch(() => console.log("Error while getting step details"));
   }, [props.match.params.stepId]);
 
   const formInputs = [

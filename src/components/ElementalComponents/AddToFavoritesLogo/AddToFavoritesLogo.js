@@ -12,7 +12,7 @@ const AddToFavoritesLogo = props => {
       .then(response => {
         setUserState({loggedInUser: response})
       })
-      .catch(error => console.log("Error adding/removing to/from favorite trips: ", error))
+      .catch(() => console.log("Error adding/removing to/from favorite trips"))
   , []);
 
   const handleToggleAddToFavorites = (tripId) => {
@@ -21,7 +21,7 @@ const AddToFavoritesLogo = props => {
         updateUser()
         props.updateUser()
       })
-      .catch(err => console.log("An error occurred while adding/removing to/from favorites: ",err))
+      .catch(() => console.log("An error occurred while adding/removing to/from favorites"))
   }
 
   return (

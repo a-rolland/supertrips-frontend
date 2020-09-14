@@ -22,7 +22,6 @@ const Homepage = (props) => {
           ...state,
           trips: popularTrips,
         }));
-        console.log("Popular trips: ", popularTrips)
       };
       fetchAuthorizedTripsList();
   }, [props.userInSession])
@@ -35,7 +34,6 @@ const Homepage = (props) => {
         ...state,
         trips: popularTrips,
       }));
-      console.log("Popular trips: ", popularTrips)
     };
     fetchAuthorizedTripsList();
   }

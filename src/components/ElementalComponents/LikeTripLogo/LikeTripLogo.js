@@ -9,7 +9,7 @@ const LikeTripLogo = props => {
       .then(() => {
         props.updateTrips()
       })
-      .catch(err => console.log("Error adding/removing Like to/from this trip: ", err))
+      .catch(() => console.log("Error adding/removing Like to/from this trip"))
   }
 
   return (

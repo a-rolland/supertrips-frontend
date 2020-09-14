@@ -11,9 +11,7 @@ const EditProfilePictureForm = (props) => {
       .then(response => {
         setUserState(response)
       })
-      .catch((error) =>
-        console.log("Error while getting user details :", error)
-      );
+      .catch(() => console.log("Error while getting user details"));
   }, []);
 
   const formInputs = [

@@ -27,7 +27,6 @@ const Trip = (props) => {
     tripService
       .tripDetails(props.match.params.id)
       .then((tripResponse) => {
-        console.log("Trip details :", tripResponse);
         tripResponse === null 
         ? setShowError("Sorry, this trip doesn't exist.")
         : setState((state) => ({
@@ -37,7 +36,7 @@ const Trip = (props) => {
           }))
       })
       .catch((error) => {
-        console.log("Error while getting trip details :", error)
+        console.log("Error while getting trip details")
         setShowError(`Error : ${error.response.data.message}`)        
       });
   }
@@ -55,7 +54,6 @@ const Trip = (props) => {
             .filter(experience => experience.place)
             .reduce((acc, curr) => acc + curr.place.lng, 0).toFixed(2) / experienceResponse
             .filter(experience => experience.place).length
-          console.log("Experiences of this trip:", experienceResponse)
 
           setState((state) => ({
             ...state,
@@ -64,13 +62,10 @@ const Trip = (props) => {
             lng: experienceLngAverage
           }));
         })
-        .catch((error) => 
-          console.log("Error while getting experiences :", error
-        ))
+        .catch(() => console.log("Error while getting experiences"))
     tripService
       .tripDetails(props.match.params.id)
       .then((tripResponse) => {
-        console.log("Trip details :", tripResponse);
         tripResponse === null 
         ? setShowError("Sorry, this trip doesn't exist.")
         : setState((state) => ({
@@ -81,19 +76,16 @@ const Trip = (props) => {
           stepService
             .steps(props.match.params.id)
               .then((stepResponse) => {
-                console.log("Steps of this trip:", stepResponse)
                 setState((state) => ({
                   ...state,
                   loggedInUser: props.userInSession,
                   steps: stepResponse
                 }));
               })
-              .catch((error) => 
-                console.log("Error while getting steps :", error
-              ))
+              .catch(() => console.log("Error while getting steps"))
       })
       .catch((error) => {
-        console.log("Error while getting trip details :", error)
+        console.log("Error while getting trip details")
         setShowError(`Error : ${error.response.data.message}`)        
       });
   }, [props.userInSession, props.match.params.id]);

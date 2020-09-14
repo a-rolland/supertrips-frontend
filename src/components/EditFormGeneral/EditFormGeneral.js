@@ -43,15 +43,12 @@ const EditFormGeneral = (props) => {
           ? setState({profilePicture:"", originalImg: response.profilePicture})
           : setState(response)
       })
-      .catch((error) =>
-        console.log(`Error while getting ${props.formType} details :`, error)
-      );
+      .catch(() => console.log(`Error while getting ${props.formType} details`));
   }, [props.formType, props.stepForm, props.tripForm, props.experienceForm, props.profilePictureForm, props.match]);
 
   const handleFormSubmit = (formObject) => {
     const { params } = props.match;
     setLoading(true)
-    console.log("FORM OBJECT", formObject)
     const uploadData = new FormData();
     if (props.tripForm) {
       uploadData.append("title", formObject.title);
@@ -61,13 +58,11 @@ const EditFormGeneral = (props) => {
       uploadData.append("isPublic", formObject.isPublic);
       uploadData.append("startDate", formObject.startDate);
       uploadData.append("endDate", formObject.endDate);
-      console.log("uploadData",uploadData)
     }
     if (props.profilePictureForm) {
       formObject.archive
         ? uploadData.append("profilePicture", formObject.archive)
         : uploadData.append("profilePicture", formObject.originalImg)
-      console.log("uploadData",uploadData)
     }
 
     const dynamicService = props.tripForm
@@ -80,7 +75,6 @@ const EditFormGeneral = (props) => {
       
     dynamicService
       .then((response) => {
-        console.log(`${props.formType} edited!`, response);
         setLoading(false)
         props.profilePictureForm
           ? props.updateProfilePicture()
@@ -90,7 +84,7 @@ const EditFormGeneral = (props) => {
       })
       .catch((error) => {
         setLoading(false)
-        console.log(`Error while editing ${props.formType}:`, error)
+        console.log(`Error while editing ${props.formType}`)
         setShowError(error.response.data.message)
       });
   };
@@ -113,13 +107,10 @@ const EditFormGeneral = (props) => {
 
     dynamicService
       .then((response) => {
-        console.log(response)
         props.profilePictureForm && props.updateProfilePicture()
         props.history.push(dynamicRedirectLink);
       })
-      .catch((err) => {
-        console.log(`Error while deleting ${props.formType}: `, err);
-      });
+      .catch(() => console.log(`Error while deleting ${props.formType}`));
   };
 
   return (

@@ -24,7 +24,7 @@ const Profile = (props) => {
         closeProfilePictureForm()
         setUserState({loggedInUser: response})
       })
-      .catch(error => console.log("Error updating profile picture: ", error))
+      .catch(() => console.log("Error updating profile picture"))
   , []);
 
   return (

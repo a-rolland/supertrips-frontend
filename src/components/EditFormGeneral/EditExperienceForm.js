@@ -11,8 +11,7 @@ const EditExperienceForm = (props) => {
       .then(response => {
         setExperienceState(response);
       })
-      .catch((error) =>
-        console.log("Error while getting experience details :", error)
+      .catch(() => console.log("Error while getting experience details")
       );
   }, [props.match.params.experienceId]);
 

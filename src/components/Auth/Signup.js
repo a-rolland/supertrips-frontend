@@ -7,14 +7,13 @@ import FontAwesomeIconComponent from "../ElementalComponents/FontAwesomeIconComp
 
 const Signup = (props) => {
   const responseFacebook = (response) => {
-    // console.log(response)
     authService.facebookLogin({access_token: response.accessToken})
       .then(response => {
         localStorage.setItem('loggedInUser', JSON.stringify(response))
         props.getUser(response);
         props.history.push("/");
       })
-      .catch(err => console.log(err));
+      .catch(() => console.log("Error while login with Facebook"));
   }
 
   return (

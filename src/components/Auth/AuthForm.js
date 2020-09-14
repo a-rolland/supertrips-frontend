@@ -18,7 +18,7 @@ const AuthForm = (props) => {
         props.history.push("/");
       })
       .catch((error) => {
-        console.log("Error while login/signup :", error);
+        console.log("Error while login/signup");
         setShowError(error.response.data.message)
       })
   };

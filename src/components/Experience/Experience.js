@@ -77,17 +77,13 @@ const Experience = (props) => {
             experience: response,
           }));
         })
-        .catch((error) =>
-          console.log("Error while getting experience details :", error)
-        ),
+        .catch(() => console.log("Error while getting experience details")),
     [state.experience._id]
   );
 
   const handleDeletePicture = (imageId) => {
-    console.log("Picture with imageId ",imageId," will be deleted")
     experienceService.deleteExperiencePicture(state.experience._id, imageId)
       .then((response) => {
-        console.log("Picture deleted !", response)
         handleUpdateNewPicture()
       })
   }
@@ -113,16 +109,13 @@ const Experience = (props) => {
     experienceService
       .experienceDetails(props.experience._id)
       .then((response) => {
-        console.log("Experience details :", response);
         setState((state) => ({
           ...state,
           loggedInUser: props.userInSession,
           experience: response,
         }));
       })
-      .catch((error) =>
-        console.log("Error while getting experience details :", error)
-      );
+      .catch(() => console.log("Error while getting experience details"));
   }, [props.userInSession, props.experience._id]);
 
   return (

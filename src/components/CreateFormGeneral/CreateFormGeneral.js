@@ -20,7 +20,6 @@ const CreateFormGeneral = (props) => {
       uploadData.append("isPublic", formObject.isPublic);
       uploadData.append("startDate", formObject.startDate);
       uploadData.append("endDate", formObject.endDate);
-      console.log("uploadData",uploadData)
     }
     if (props.addPhotoToExperience) {
       uploadData.append("imageUrl", formObject.archive);
@@ -35,7 +34,6 @@ const CreateFormGeneral = (props) => {
     dynamicService  
       .then((response) => {
         setLoading(false)
-        console.log(`New ${props.formType} created !`, response)
         props.addPhotoToExperience && props.closeShowAddPhoto()
         props.addPhotoToExperience && props.updateNewPicture()
         props.tripForm
@@ -44,7 +42,7 @@ const CreateFormGeneral = (props) => {
       })
       .catch((error) => {
         setLoading(false)
-        console.log(`Error while getting ${props.formType} details :`, error)
+        console.log(`Error while getting ${props.formType} details`)
         setShowError(error.response.data.message)
       });
   };

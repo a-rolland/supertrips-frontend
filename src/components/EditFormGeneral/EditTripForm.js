@@ -11,9 +11,7 @@ const EditTripForm = (props) => {
       .then(response => {
         setTripState(response)
       })
-      .catch((error) =>
-        console.log("Error while getting trip details :", error)
-      );
+      .catch(() => console.log("Error while getting trip details :"));
   }, [props.match.params.id]);
 
   const formatDate = (date) => {

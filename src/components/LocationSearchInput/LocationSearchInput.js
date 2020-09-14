@@ -22,7 +22,6 @@ class LocationSearchInput extends React.Component {
       .then((latLng) => {
         this.setState({ address: address, ...latLng });
         this.props.setPlace(this.state);
-        console.log("Success", latLng);
       })
       .catch((error) => console.error("Error", error));
   };
