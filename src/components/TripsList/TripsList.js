@@ -17,6 +17,7 @@ const TripsList = props => {
                 pathname: `/trips/${trip._id}`,
                 state: { userInSession: props.loggedInUser, trip: trip },
               }}
+              popularTrips={props.popularTrips}
             >
               {trip.imageUrl &&
                 <img src={trip.imageUrl} alt="trip cover pic" />

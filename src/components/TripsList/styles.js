@@ -52,36 +52,6 @@ export const TripContainer = styled.div`
     display: flex;
     flex-direction: column;
   }
-
-  img {
-    @keyframes slow-popup {
-      0% {
-        opacity: 0;
-      }
-      100% {
-        opacity: 1;
-      }
-    }
-
-    height: auto;
-    width: 300px;
-    max-width: 400px;
-    min-width: 125px;
-    margin-right: 40px;
-    animation: slow-popup 0.5s ease-in-out forwards;
-
-    @media (max-width: 767px) {
-      margin-right: 0;
-      height: auto;
-      width: 100%;
-    }
-
-    @media (min-width: 992px) {
-      height: auto;
-      width: 400px;
-      margin-right: 40px;
-    }
-  }
 `
 
 export const SinglePictureContainer = styled.div`
@@ -109,6 +79,7 @@ export const SinglePictureContainer = styled.div`
         max-height: 250px;
         width: 100%;
         object-fit: scale-down;
+        ${(props) => props.popularTrips && "height: 150px; width: auto;"}
       }
 
       @media (min-width: 767px) and (max-width:991px ) {
@@ -116,6 +87,7 @@ export const SinglePictureContainer = styled.div`
         width: 300px;
         max-height: 200px;
         object-fit: scale-down;
+        ${(props) => props.popularTrips && "height: 200px; width: auto;"}
       }
 
       @media (min-width: 992px) {
@@ -124,6 +96,7 @@ export const SinglePictureContainer = styled.div`
         max-height: 300px;
         margin-right: 40px;
         object-fit: scale-down;
+        ${(props) => props.popularTrips && "height: 300px; width: auto;"}
       }
     }
   }

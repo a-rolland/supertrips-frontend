@@ -104,6 +104,7 @@ export const SinglePictureContainer = styled.div`
       height: 100px;
       width: auto;
       margin: 10px;
+      object-fit: scale-down;
     }
 
     @media (min-width: 992px) {
