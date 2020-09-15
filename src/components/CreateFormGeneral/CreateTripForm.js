@@ -28,7 +28,7 @@ const CreateTripForm = (props) => {
       label: "End Date*",
       type: "date",
       name: "endDate",
-    }
+    },
   ];
 
   const initialState = {
@@ -37,7 +37,7 @@ const CreateTripForm = (props) => {
     startDate: "",
     endDate: "",
     imageUrl: "",
-    archive: null
+    archive: null,
   };
 
   return (

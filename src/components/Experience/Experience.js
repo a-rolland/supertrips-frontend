@@ -13,7 +13,7 @@ import {
   OwnerControls,
   StyledStepHeader,
   ExperienceTitle,
-  SinglePictureContainer
+  SinglePictureContainer,
 } from "./styles";
 import { Link } from "react-router-dom";
 import Map from "../Map/Map";
@@ -26,7 +26,7 @@ const Experience = (props) => {
     experience: [],
     expanded: false,
     showAddPhoto: false,
-    editingPhotos: false
+    editingPhotos: false,
   };
   const [state, setState] = useState(initialState);
 
@@ -38,7 +38,7 @@ const Experience = (props) => {
   };
 
   const toggleShowAddPhoto = () => {
-    !state.showAddPhoto && handleCloseEditingPhotos()
+    !state.showAddPhoto && handleCloseEditingPhotos();
     setState((state) => ({
       ...state,
       showAddPhoto: !state.showAddPhoto,
@@ -46,7 +46,7 @@ const Experience = (props) => {
   };
 
   const toggleEditingPhotos = () => {
-    !state.editingPhotos && handleCloseShowAddPhoto()
+    !state.editingPhotos && handleCloseShowAddPhoto();
     setState((state) => ({
       ...state,
       editingPhotos: !state.editingPhotos,
@@ -82,27 +82,30 @@ const Experience = (props) => {
   );
 
   const handleDeletePicture = (imageId) => {
-    experienceService.deleteExperiencePicture(state.experience._id, imageId)
+    experienceService
+      .deleteExperiencePicture(state.experience._id, imageId)
       .then((response) => {
-        handleUpdateNewPicture()
-      })
-  }
-
+        handleUpdateNewPicture();
+      });
+  };
 
   const experiencePictures =
     state.experience.pictures &&
     state.experience.pictures.map((picture, index) => {
-      return <SinglePictureContainer key={index} style={{display:"inline-block"}}>
-                <img key={picture._id} src={picture.url} alt="experience" />
-                {props.author._id === state.loggedInUser._id && state.editingPhotos &&
-                  <FontAwesomeIconComponent
-                    chosenIcon={"faTrashAlt"}
-                    color="red"
-                    deleteExperiencePicture={handleDeletePicture}
-                    picture={picture}
-                  />
-                }
-              </SinglePictureContainer>
+      return (
+        <SinglePictureContainer key={index} style={{ display: "inline-block" }}>
+          <img key={picture._id} src={picture.url} alt="experience" />
+          {props.author._id === state.loggedInUser._id &&
+            state.editingPhotos && (
+              <FontAwesomeIconComponent
+                chosenIcon={"faTrashAlt"}
+                color="red"
+                deleteExperiencePicture={handleDeletePicture}
+                picture={picture}
+              />
+            )}
+        </SinglePictureContainer>
+      );
     });
 
   useEffect(() => {
@@ -164,7 +167,10 @@ const Experience = (props) => {
         <ExpandedSection>
           {state.experience.description && (
             <Description>
-              <FontAwesomeIconComponent chosenIcon={"faCommentDots"} color="grey" />
+              <FontAwesomeIconComponent
+                chosenIcon={"faCommentDots"}
+                color="grey"
+              />
               {state.experience.description}
             </Description>
           )}

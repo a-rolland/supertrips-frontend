@@ -10,9 +10,9 @@ export const Ul = styled.ul`
 
 export const LiContainer = styled.div`
   margin: 0 auto;
-  ${(props) => props.popularTrips && 
-    "display: flex; flex-direction: row; width: 100%; align-items: flex-start; overflow-x: scroll"
-  }
+  ${(props) =>
+    props.popularTrips &&
+    "display: flex; flex-direction: row; width: 100%; align-items: flex-start; overflow-x: scroll"}
 `;
 
 export const Li = styled.li`
@@ -22,9 +22,7 @@ export const Li = styled.li`
   flex-direction: row;
   justify-content: flex-start;
   align-items: center;
-  ${(props) => props.popularTrips && 
-    "margin: 40px;"
-  }
+  ${(props) => props.popularTrips && "margin: 40px;"}
 
   @media (max-width: 767px) {
     justify-content: center;
@@ -44,20 +42,20 @@ export const TripContainer = styled.div`
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  ${(props) => props.popularTrips && 
-    "display: flex; flex-direction: column; align-items: flex-start;"
-  }
+  ${(props) =>
+    props.popularTrips &&
+    "display: flex; flex-direction: column; align-items: flex-start;"}
 
   @media (max-width: 768px) {
     display: flex;
     flex-direction: column;
   }
-`
+`;
 
 export const SinglePictureContainer = styled.div`
   position: relative;
   text-align: center;
-  
+
   a {
     img {
       @keyframes slow-popup {
@@ -82,7 +80,7 @@ export const SinglePictureContainer = styled.div`
         ${(props) => props.popularTrips && "height: 150px; width: auto;"}
       }
 
-      @media (min-width: 767px) and (max-width:991px ) {
+      @media (min-width: 767px) and (max-width: 991px) {
         height: auto;
         width: 300px;
         max-height: 200px;
@@ -107,29 +105,29 @@ export const SinglePictureContainer = styled.div`
     width: 30px;
     left: 50%;
     margin-left: -15px;
-    background-color: rgba(255,255,255,.6);
-    border: 1px solid rgba(0,0,0,0.2);
+    background-color: rgba(255, 255, 255, 0.6);
+    border: 1px solid rgba(0, 0, 0, 0.2);
     border-radius: 25%;
     padding: 10px;
 
     @media (min-width: 768px) {
-        margin-left: -40px;
-      }
+      margin-left: -40px;
+    }
 
     &:hover {
       cursor: pointer;
     }
   }
-`
+`;
 
 export const RightPanel = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
   align-items: flex-start;
-  ${(props) => props.popularTrips && 
-    "justify-content: flex-start; align-items: flex-start"
-  }
+  ${(props) =>
+    props.popularTrips &&
+    "justify-content: flex-start; align-items: flex-start"}
 
   @media (max-width: 767px) {
     display: flex;
@@ -137,7 +135,7 @@ export const RightPanel = styled.div`
     justify-content: flex-start;
     align-items: center;
   }
-`
+`;
 
 export const TripTitle = styled.span`
   margin: 0 auto;
@@ -153,7 +151,7 @@ export const TripTitle = styled.span`
   span {
     margin-left: 10px;
   }
-`
+`;
 
 export const LowerPart = styled.div`
   width: 100%;
@@ -163,9 +161,9 @@ export const LowerPart = styled.div`
     justify-content: space-around;
     align-items: center;
     align-content: center;
-    ${(props) => props.popularTrips && 
-      "flex-direction: column; flex-start; align-items: flex-start"
-    }
+    ${(props) =>
+      props.popularTrips &&
+      "flex-direction: column; flex-start; align-items: flex-start"}
   }
 
   div {
@@ -174,9 +172,7 @@ export const LowerPart = styled.div`
     align-items: center;
     align-content: center;
     margin: 15px 0;
-    ${(props) => !props.popularTrips && 
-      "margin: 10px 0"
-    }
+    ${(props) => !props.popularTrips && "margin: 10px 0"}
 
     @media (max-width: 767px) {
       margin: 2px 0;
@@ -186,20 +182,16 @@ export const LowerPart = styled.div`
   div:nth-of-type(1) {
     svg {
       margin-right: 18px;
-      ${(props) => !props.popularTrips && 
-        "padding: 0"
-      }
+      ${(props) => !props.popularTrips && "padding: 0"}
     }
   }
 
   div:nth-of-type(2) {
     span {
       margin-right: 5px;
-      
+
       svg {
-        ${(props) => !props.popularTrips && 
-          "padding: 0"
-        }
+        ${(props) => !props.popularTrips && "padding: 0"}
       }
     }
   }
@@ -207,11 +199,10 @@ export const LowerPart = styled.div`
   div:nth-of-type(3) {
     div {
       margin: 0 10px 0 0;
-
     }
   }
 
   a {
     display: inline-block;
   }
-`
+`;

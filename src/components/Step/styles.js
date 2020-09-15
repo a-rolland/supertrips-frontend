@@ -19,7 +19,7 @@ export const OwnerControls = styled.p`
   svg {
     margin: 0 10px;
   }
-`
+`;
 
 export const StyledStepHeader = styled.div`
   &:hover {
@@ -55,4 +55,4 @@ export const StepTitle = styled.span`
   :hover {
     color: lightgrey;
   }
-`
+`;

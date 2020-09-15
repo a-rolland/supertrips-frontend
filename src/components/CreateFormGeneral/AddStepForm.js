@@ -7,24 +7,24 @@ const AddStepForm = (props) => {
       label: "Title*",
       type: "text",
       name: "title",
-      placeholder: 'Ex.: "First day - London South and East"'
-    }
+      placeholder: 'Ex.: "First day - London South and East"',
+    },
   ];
 
   const initialState = {
     title: "",
-    trip: props.match.params.id
+    trip: props.match.params.id,
   };
 
   return (
-      <CreateFormGeneral
-        stepForm
-        formType="step"
-        formInputs={formInputs}
-        initialState={initialState}
-        tripId={props.match.params.id}
-        {...props}
-      />
+    <CreateFormGeneral
+      stepForm
+      formType="step"
+      formInputs={formInputs}
+      initialState={initialState}
+      tripId={props.match.params.id}
+      {...props}
+    />
   );
 };
 

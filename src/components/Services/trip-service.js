@@ -66,5 +66,5 @@ export default {
       .post(`/trip/postComment/${id}`, formFields)
       .then((response) => response.data)
       .catch(errorHandler);
-  }
+  },
 };

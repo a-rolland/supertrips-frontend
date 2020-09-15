@@ -4,4 +4,4 @@ export const StyledFavoritesLogo = styled.span`
   &:hover {
     cursor: pointer;
   }
-`
+`;

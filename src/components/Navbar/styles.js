@@ -24,8 +24,8 @@ export const Nav = styled.div`
   }
 
   h3 {
-    padding-bottom: 2px;  
-    
+    padding-bottom: 2px;
+
     a {
       text-decoration: none;
     }
@@ -45,7 +45,6 @@ export const Nav = styled.div`
 `;
 
 export const Dropdown = styled.ul`
-
   @media (max-width: 767px) {
     display: ${(props) => props.showDropdown};
     flex-direction: column;
@@ -60,7 +59,7 @@ export const Dropdown = styled.ul`
     background-color: rgba(255, 255, 255, 0.8);
     box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
     animation-name: menu-transition;
-    animation-duration: .3s;
+    animation-duration: 0.3s;
     font-size: 12px;
 
     li {
@@ -81,14 +80,15 @@ export const Dropdown = styled.ul`
     }
 
     li:nth-of-type(3) {
-      margin: ${(props) => props.userInSession ? "15px auto 15px" : "30px auto"};
+      margin: ${(props) =>
+        props.userInSession ? "15px auto 15px" : "30px auto"};
     }
   }
 
   @media (max-width: 576px) {
     top: 48px;
   }
-  
+
   @media (min-width: 576) and (max-width: 768px) {
     top: 72px;
   }
@@ -102,7 +102,7 @@ export const Dropdown = styled.ul`
     width: 100%;
 
     li {
-      margin: ${props => props.margin || "auto 10px auto 10px"};
+      margin: ${(props) => props.margin || "auto 10px auto 10px"};
       font-weight: 400;
 
       a {
@@ -120,7 +120,6 @@ export const Dropdown = styled.ul`
   }
 
   @media (min-width: 992px) {
-
     li {
       padding-top: 6px;
 
@@ -147,7 +146,7 @@ export const BrandLogo = styled.img`
     width: 150px;
     margin: 15px 15px 15px 0;
   }
-  
+
   @media (min-width: 767px) and (max-width: 992px) {
     width: 175px;
     margin: 15px 15px 15px 0;
@@ -157,6 +156,4 @@ export const BrandLogo = styled.img`
     width: 200px;
     margin: 25px 25px 25px 0;
   }
-
-
-`
+`;

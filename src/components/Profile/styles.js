@@ -6,4 +6,4 @@ export const StyledProfile = styled.div`
   justify-content: center;
   align-items: center;
   margin: 0 20px;
-`
+`;

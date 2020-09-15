@@ -7,8 +7,9 @@ const Map = (props) => {
     name: props.address,
     lat: parseFloat(props.lat),
     lng: parseFloat(props.lng),
-    zoom: props.zoom
+    zoom: props.zoom,
   };
+  // eslint-disable-next-line
   const [state, setState] = useState(initialState);
 
   const center = {
@@ -35,19 +36,16 @@ const Map = (props) => {
 
   const getMapBounds = (map, maps, places) => {
     const bounds = new maps.LatLngBounds();
-  
+
     places.forEach((place) => {
-      bounds.extend(new maps.LatLng(
-        place.lat,
-        place.lng,
-      ));
+      bounds.extend(new maps.LatLng(place.lat, place.lng));
     });
     return bounds;
   };
 
   const bindResizeListener = (map, maps, bounds) => {
-    maps.event.addDomListenerOnce(map, 'idle', () => {
-      maps.event.addDomListener(window, 'resize', () => {
+    maps.event.addDomListenerOnce(map, "idle", () => {
+      maps.event.addDomListener(window, "resize", () => {
         map.fitBounds(bounds);
       });
     });
@@ -63,19 +61,21 @@ const Map = (props) => {
   };
 
   const renderMarkers = (map, maps) => {
-    if (props.mapType === "tripPresentation") {  
+    if (props.mapType === "tripPresentation") {
       props.allExperiencesCoords.forEach((coord) => {
+        // eslint-disable-next-line
         let marker = new maps.Marker({
           position: coord,
           map,
         });
-      })
+      });
     } else {
       const position = {
         lat: state.lat,
         lng: state.lng,
       };
 
+      // eslint-disable-next-line
       let marker = new maps.Marker({
         position: position,
         map,
@@ -84,17 +84,23 @@ const Map = (props) => {
   };
 
   return (
-    <MapContainer tripMap={props.tripMap} experienceMap={props.experienceMap} formMap={props.formMap}>
+    <MapContainer
+      tripMap={props.tripMap}
+      experienceMap={props.experienceMap}
+      formMap={props.formMap}
+    >
       <GoogleMapReact
         key={state.name}
-        bootstrapURLKeys={ { key: `${process.env.GOOGLE_MAPS_KEY}`} }
+        bootstrapURLKeys={{ key: `${process.env.GOOGLE_MAPS_KEY}` }}
         defaultCenter={center}
         defaultZoom={zoom}
         options={getMapOptions}
         yesIWantToUseGoogleMapApiInternals
         onGoogleApiLoaded={({ map, maps }) => {
-          props.tripMap && !props.hasOnlyOneLocalisation && apiIsLoaded(map, maps, props.allExperiencesCoords)
-          renderMarkers(map, maps)
+          props.tripMap &&
+            !props.hasOnlyOneLocalisation &&
+            apiIsLoaded(map, maps, props.allExperiencesCoords);
+          renderMarkers(map, maps);
         }}
       />
     </MapContainer>

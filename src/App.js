@@ -24,7 +24,9 @@ import ProfilePublic from "./components/ProfilePublic/ProfilePublic";
 import Footer from "./components/Footer/Footer";
 
 const App = () => {
-  const initialState = { loggedInUser: JSON.parse(localStorage.getItem('loggedInUser')) || null };
+  const initialState = {
+    loggedInUser: JSON.parse(localStorage.getItem("loggedInUser")) || null,
+  };
   const [state, setState] = useState(initialState);
 
   const getTheUser = (userObj) => {
@@ -39,10 +41,10 @@ const App = () => {
         authService
           .loggedIn()
           .then((response) => {
-            localStorage.setItem('loggedInUser', JSON.stringify(response));
+            localStorage.setItem("loggedInUser", JSON.stringify(response));
             setState({
               loggedInUser: response,
-            })
+            });
           })
           .catch((err) => {
             setState({
@@ -56,18 +58,18 @@ const App = () => {
 
   const handleUpdateUser = () => {
     authService
-        .loggedIn()
-        .then((response) => {
-          setState({
-            loggedInUser: response,
-          });
-        })
-        .catch((err) => {
-          setState({
-            loggedInUser: false,
-          });
+      .loggedIn()
+      .then((response) => {
+        setState({
+          loggedInUser: response,
         });
-  }
+      })
+      .catch((err) => {
+        setState({
+          loggedInUser: false,
+        });
+      });
+  };
 
   return (
     <StyledApp>
@@ -78,28 +80,44 @@ const App = () => {
             exact
             path="/"
             render={(props) => (
-              <Homepage {...props} userInSession={state.loggedInUser} updateUser={handleUpdateUser} />
+              <Homepage
+                {...props}
+                userInSession={state.loggedInUser}
+                updateUser={handleUpdateUser}
+              />
             )}
           />
           <Route
             exact
             path="/trips"
             render={(props) => (
-              <Trips {...props} userInSession={state.loggedInUser} updateUser={handleUpdateUser} />
+              <Trips
+                {...props}
+                userInSession={state.loggedInUser}
+                updateUser={handleUpdateUser}
+              />
             )}
           />
           <Route
             exact
             path="/search"
             render={(props) => (
-              <SearchTripsResults {...props} userInSession={state.loggedInUser} updateUser={handleUpdateUser} />
+              <SearchTripsResults
+                {...props}
+                userInSession={state.loggedInUser}
+                updateUser={handleUpdateUser}
+              />
             )}
           />
           <Route
             exact
             path="/trips/:id"
             render={(props) => (
-              <Trip {...props} userInSession={state.loggedInUser} updateUser={handleUpdateUser} />
+              <Trip
+                {...props}
+                userInSession={state.loggedInUser}
+                updateUser={handleUpdateUser}
+              />
             )}
           />
           <ProtectedRoute
@@ -158,7 +176,13 @@ const App = () => {
           <Route
             exact
             path="/profile/user/:userId"
-            render={(props) => <ProfilePublic {...props} userInSession={state.loggedInUser} updateUser={handleUpdateUser} />}
+            render={(props) => (
+              <ProfilePublic
+                {...props}
+                userInSession={state.loggedInUser}
+                updateUser={handleUpdateUser}
+              />
+            )}
           />
           <ProtectedRoute
             exact

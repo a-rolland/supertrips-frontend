@@ -1,14 +1,14 @@
-import React, { useState, useEffect} from "react";
+import React, { useState, useEffect } from "react";
 import stepService from "../Services/step-service";
 import EditFormGeneral from "./EditFormGeneral";
 
 const EditStepForm = (props) => {
-  const [stepState, setStepState] = useState({})
+  const [stepState, setStepState] = useState({});
 
   useEffect(() => {
     stepService
       .stepDetails(props.match.params.stepId)
-      .then(response => {
+      .then((response) => {
         setStepState(response);
       })
       .catch(() => console.log("Error while getting step details"));
@@ -21,7 +21,7 @@ const EditStepForm = (props) => {
       name: "title",
       value: stepState.title,
       placeholder: "Ex.: My magical trip to Paris",
-    }
+    },
   ];
 
   return (

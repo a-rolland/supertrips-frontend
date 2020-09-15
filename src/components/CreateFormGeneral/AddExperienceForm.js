@@ -7,7 +7,7 @@ const AddExperienceForm = (props) => {
       label: "Title*",
       type: "text",
       name: "title",
-      placeholder: 'Ex.: "Dinner in Camden Town"'
+      placeholder: 'Ex.: "Dinner in Camden Town"',
     },
     {
       label: "Date*",
@@ -22,7 +22,7 @@ const AddExperienceForm = (props) => {
     {
       label: "Time*",
       type: "time",
-      name: "time"
+      name: "time",
     },
     {
       label: "Make time public ? (Hidden by default)",
@@ -33,14 +33,14 @@ const AddExperienceForm = (props) => {
       label: "Description",
       type: "textarea",
       name: "description",
-      placeholder: 'Ex.: "This restaurant was absolutely incredible !"'
+      placeholder: 'Ex.: "This restaurant was absolutely incredible !"',
     },
     {
       label: "Find the place",
       type: "text",
       name: "place",
-      placeholder: 'Ex: "Paris..."'
-    }
+      placeholder: 'Ex: "Paris..."',
+    },
   ];
 
   const initialState = {
@@ -52,7 +52,7 @@ const AddExperienceForm = (props) => {
     step: props.match.params.stepId,
     trip: props.match.params.id,
     description: "",
-    place: null
+    place: null,
   };
 
   return (

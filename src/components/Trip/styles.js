@@ -20,17 +20,17 @@ export const StyledTrip = styled.div`
       padding-bottom: 2px;
     }
   }
-`
+`;
 
 export const Duration = styled.div`
   margin: 20px auto;
-`
+`;
 
 export const OwnerControls = styled.p`
   svg {
     margin: 0 10px;
   }
-`
+`;
 
 export const Ul = styled.ul`
   margin: 20px auto;
@@ -65,17 +65,17 @@ export const Error = styled.p`
   max-width: 350px;
   padding: 5px 5px 8px;
   margin: 0 auto;
-  background-color: rgba(241, 169, 160, .2);
+  background-color: rgba(241, 169, 160, 0.2);
 
   @media (min-width: 768px) {
     width: 350px;
     margin: 50px auto;
   }
-`
+`;
 export const TripPicture = styled.img`
   width: 100%;
   max-width: 600px;
-`
+`;
 
 export const LeaveCommentToggleLogo = styled.span`
   display: flex;
@@ -87,11 +87,11 @@ export const LeaveCommentToggleLogo = styled.span`
     cursor: pointer;
     color: lightgrey;
   }
-`
+`;
 
 export const Comment = styled.li`
   list-style: none;
-  background-color: rgba(0, 0, 0,.1);
+  background-color: rgba(0, 0, 0, 0.1);
   width: 300px;
   border-radius: 10px;
   margin: 10px auto;
@@ -112,4 +112,4 @@ export const Comment = styled.li`
     font-style: italic;
     padding: 10px;
   }
-`
+`;

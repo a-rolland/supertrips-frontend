@@ -7,12 +7,12 @@ const AddPhotoToExperience = (props) => {
       label: "New photo (max. 10 Mo)",
       type: "file",
       name: "imageUrl",
-    }
+    },
   ];
 
   const initialState = {
     imageUrl: "",
-    archive: null
+    archive: null,
   };
 
   return (

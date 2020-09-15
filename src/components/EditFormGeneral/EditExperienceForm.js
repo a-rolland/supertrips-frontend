@@ -1,35 +1,32 @@
-import React, { useState, useEffect} from "react";
+import React, { useState, useEffect } from "react";
 import experienceService from "../Services/experience-service";
 import EditFormGeneral from "./EditFormGeneral";
 
 const EditExperienceForm = (props) => {
-  const [experienceState, setExperienceState] = useState({})
+  const [experienceState, setExperienceState] = useState({});
 
   useEffect(() => {
     experienceService
       .experienceDetails(props.match.params.experienceId)
-      .then(response => {
+      .then((response) => {
         setExperienceState(response);
       })
-      .catch(() => console.log("Error while getting experience details")
-      );
+      .catch(() => console.log("Error while getting experience details"));
   }, [props.match.params.experienceId]);
 
   const formatDate = (date) => {
     var d = new Date(date),
-        month = '' + (d.getMonth() + 1),
-        day = '' + d.getDate(),
-        year = d.getFullYear();
+      month = "" + (d.getMonth() + 1),
+      day = "" + d.getDate(),
+      year = d.getFullYear();
 
-    if (month.length < 2) 
-        month = '0' + month;
-    if (day.length < 2) 
-        day = '0' + day;
+    if (month.length < 2) month = "0" + month;
+    if (day.length < 2) day = "0" + day;
 
-    const formattedDate = [year, month, day].join('-')
+    const formattedDate = [year, month, day].join("-");
 
-    return formattedDate
-}
+    return formattedDate;
+  };
 
   const formInputs = [
     {
@@ -70,15 +67,15 @@ const EditExperienceForm = (props) => {
       type: "textarea",
       name: "description",
       value: experienceState.description,
-      placeholder: 'Ex.: "This restaurant was absolutely incredible !"'
+      placeholder: 'Ex.: "This restaurant was absolutely incredible !"',
     },
     {
       label: "Find the place",
       type: "text",
       name: "place",
       value: experienceState.place,
-      placeholder: 'Ex: "Paris..."'
-    }
+      placeholder: 'Ex: "Paris..."',
+    },
   ];
 
   return (

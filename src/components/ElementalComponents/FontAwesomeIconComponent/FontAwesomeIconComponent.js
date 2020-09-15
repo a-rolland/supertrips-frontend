@@ -1,5 +1,5 @@
-import React from 'react'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import React from "react";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faHourglassHalf,
   faFeatherAlt,
@@ -23,91 +23,95 @@ import {
   faPenSquare,
   faThumbsUp,
   faCommentAlt,
-} from '@fortawesome/free-solid-svg-icons'
-import { faFacebook } from "@fortawesome/free-brands-svg-icons"
+} from "@fortawesome/free-solid-svg-icons";
+import { faFacebook } from "@fortawesome/free-brands-svg-icons";
 
-const FontAwesomeIconComponent = props => {
+const FontAwesomeIconComponent = (props) => {
   let icon;
-  switch(props.chosenIcon) {
+  switch (props.chosenIcon) {
     case "faHourglassHalf":
-      icon = faHourglassHalf
+      icon = faHourglassHalf;
       break;
     case "faFeatherAlt":
-      icon = faFeatherAlt
+      icon = faFeatherAlt;
       break;
     case "faPlus":
-      icon = faPlus
+      icon = faPlus;
       break;
     case "faAsterisk":
-      icon = faAsterisk
+      icon = faAsterisk;
       break;
     case "faChevronCircleRight":
-      icon = faChevronCircleRight
+      icon = faChevronCircleRight;
       break;
     case "faChevronCircleDown":
-      icon = faChevronCircleDown
+      icon = faChevronCircleDown;
       break;
     case "faTimes":
-      icon = faTimes
+      icon = faTimes;
       break;
     case "faBars":
-      icon = faBars
+      icon = faBars;
       break;
     case "faSpinner":
-      icon = faSpinner
+      icon = faSpinner;
       break;
     case "faChevronRight":
-      icon = faChevronRight
+      icon = faChevronRight;
       break;
     case "faChevronDown":
-      icon = faChevronDown
+      icon = faChevronDown;
       break;
     case "faArrowCircleLeft":
-      icon = faArrowCircleLeft
+      icon = faArrowCircleLeft;
       break;
     case "faClock":
-      icon = faClock
+      icon = faClock;
       break;
     case "faCalendarAlt":
-      icon = faCalendarAlt
+      icon = faCalendarAlt;
       break;
     case "faPlusSquare":
-      icon = faPlusSquare
+      icon = faPlusSquare;
       break;
     case "faMinusSquare":
-      icon = faMinusSquare
+      icon = faMinusSquare;
       break;
     case "faCommentDots":
-      icon = faCommentDots
+      icon = faCommentDots;
       break;
     case "faHeart":
-      icon = faHeart
+      icon = faHeart;
       break;
     case "faTrashAlt":
-      icon = faTrashAlt
+      icon = faTrashAlt;
       break;
     case "faPenSquare":
-      icon = faPenSquare
+      icon = faPenSquare;
       break;
     case "faThumbsUp":
-      icon = faThumbsUp
+      icon = faThumbsUp;
       break;
     case "faFacebook":
-      icon = faFacebook
+      icon = faFacebook;
       break;
     case "faCommentAlt":
-      icon = faCommentAlt
+      icon = faCommentAlt;
       break;
     default:
-      icon = null
+      icon = null;
   }
 
   const handleClick = () => {
-    props.toggleDropdown && props.toggleDropdown()
-    props.toggleAddToFavorites && props.toggleAddToFavorites(props.trip._id)
-    props.deleteExperiencePicture && props.deleteExperiencePicture(props.picture._id)
-    props.toggleLikeTrip && props.userInSession && !props.tripDescription && props.toggleLikeTrip(props.trip._id)
-  }
+    props.toggleDropdown && props.toggleDropdown();
+    props.toggleAddToFavorites && props.toggleAddToFavorites(props.trip._id);
+    props.deleteExperiencePicture &&
+      props.deleteExperiencePicture(props.picture._id);
+    props.toggleLikeTrip &&
+      props.userInSession &&
+      !props.tripDescription &&
+      props.toggleLikeTrip(props.trip._id);
+  };
 
   return (
     <FontAwesomeIcon
@@ -118,7 +122,7 @@ const FontAwesomeIconComponent = props => {
       onMouseLeave={props.handleMouseLeave}
       onClick={handleClick}
     />
-  )
-}
+  );
+};
 
-export default FontAwesomeIconComponent
+export default FontAwesomeIconComponent;

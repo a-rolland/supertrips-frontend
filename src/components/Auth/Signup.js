@@ -7,14 +7,15 @@ import FontAwesomeIconComponent from "../ElementalComponents/FontAwesomeIconComp
 
 const Signup = (props) => {
   const responseFacebook = (response) => {
-    authService.facebookLogin({access_token: response.accessToken})
-      .then(response => {
-        localStorage.setItem('loggedInUser', JSON.stringify(response))
+    authService
+      .facebookLogin({ access_token: response.accessToken })
+      .then((response) => {
+        localStorage.setItem("loggedInUser", JSON.stringify(response));
         props.getUser(response);
         props.history.push("/");
       })
       .catch(() => console.log("Error while login with Facebook"));
-  }
+  };
 
   return (
     <div>
@@ -28,9 +29,13 @@ const Signup = (props) => {
         formRedirectText=" Login"
       />
       <FacebookLoginStyled>
-        <FontAwesomeIconComponent chosenIcon={"faFacebook"} size="3x" color="#4c69ba" />
+        <FontAwesomeIconComponent
+          chosenIcon={"faFacebook"}
+          size="3x"
+          color="#4c69ba"
+        />
         <FacebookLogin
-          style={{display:"block"}}
+          style={{ display: "block" }}
           appId={`${process.env.REACT_APP_FACEBOOK_APP_ID}`}
           autoLoad={false}
           isMobile={false}

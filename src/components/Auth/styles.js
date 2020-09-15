@@ -7,13 +7,13 @@ export const Error = styled.p`
   max-width: 350px;
   padding: 5px 5px 8px;
   margin: 0 auto;
-  background-color: rgba(241, 169, 160, .2);
+  background-color: rgba(241, 169, 160, 0.2);
 
   @media (min-width: 768px) {
     width: 350px;
     margin: 0 auto;
   }
-`
+`;
 
 export const FacebookLoginStyled = styled.p`
   display: flex;
@@ -28,10 +28,10 @@ export const FacebookLoginStyled = styled.p`
   }
 
   @media (max-width: 667px) {
-      flex-direction: column;
+    flex-direction: column;
 
-      svg {
-        margin: 20px;
-      }
+    svg {
+      margin: 20px;
     }
-`
+  }
+`;

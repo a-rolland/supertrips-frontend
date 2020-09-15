@@ -2,7 +2,6 @@ import React from "react";
 import { StyledProfilePicture } from "./styles";
 
 const ProfilePicture = (props) => {
-
   return (
     <StyledProfilePicture
       src={props.src}

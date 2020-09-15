@@ -1,15 +1,15 @@
-import React, { useState, useEffect} from "react";
+import React, { useState, useEffect } from "react";
 import authService from "../Services/auth-service";
 import EditFormGeneral from "./EditFormGeneral";
 
 const EditProfilePictureForm = (props) => {
-  const [userState, setUserState] = useState({})
+  const [userState, setUserState] = useState({});
 
   useEffect(() => {
     authService
       .loggedIn()
-      .then(response => {
-        setUserState(response)
+      .then((response) => {
+        setUserState(response);
       })
       .catch(() => console.log("Error while getting user details"));
   }, []);
@@ -18,8 +18,8 @@ const EditProfilePictureForm = (props) => {
     {
       type: "file",
       value: "",
-      name: "profilePicture"
-    }
+      name: "profilePicture",
+    },
   ];
 
   return (

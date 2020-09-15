@@ -42,7 +42,9 @@ class LocationSearchInput extends React.Component {
               })}
             />
             <div className="autocomplete-dropdown-container">
-              {loading && <FontAwesomeIconComponent chosenIcon={"faSpinner"} size="2x" />}
+              {loading && (
+                <FontAwesomeIconComponent chosenIcon={"faSpinner"} size="2x" />
+              )}
               {suggestions.map((suggestion) => {
                 const className = suggestion.active
                   ? "suggestion-item--active"

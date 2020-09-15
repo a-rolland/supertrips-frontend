@@ -4,7 +4,7 @@ export const VideoContainer = styled.div`
   position: relative;
 
   h2 {
-    color: rgba(255,255,255,.8);
+    color: rgba(255, 255, 255, 0.8);
   }
 
   h2:first-of-type {
@@ -17,7 +17,7 @@ export const VideoContainer = styled.div`
   h2:nth-of-type(2) {
     position: absolute;
     right: 5%;
-    bottom: 2%; 
+    bottom: 2%;
     font-size: 4vw;
   }
 
@@ -44,7 +44,7 @@ export const VideoContainer = styled.div`
       margin-left: -350px;
     }
   }
-`
+`;
 
 export const HomepageBody = styled.ul`
   padding: 0;
@@ -54,10 +54,10 @@ export const HomepageBody = styled.ul`
     padding-left: 40px;
     margin-bottom: 0;
   }
-`
+`;
 
 export const CreateATrip = styled.div`
-position: relative;
+  position: relative;
   img {
     width: 100%;
     height: auto;
@@ -73,7 +73,7 @@ position: relative;
     margin-top: -20px;
     color: darkslategrey;
     font-size: 30px;
-    background-color: rgba(176,196,222,.5);
+    background-color: rgba(176, 196, 222, 0.5);
     padding-top: 10px;
     border-radius: 4px;
 
@@ -107,4 +107,4 @@ position: relative;
       margin-left: -350px;
     }
   }
-`
+`;

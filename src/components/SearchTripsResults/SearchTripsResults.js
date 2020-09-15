@@ -1,8 +1,7 @@
 import React from "react";
 import TripsFetch from "../TripsFetch/TripsFetch";
 
-const SearchTripsResults = props => {
-
+const SearchTripsResults = (props) => {
   return (
     <TripsFetch searchTrips userInSession={props.userInSession} {...props} />
   );

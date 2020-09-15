@@ -66,5 +66,5 @@ export default {
       .delete(`/experiences/${id}/deletePicture/${imageId}`)
       .then((response) => response.data)
       .catch(errorHandler);
-  }
+  },
 };

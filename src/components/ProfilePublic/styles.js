@@ -10,5 +10,4 @@ export const StyledProfile = styled.div`
   ul {
     padding: 0;
   }
-`
-
+`;

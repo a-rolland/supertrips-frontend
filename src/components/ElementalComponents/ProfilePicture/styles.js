@@ -11,4 +11,4 @@ export const StyledProfilePicture = styled.div`
   background-repeat: no-repeat;
   background-size: cover;
   border-radius: 50%;
-`
+`;

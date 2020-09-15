@@ -17,7 +17,7 @@ export const OwnerControls = styled.p`
   svg {
     margin: 0 10px;
   }
-`
+`;
 
 export const StyledStepHeader = styled.div`
   &:hover {
@@ -54,12 +54,12 @@ export const StyledDateTime = styled.span`
   margin: 15px 5px 5px 40px;
   display: block;
   opacity: ${(props) => props.opacity};
-`
+`;
 
 export const Description = styled.p`
   margin: 20px;
   margin-left: 50px;
-`
+`;
 
 export const AddPhotoLogo = styled.span`
   margin: 15px 5px 5px 40px;
@@ -69,7 +69,7 @@ export const AddPhotoLogo = styled.span`
     cursor: pointer;
     color: lightgrey;
   }
-`
+`;
 
 export const EditPhotoLogo = styled.span`
   margin: 15px 5px 5px 40px;
@@ -79,17 +79,17 @@ export const EditPhotoLogo = styled.span`
     cursor: pointer;
     color: lightgrey;
   }
-`
+`;
 
 export const MapContainer = styled.div`
   display: flex;
   justify-content: center;
-`
+`;
 
 export const PicturesContainer = styled.div`
   text-align: center;
   margin-top: 20px;
-`
+`;
 
 export const SinglePictureContainer = styled.div`
   position: relative;
@@ -118,8 +118,8 @@ export const SinglePictureContainer = styled.div`
     position: absolute;
     top: 10%;
     left: 10%;
-    background-color: rgba(255,255,255,.4);
-    border: 1px solid rgba(0,0,0,0.2);
+    background-color: rgba(255, 255, 255, 0.4);
+    border: 1px solid rgba(0, 0, 0, 0.2);
     border-radius: 25%;
     padding: 3px;
 
@@ -127,14 +127,14 @@ export const SinglePictureContainer = styled.div`
       cursor: pointer;
     }
   }
-`
+`;
 
 export const ExpandedSection = styled.div`
   width: 90vw;
-`
+`;
 
 export const ExperienceTitle = styled.span`
   :hover {
-    color : lightgrey;
+    color: lightgrey;
   }
-`
+`;

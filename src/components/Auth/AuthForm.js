@@ -2,10 +2,10 @@ import React, { useState } from "react";
 import authService from "../Services/auth-service";
 import { Link } from "react-router-dom";
 import FormGeneral from "../FormGeneral/FormGeneral";
-import { Error } from "./styles"
+import { Error } from "./styles";
 
 const AuthForm = (props) => {
-  const [showError, setShowError] = useState("")
+  const [showError, setShowError] = useState("");
   const handleFormSubmit = (formObject) => {
     const dynamicService = props.login
       ? authService.login(formObject)
@@ -13,14 +13,14 @@ const AuthForm = (props) => {
 
     dynamicService
       .then((response) => {
-        localStorage.setItem('loggedInUser', JSON.stringify(response))
+        localStorage.setItem("loggedInUser", JSON.stringify(response));
         props.getUser(response);
         props.history.push("/");
       })
       .catch((error) => {
         console.log("Error while login/signup");
-        setShowError(error.response.data.message)
-      })
+        setShowError(error.response.data.message);
+      });
   };
 
   const formInputs = [
@@ -57,11 +57,7 @@ const AuthForm = (props) => {
         {props.authMessage}
         <Link to={`${props.formRedirectLink}`}>{props.formRedirectText}</Link>
       </p>
-      { showError &&
-          <Error>
-              {showError}
-          </Error>
-      }
+      {showError && <Error>{showError}</Error>}
     </div>
   );
 };

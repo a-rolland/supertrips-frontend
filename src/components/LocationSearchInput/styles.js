@@ -20,7 +20,7 @@ export const Input = styled.input`
 export const PlaceSuggestion = styled.div`
   width: 100%;
   padding: 8px 20px;
-  border: 1px solid rgba(0,0,0,.1);
+  border: 1px solid rgba(0, 0, 0, 0.1);
   border-radius: 4px;
   box-sizing: border-box;
 `;

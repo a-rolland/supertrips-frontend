@@ -1,34 +1,32 @@
-import React, { useState, useEffect} from "react";
+import React, { useState, useEffect } from "react";
 import tripService from "../Services/trip-service";
 import EditFormGeneral from "./EditFormGeneral";
 
 const EditTripForm = (props) => {
-  const [tripState, setTripState] = useState({})
+  const [tripState, setTripState] = useState({});
 
   useEffect(() => {
     tripService
       .tripDetails(props.match.params.id)
-      .then(response => {
-        setTripState(response)
+      .then((response) => {
+        setTripState(response);
       })
       .catch(() => console.log("Error while getting trip details :"));
   }, [props.match.params.id]);
 
   const formatDate = (date) => {
     var d = new Date(date),
-        month = '' + (d.getMonth() + 1),
-        day = '' + d.getDate(),
-        year = d.getFullYear();
+      month = "" + (d.getMonth() + 1),
+      day = "" + d.getDate(),
+      year = d.getFullYear();
 
-    if (month.length < 2) 
-        month = '0' + month;
-    if (day.length < 2) 
-        day = '0' + day;
+    if (month.length < 2) month = "0" + month;
+    if (day.length < 2) day = "0" + day;
 
-    const formattedDate = [year, month, day].join('-')
+    const formattedDate = [year, month, day].join("-");
 
-    return formattedDate
-}
+    return formattedDate;
+  };
 
   const formInputs = [
     {
@@ -49,7 +47,7 @@ const EditTripForm = (props) => {
       label: "Image",
       type: "file",
       value: "",
-      name: "imageUrl"
+      name: "imageUrl",
     },
     {
       label: "Start date*",
@@ -62,7 +60,7 @@ const EditTripForm = (props) => {
       type: "date",
       value: formatDate(tripState.endDate),
       name: "endDate",
-    }
+    },
   ];
 
   return (

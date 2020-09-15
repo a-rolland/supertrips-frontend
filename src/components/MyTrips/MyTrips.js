@@ -1,11 +1,15 @@
-import React from 'react'
-import TripsFetch from '../TripsFetch/TripsFetch';
+import React from "react";
+import TripsFetch from "../TripsFetch/TripsFetch";
 
 const MyTrips = (props) => {
-
   return (
-    <TripsFetch myTrips title="My Trips" userInSession={props.userInSession} {...props} />
-  )
-}
+    <TripsFetch
+      myTrips
+      title="My Trips"
+      userInSession={props.userInSession}
+      {...props}
+    />
+  );
+};
 
-export default MyTrips
+export default MyTrips;

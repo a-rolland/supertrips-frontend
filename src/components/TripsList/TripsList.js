@@ -1,12 +1,21 @@
-import React from 'react'
-import { Ul, LiContainer, Li, TripContainer, RightPanel, LowerPart, TripTitle, SinglePictureContainer } from "./styles"
-import { Link } from 'react-router-dom';
-import ProfilePicture from '../ElementalComponents/ProfilePicture/ProfilePicture';
-import FontAwesomeIconComponent from '../ElementalComponents/FontAwesomeIconComponent/FontAwesomeIconComponent';
-import AddToFavoritesLogo from '../ElementalComponents/AddToFavoritesLogo/AddToFavoritesLogo';
-import LikeTripLogo from '../ElementalComponents/LikeTripLogo/LikeTripLogo';
+import React from "react";
+import {
+  Ul,
+  LiContainer,
+  Li,
+  TripContainer,
+  RightPanel,
+  LowerPart,
+  TripTitle,
+  SinglePictureContainer,
+} from "./styles";
+import { Link } from "react-router-dom";
+import ProfilePicture from "../ElementalComponents/ProfilePicture/ProfilePicture";
+import FontAwesomeIconComponent from "../ElementalComponents/FontAwesomeIconComponent/FontAwesomeIconComponent";
+import AddToFavoritesLogo from "../ElementalComponents/AddToFavoritesLogo/AddToFavoritesLogo";
+import LikeTripLogo from "../ElementalComponents/LikeTripLogo/LikeTripLogo";
 
-const TripsList = props => {
+const TripsList = (props) => {
   const listTrips = props.trips.map((trip) => {
     return (
       <Li key={trip._id} popularTrips={props.popularTrips}>
@@ -19,17 +28,17 @@ const TripsList = props => {
               }}
               popularTrips={props.popularTrips}
             >
-              {trip.imageUrl &&
+              {trip.imageUrl && (
                 <img src={trip.imageUrl} alt="trip cover pic" />
-              }
+              )}
             </Link>
-            { props.userInSession && !props.popularTrips &&
+            {props.userInSession && !props.popularTrips && (
               <LikeTripLogo
                 trip={trip}
                 userInSession={props.userInSession}
                 updateTrips={props.updateTrips}
               />
-            }
+            )}
           </SinglePictureContainer>
           <RightPanel popularTrips={props.popularTrips}>
             <TripTitle popularTrips={props.popularTrips}>
@@ -41,16 +50,16 @@ const TripsList = props => {
               >
                 <h3>{trip.title}</h3>
               </Link>
-              { props.userInSession && !props.popularTrips &&
+              {props.userInSession && !props.popularTrips && (
                 <AddToFavoritesLogo
                   trip={trip}
                   userInSession={props.userInSession}
                   updateUser={props.updateUser}
                 />
-              }
+              )}
             </TripTitle>
             <LowerPart popularTrips={props.popularTrips}>
-              <div> 
+              <div>
                 <FontAwesomeIconComponent
                   chosenIcon={"faHourglassHalf"}
                   size="1x"
@@ -75,11 +84,16 @@ const TripsList = props => {
                   display="inline-block"
                 />
                 <span>
-                  By <Link to={ props.userInSession && props.userInSession._id === trip.author._id
-                    ? "/profile"
-                    : `/profile/user/${trip.author._id}`
-                  }
-                  >{trip.author.username}
+                  By{" "}
+                  <Link
+                    to={
+                      props.userInSession &&
+                      props.userInSession._id === trip.author._id
+                        ? "/profile"
+                        : `/profile/user/${trip.author._id}`
+                    }
+                  >
+                    {trip.author.username}
                   </Link>
                 </span>
               </div>
@@ -92,13 +106,9 @@ const TripsList = props => {
 
   return (
     <Ul>
-      <LiContainer popularTrips={props.popularTrips}>
-        {listTrips}
-      </LiContainer>
+      <LiContainer popularTrips={props.popularTrips}>{listTrips}</LiContainer>
     </Ul>
-  )
-}
+  );
+};
 
-export default TripsList
-
-
+export default TripsList;

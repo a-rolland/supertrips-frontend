@@ -3,10 +3,10 @@ import { ButtonStyled } from "./styles";
 
 const Button = (props) => {
   const handleClick = () => {
-    props.toggleDeleteConfirmation && props.toggleDeleteConfirmation()
-    props.closeDeleteConfirmation && props.closeDeleteConfirmation()
-    props.deleteItem && props.deleteItem()
-    props.toggleProfilePictureForm && props.toggleProfilePictureForm()
+    props.toggleDeleteConfirmation && props.toggleDeleteConfirmation();
+    props.closeDeleteConfirmation && props.closeDeleteConfirmation();
+    props.deleteItem && props.deleteItem();
+    props.toggleProfilePictureForm && props.toggleProfilePictureForm();
     props.logoutUser && props.logoutUser();
   };
 

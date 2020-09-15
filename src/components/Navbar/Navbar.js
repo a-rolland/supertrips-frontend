@@ -1,4 +1,4 @@
-import React, { useState, useEffect  } from "react";
+import React, { useState, useEffect } from "react";
 import authService from "../Services/auth-service";
 import { Nav, Dropdown, BrandLogo } from "./styles";
 import { Link } from "react-router-dom";
@@ -8,12 +8,12 @@ import FontAwesomeIconComponent from "../ElementalComponents/FontAwesomeIconComp
 const Navbar = (props) => {
   const initialState = { loggedInUser: null };
   const [state, setState] = useState(initialState);
-  const [showDropdown, setShowDropdown] = useState(false)
-  const [dropDownButtonColor, setDropdownButtonColor] = useState("grey")
-  const [ size, setSize ] = useState({
+  const [showDropdown, setShowDropdown] = useState(false);
+  const [dropDownButtonColor, setDropdownButtonColor] = useState("grey");
+  const [size, setSize] = useState({
     width: window.innerWidth,
-    height: window.innerHeight
-  })
+    height: window.innerHeight,
+  });
 
   // equiv. componentWillReceiveProps
   useEffect(() => {
@@ -21,12 +21,12 @@ const Navbar = (props) => {
     const getSize = () => {
       return {
         width: window.innerWidth,
-        height: window.innerHeight
+        height: window.innerHeight,
       };
-    }
-    const handleResize = () => setSize(getSize())
-    window.addEventListener('resize', handleResize)
-    size.width >= 767 && closeDropdown()
+    };
+    const handleResize = () => setSize(getSize());
+    window.addEventListener("resize", handleResize);
+    size.width >= 767 && closeDropdown();
     setState({ loggedInUser: props.userInSession });
   }, [props.userInSession, size.width]);
 
@@ -38,22 +38,24 @@ const Navbar = (props) => {
   };
 
   const toggleDropdown = () => {
-    setShowDropdown(!showDropdown)
-  }
+    setShowDropdown(!showDropdown);
+  };
 
   const closeDropdown = () => {
-    setShowDropdown(false)
-  }
+    setShowDropdown(false);
+  };
 
   const toggleDropdownButtonColor = () => {
     dropDownButtonColor === "grey"
       ? setDropdownButtonColor("black")
-      : setDropdownButtonColor("grey")
-  }
-    
+      : setDropdownButtonColor("grey");
+  };
+
   return (
     <Nav>
-      <Link to="/" onClick={closeDropdown}><BrandLogo src="/supertrips_logo_blue.png" alt="Supertrips" /></Link>
+      <Link to="/" onClick={closeDropdown}>
+        <BrandLogo src="/supertrips_logo_blue.png" alt="Supertrips" />
+      </Link>
       {/* <Link to="/" onClick={closeDropdown}><BrandLogo src="/supertrips_logo_blue_ocre.png" alt="Supertrips" /></Link> */}
       <span>
         <FontAwesomeIconComponent
@@ -65,14 +67,21 @@ const Navbar = (props) => {
           toggleDropdown={toggleDropdown}
         />
       </span>
-      <Dropdown userInSession={props.userInSession} showDropdown={showDropdown ? "flex" : "none"}>
+      <Dropdown
+        userInSession={props.userInSession}
+        showDropdown={showDropdown ? "flex" : "none"}
+      >
         <li>
-          <Link to="/trips" onClick={closeDropdown}>TRIPS</Link>
+          <Link to="/trips" onClick={closeDropdown}>
+            TRIPS
+          </Link>
         </li>
         {state.loggedInUser ? (
           <>
             <li>
-              <Link to="/profile" onClick={closeDropdown}>PROFILE</Link>
+              <Link to="/profile" onClick={closeDropdown}>
+                PROFILE
+              </Link>
             </li>
             <li>
               <Link to="/" onClick={closeDropdown}>
@@ -83,10 +92,14 @@ const Navbar = (props) => {
         ) : (
           <>
             <li>
-              <Link to="/signup" onClick={closeDropdown}>SIGNUP</Link>
+              <Link to="/signup" onClick={closeDropdown}>
+                SIGNUP
+              </Link>
             </li>
             <li>
-              <Link to="/login" onClick={closeDropdown}>LOGIN</Link>
+              <Link to="/login" onClick={closeDropdown}>
+                LOGIN
+              </Link>
             </li>
           </>
         )}
