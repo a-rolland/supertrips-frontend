@@ -94,7 +94,7 @@ export const SinglePictureContainer = styled.div`
         max-height: 300px;
         margin-right: 40px;
         object-fit: scale-down;
-        ${(props) => props.popularTrips && "height: 300px; width: auto;"}
+        ${(props) => props.popularTrips && "height: 230px; width: auto;"}
       }
     }
   }
