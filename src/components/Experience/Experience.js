@@ -38,6 +38,7 @@ const Experience = (props) => {
     setState((state) => ({
       ...state,
       expanded: !state.expanded,
+      showInGallery: state.expanded && false,
     }));
   };
 
