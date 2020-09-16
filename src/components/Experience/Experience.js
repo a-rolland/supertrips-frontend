@@ -208,7 +208,7 @@ const Experience = (props) => {
             <GalleryAndPictures>
               <Button
                 formButton={
-                  state.showInGallery ? "CLOSE GALLERY" : "SHOW IN A GALLERY"
+                  state.showInGallery ? "CLOSE GALLERY MODE" : "GALLERY MODE"
                 }
                 toggleShowInGallery={handleToggleShowInGallery}
               />
