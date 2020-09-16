@@ -1,5 +1,4 @@
 import React, { useState, useEffect, useCallback } from "react";
-// import stepService from "../Services/step-service";
 import experienceService from "../Services/experience-service";
 import {
   StyledExperience,
@@ -9,6 +8,7 @@ import {
   MapContainer,
   AddPhotoLogo,
   EditPhotoLogo,
+  GalleryAndPictures,
   PicturesContainer,
   OwnerControls,
   StyledStepHeader,
@@ -19,6 +19,9 @@ import { Link } from "react-router-dom";
 import Map from "../Map/Map";
 import FontAwesomeIconComponent from "../ElementalComponents/FontAwesomeIconComponent/FontAwesomeIconComponent";
 import AddPhotoToExperience from "../CreateFormGeneral/AddPhotoToExperience";
+import Gallery from "../Gallery/Gallery";
+import "../../../node_modules/react-image-gallery/styles/css/image-gallery.css";
+import Button from "../ElementalComponents/Button/Button";
 
 const Experience = (props) => {
   const initialState = {
@@ -27,6 +30,7 @@ const Experience = (props) => {
     expanded: false,
     showAddPhoto: false,
     editingPhotos: false,
+    showInGallery: false,
   };
   const [state, setState] = useState(initialState);
 
@@ -87,6 +91,20 @@ const Experience = (props) => {
       .then((response) => {
         handleUpdateNewPicture();
       });
+  };
+
+  const handleToggleShowInGallery = () => {
+    setState((state) => ({
+      ...state,
+      showInGallery: !state.showInGallery,
+    }));
+  };
+
+  const closeGallery = () => {
+    setState((state) => ({
+      ...state,
+      showInGallery: false,
+    }));
   };
 
   const experiencePictures =
@@ -185,8 +203,23 @@ const Experience = (props) => {
               />
             </MapContainer>
           )}
-          {state.experience.pictures && (
-            <PicturesContainer>{experiencePictures}</PicturesContainer>
+          {state.experience.pictures.length > 0 && (
+            <GalleryAndPictures>
+              <Button
+                formButton={
+                  state.showInGallery ? "CLOSE GALLERY" : "SHOW IN A GALLERY"
+                }
+                toggleShowInGallery={handleToggleShowInGallery}
+              />
+              {state.showInGallery ? (
+                <Gallery
+                  style={{ padding: "50px" }}
+                  pictures={state.experience.pictures}
+                />
+              ) : (
+                <PicturesContainer>{experiencePictures}</PicturesContainer>
+              )}
+            </GalleryAndPictures>
           )}
           {state.loggedInUser && props.author._id === state.loggedInUser._id && (
             <React.Fragment>

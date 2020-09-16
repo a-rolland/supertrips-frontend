@@ -96,18 +96,18 @@ export const SinglePictureContainer = styled.div`
   text-align: center;
 
   img {
-    height: 200px;
+    height: 125px;
     width: auto;
     margin: 20px;
 
     @media (max-width: 767px) {
-      height: 150px;
+      height: 75px;
       width: auto;
       margin: 10px;
     }
 
     @media (min-width: 992px) {
-      height: 300px;
+      height: 150px;
       width: auto;
       margin: 20px;
     }
@@ -135,5 +135,17 @@ export const ExpandedSection = styled.div`
 export const ExperienceTitle = styled.span`
   :hover {
     color: lightgrey;
+  }
+`;
+
+export const GalleryAndPictures = styled.div`
+  position: relative;
+  display: flex;
+  flex-direction: column;
+
+  input {
+    margin-top: 40px;
+    justify-self: center;
+    align-self: center;
   }
 `;

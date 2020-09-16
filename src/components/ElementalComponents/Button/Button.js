@@ -8,6 +8,7 @@ const Button = (props) => {
     props.deleteItem && props.deleteItem();
     props.toggleProfilePictureForm && props.toggleProfilePictureForm();
     props.logoutUser && props.logoutUser();
+    props.toggleShowInGallery && props.toggleShowInGallery();
   };
 
   return (
