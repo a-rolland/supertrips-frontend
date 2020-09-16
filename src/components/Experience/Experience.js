@@ -217,15 +217,17 @@ const Experience = (props) => {
           )}
           {state.loggedInUser && props.author._id === state.loggedInUser._id && (
             <React.Fragment>
-              <EditPhotoLogo onClick={toggleEditingPhotos}>
-                <FontAwesomeIconComponent
-                  chosenIcon={
-                    state.editingPhotos ? "faMinusSquare" : "faPenSquare"
-                  }
-                  color="dimgrey"
-                />
-                {state.editingPhotos ? "Close" : "Edit photos"}
-              </EditPhotoLogo>
+              {!state.showInGallery && state.experience.pictures.length > 0 && (
+                <EditPhotoLogo onClick={toggleEditingPhotos}>
+                  <FontAwesomeIconComponent
+                    chosenIcon={
+                      state.editingPhotos ? "faMinusSquare" : "faPenSquare"
+                    }
+                    color="dimgrey"
+                  />
+                  {state.editingPhotos ? "Close" : "Edit photos"}
+                </EditPhotoLogo>
+              )}
               <AddPhotoLogo onClick={toggleShowAddPhoto}>
                 <FontAwesomeIconComponent
                   chosenIcon={
