@@ -46,7 +46,7 @@ List of other features outside of the MVPs scope
 - As a user, I want to be able to "Like" a trip.
 - As a user, I want to add pictures to my trip.
 
-## ROUTES - FRONTEND:
+## Routes - Front-end :
 
 | Method | URL                                                    | Description                                          |
 | ------ | ------------------------------------------------------ | ---------------------------------------------------- |
@@ -150,9 +150,9 @@ Sessions model (automatically created)
 [Frontend](https://github.com/a-rolland/supertrips-frontend)
 [Backend](https://github.com/a-rolland/supertrips-backend)
 
-### Deploy
+### Deploy on Heroku
 
-[Heroku App](https://supertrips.herokuapp.com/)
+[Supertrips](https://supertrips.herokuapp.com/)
 
 ### Slides
 
