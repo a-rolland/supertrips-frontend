@@ -109,6 +109,12 @@ const App = () => {
               />
             )}
           />
+          <ProtectedRoute
+            exact
+            path="/create-trip"
+            userInSession={state.loggedInUser}
+            component={CreateTripForm}
+          />
           <Route
             exact
             path="/trips/:id"
@@ -173,6 +179,13 @@ const App = () => {
             component={MyTrips}
             updateUser={handleUpdateUser}
           />
+          <ProtectedRoute
+            exact
+            path="/profile/favorite-trips"
+            userInSession={state.loggedInUser}
+            component={MyFavoriteTrips}
+            updateUser={handleUpdateUser}
+          />
           <Route
             exact
             path="/profile/user/:userId"
@@ -183,19 +196,6 @@ const App = () => {
                 updateUser={handleUpdateUser}
               />
             )}
-          />
-          <ProtectedRoute
-            exact
-            path="/profile/favorite-trips"
-            userInSession={state.loggedInUser}
-            component={MyFavoriteTrips}
-            updateUser={handleUpdateUser}
-          />
-          <ProtectedRoute
-            exact
-            path="/create-trip"
-            userInSession={state.loggedInUser}
-            component={CreateTripForm}
           />
           <Route component={NoMatch} />
         </Switch>

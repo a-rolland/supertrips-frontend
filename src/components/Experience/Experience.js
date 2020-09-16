@@ -101,13 +101,6 @@ const Experience = (props) => {
     }));
   };
 
-  const closeGallery = () => {
-    setState((state) => ({
-      ...state,
-      showInGallery: false,
-    }));
-  };
-
   const experiencePictures =
     state.experience.pictures &&
     state.experience.pictures.map((picture, index) => {
